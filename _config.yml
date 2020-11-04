@@ -1,0 +1,39 @@
+plugins: [jekyll-paginate]
+title: "Jenkins中国"
+email: hummerstudio@163.com
+description: "万物皆可自动化"
+permalink: /post/:title
+excerpt_separator: <!--以上为摘要内容-->
+
+paginate: 5
+paginate_path: "page/:num"
+baseurl: ""
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      styles : [highlight.css,gitment.css,post.css]
+      scripts : [post.js]
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+
+github:
+  username: jenkinschina
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
+    authors:
+      output: true
+      permalink: /author/:path/
+url: "https://www.jenkinschina.com"
+imgrepo: "https://www.jenkinschina.com/static/img"
+
+#url: "http://127.0.0.1:4000"
+#imgrepo: "http://127.0.0.1:4000/static/img"

@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<h1>作者姓名：{{ page.name }}</h1>
+<h2>职位：{{ page.position }}</h2>
+<h2>位置：{{ page.base }}</h2>
+
+{{ content }}
+
+<h2>发表的文章</h2>
+<ul>
+    {% assign filtered_posts = site.posts | where: 'author', page.name %}
+    {% for post in filtered_posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>

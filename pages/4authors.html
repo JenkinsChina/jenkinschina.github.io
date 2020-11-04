@@ -1,0 +1,16 @@
+---
+layout: page
+title: 作者
+permalink: /authors/
+icon: octicon-tag
+isNavItem: false
+---
+<ul>
+    {% for author in site.authors %}
+    <li>
+        <h1><a href="{{ author.url }}">{{ author.name }}</a></h1>
+        <h3>{{ author.position }}</h3>
+        <p>{{ author.content | markdownify }}</p>
+    </li>
+    {% endfor %}
+</ul>
