@@ -10,9 +10,6 @@ title: Jenkins中国
         <section class="category-slice" post-cate="All">
           {% for post in paginator.posts %}
             <article>
-                <header>
-                    <a href="{{ site.baseurl | prepend: site.url  }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
-                </header>
                 <div class="module">
                   <a class="title" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
                       {{ post.title }}
@@ -60,9 +57,10 @@ title: Jenkins中国
   <div class="content-navigation col-lg-3">
       <div class="content-navigation-header">
           <span class="octicon octicon-list-unordered"></span>&nbsp;关注微信公众号
+          <div class="wechat-qrcode" style="text-align: center">
+              <img alt="DevOps持续交付公众号ID:devopscd" src="/assets/img/qrcode_for_devopscd.jpg" style="display: inline-block;max-width: 100%"/>
+          </div>
       </div>
-      <div class="wechat-qrcode" style="text-align: center">
-          <img alt="DevOps持续交付公众号ID:devopscd" src="/assets/img/qrcode_for_devopscd.jpg"/>
-      </div>
+
   </div>
 </div>

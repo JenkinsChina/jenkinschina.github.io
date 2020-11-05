@@ -40,9 +40,6 @@ scripts: [category.js]
             <section class="category-slice" post-cate="All">
                 {% for post in site.posts %}
                 <article>
-                    <header>
-                        <a href="{{ site.baseurl | prepend: site.url  }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
-                    </header>
                     <div class="module">
                         <a class="title" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
                             {{ post.title }}
@@ -69,9 +66,6 @@ scripts: [category.js]
                 {% for post in posts %}
                 {% if post.url %}
                 <article>
-                    <header>
-                        <a href="{{ site.baseurl | prepend: site.url  }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
-                    </header>
                     <div class="module">
                         <a class="title" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
                             {{ post.title }}

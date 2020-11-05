@@ -7,8 +7,7 @@ layout: default
           <header>
             <h2>{{ page.title }}</h2>
             <p class="post-meta">
-                <span class="octicon octicon-calendar"></span> {{ page.date | date: '%Y-%m-%d' }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
-                • <span class="octicon octicon-info"></span>字数：{{ content | strip_html | strip_newlines | size }}
+                <span class="octicon octicon-info"></span>字数：{{ content | strip_html | strip_newlines | size }}
                 • <span class="octicon octicon-clock"></span>预计阅读用时：{{ content | strip_html | strip_newlines | size | divided_by:350}} 分钟
             </p>
             <p class="post-tag">
@@ -31,7 +30,8 @@ layout: default
                 <img alt="DevOps持续交付公众号ID:devopscd" src="/assets/img/qrcode.png"/>
             </div>
             <div id="copyright">
-                <p>作者：{{page.author}}</p>
+                {% assign author = site.authors | where: 'name', page.author | first %}
+                <p>作者：<a href="{{ author.url }}">{{ author.name }}</a></p>
                 <p>出处：<a href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.url | prepend: site.baseurl | prepend: site.url }}</a></p>
                 <p>版权：本站使用「CC BY 4.0」创作共享协议，转载请在文章明显位置注明作者及出处。</p>
             </div>

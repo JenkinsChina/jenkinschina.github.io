@@ -7,7 +7,7 @@ base: 珠海
 
 Certified Jenkins Enginner
 
-[Jenkins中文社区第二期明星贡献者](https://jenkins-zh.cn/about/star-plan/)
+[Jenkins中文社区第二期、第四期明星贡献者](https://jenkins-zh.cn/about/star-plan/)
 
 [中国DevOps社区优秀志愿者](https://mp.weixin.qq.com/s/P9kqOk5024aGTHAvNAG_5Q)
 
