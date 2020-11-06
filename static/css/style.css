@@ -339,3 +339,16 @@ h3 {
     .col-lg-3{
         float: right;
     }
+}
+.footnote ul li {
+    text-align: left;
+}
+.footnote ul {
+    padding: 0
+}
+
+.div-mar h1 {
+    text-align: left;
+    border-top: 2px solid #d24939;
+    padding-top: 10px;
+}
