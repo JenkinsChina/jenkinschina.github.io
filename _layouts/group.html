@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<h1>{{ page.base }}Jenkins社区</h1>
+
+{% assign author = site.authors | where: 'name', page.organizer | first %}
+<h2>组织者：<a href="{{ author.url }}">{{ author.name }}</a></h2>
+
+{{ content }}

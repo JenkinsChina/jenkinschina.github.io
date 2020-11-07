@@ -22,6 +22,11 @@ defaults:
       type: "authors"
     values:
       layout: "author"
+  - scope:
+      path: ""
+      type: "groups"
+    values:
+        layout: "group"
 
 github:
   username: jenkinschina
@@ -32,6 +37,9 @@ collections:
     authors:
       output: true
       permalink: /author/:path/
+    groups:
+        output: true
+        permalink: /group/:path/
 url: "https://www.jenkinschina.com"
 imgrepo: "https://www.jenkinschina.com/static/img"
 
