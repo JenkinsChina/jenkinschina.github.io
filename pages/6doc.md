@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 文档
-permalink: /doc
+permalink: /doc_old
 icon: octicon-book
 isNavItem: true
 
