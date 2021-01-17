@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+安全
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="安全" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="安全" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="安全" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/system-administration/security/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="安全" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="active">系统管理</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/system-administration/backing-up" class="">备份恢复</a>
+</li>
+<li>
+<a href="/doc/book/system-administration/monitoring" class="">监控Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration/security" class="active">安全</a>
+</li>
+<li>
+<a href="/doc/book/system-administration/with-chef" class="">通过Chef管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration/with-puppet" class="">通过Puppet管理Jenkins</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../monitoring">
+⇐ 监控Jenkins
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 系统管理
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../with-chef">
+通过Chef管理Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+安全
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#访问控制">访问控制</a></li>
+<li><a href="#保护jenkins用户免受其他威胁">保护Jenkins用户免受其他威胁</a></li>
+<li><a href="#禁用安全">禁用安全</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>这仍然是一项正在进行中的工作。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>在Jenkins 1.x的默认配置中, Jenkins 不执行任何安全检查。这意味着 Jenkins能够启动进程并访问本地文件，任何人都可以访问Jenkins web UI和更多。</p>
+</div>
+<div class="paragraph">
+<p>保护 Jenkins 可从两个方面着手。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>访问控制, 这确保用户在访问Jenkins及其活动时进行身份验证。</p>
+</li>
+<li>
+<p>保护Jenkins免受外部威胁</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="访问控制"><a class="anchor" href="#访问控制"></a>访问控制</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>你应该所得对 Jenkins UI 的访问以便于用户进行身份认证，
+并授予一组合适的权限。 还设置主要由两个轴控制:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Security Realm</strong>, 他决定用户和他们的密码, 以及用户所属的组。</p>
+</li>
+<li>
+<p><strong>Authorization Strategy</strong>,他决定谁有权访问什么。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>这两个轴是正交的, 需要单独配置。比如, 你可以选择使用外部的 LDAP 或Active 目录作为安全域, 你也可以选择 "每个人都完全访问" 模式的授权策略。或者你还可以选择让Jenkins运行 他自己的用户数据库, 并基于权限/用户矩阵执行访问控制。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Quick+and+Simple+Security">快速简单的安全</a> --- 如果你像 <code>java -jar jenkins.war</code> 一样运行Jenkins，只需要一个非常简单的设置。</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Standard+Security+Setup">标准安全设置</a> --- 讨论最常见的设置，让Jenkins运行自己的用户数据库，并进行细粒度的访问控制。</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Apache+frontend+for+security">Apache前端安全</a> --- run Jenkins behind Apache and perform access control in Apache instead of Jenkins</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients">验证脚本客户端</a> --- 如果你需要以编程方式访问安全启用的 Jenkins web UI, 使用 BASIC auth</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Matrix-based+security">基于矩阵的 安全|基于矩阵的安全性</a> --- 同意和否认更细粒度的权限</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="保护jenkins用户免受其他威胁"><a class="anchor" href="#保护jenkins用户免受其他威胁"></a>保护Jenkins用户免受其他威胁</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在Jenkins中有另外的安全子系统，可以保护Jenkins和Jenkins的用户免受间接攻击。</p>
+</div>
+<div class="paragraph">
+<p>下面的主体将讨论 *off by default*下的特性。
+我们建议你先阅读并立即行动。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/CSRF+Protection">CSRF Protection</a> --- 防止远程攻击运行在防火墙内部的Jenkins。这个特性是Jenkins 1.x  <strong>off by default</strong> ，直到升级到 2.x。</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Security+implication+of+building+on+master">Security implication of building on master</a> --- 保护Jenkins主机免受恶意构建攻击</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Slave+To+Master+Access+Control">Slave To Master Access Control</a> --- 保护Jenkins主机免受恶意的构建代理攻击</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Securing+JENKINS_HOME">Securing JENKINS_HOME</a> --- 保护Jenkins主机免受恶意的构建代理本地用户的访问</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>下面的主题讨论默认情况下的其他安全特性。你只需要在它们造成问题的时候查看他们。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Configuring+Content+Security+Policy">Configuring Content Security Policy</a> --- 保护 Jenkins用户免受恶意构建攻击</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Markup+formatting">Markup formatting</a> --- 保护 Jenkins用户免受 Jenkins的恶意用户攻击</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="禁用安全"><a class="anchor" href="#禁用安全"></a>禁用安全</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>你可能意外的设置了安全域 / 权限，在这种情况下你可能无法重新配置Jenkins。</p>
+</div>
+<div class="paragraph">
+<p>当出现这种情况时, 你可以通过以下步骤修复它:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>停止Jenkins (最简单的方法是停止servlet容器)</p>
+</li>
+<li>
+<p>进入文件系统的 <code>$JENKINS_HOME`并找到 `config.xml</code> 文件。</p>
+</li>
+<li>
+<p>在编辑器中打开该文件。</p>
+</li>
+<li>
+<p>在该文件中寻找 <code>&lt;useSecurity&gt;true&lt;/useSecurity&gt;</code> 元素。</p>
+</li>
+<li>
+<p>用 <code>false`取代 `true</code></p>
+</li>
+<li>
+<p>删除 <code>authorizationStrategy</code> 和 <code>securityRealm</code></p>
+</li>
+<li>
+<p>启动Jenkins</p>
+</li>
+<li>
+<p>当Jenkins回来时, 它将处于一种不安全的模式，每个人都能完全访问系统。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>如果仍然不起作用, 尝试重命名或删除 <code>config.xml</code>。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../monitoring">
+⇐ 监控Jenkins
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 系统管理
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../with-chef">
+通过Chef管理Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/system-administration/security.adoc" title="在 GitHub 上编辑 /doc/book/system-administration/security.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/system-administration/security.adoc" title="在 GitHub 上查看 /doc/book/system-administration/security.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

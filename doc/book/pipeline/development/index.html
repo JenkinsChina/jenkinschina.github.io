@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+流水线开发工具
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="流水线开发工具" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="流水线开发工具" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="流水线开发工具" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/development/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="流水线开发工具" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="active">流水线</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/pipeline/getting-started" class="">流水线入门</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/jenkinsfile" class="">使用 Jenkinsfile</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/multibranch" class="">分支和pull请求</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/docker" class="">在流水线中使用Docker</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/shared-libraries" class="">扩展共享库</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/development" class="active">流水线开发工具</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/scaling-pipeline" class="">规模 Pipelines</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../shared-libraries">
+⇐ 扩展共享库
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../syntax">
+流水线语法 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+流水线开发工具
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#blue-ocean-编辑器">Blue Ocean 编辑器</a></li>
+<li><a href="#linter">命令行流水线linter</a>
+<ul class="sectlevel2">
+<li><a href="#示例">示例</a></li>
+</ul>
+</li>
+<li><a href="#replay">"replay" Pipeline Runs with Modifications</a>
+<ul class="sectlevel2">
+<li><a href="#用法">用法</a></li>
+<li><a href="#特性">特性</a></li>
+<li><a href="#限制">限制</a></li>
+</ul>
+</li>
+<li><a href="#ide-集成">IDE 集成</a>
+<ul class="sectlevel2">
+<li><a href="#eclipse-jenkins-编辑器">Eclipse Jenkins 编辑器</a></li>
+</ul>
+</li>
+<li><a href="#unit-test">流水线单元测试框架</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins 流水线包括
+<a href="#getting-started#built-in-documentation">内置文档</a>和
+<a href="#getting-started#snippet-generator">代码生成器</a> ，是开发流水线的关键资源。它们提供了详细的帮助和信息，这些帮助和信息被定制到当前安装的Jen在本节中, 我们将讨论可能有助于Jenkins流水线开发的其他工具和资源。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="blue-ocean-编辑器"><a class="anchor" href="#blue-ocean-编辑器"></a>Blue Ocean 编辑器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#../blueocean/pipeline-editor#">Blue Ocean Pipeline Editor</a> 提供
+<a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a>
+方法来创建声明式流水线。 该编辑器提供了所有阶段，并行分支和流水线中步骤的构造视图。
+编辑器验证了流水线的更改, 在它们被提交之前消除了许多错误。在后台，它仍然生成声明式的流水线代码。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="linter"><a class="anchor" href="#linter"></a>命令行流水线linter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins可以验证或者
+"<a href="https://en.wikipedia.org/wiki/Lint_(software)">lint</a>",
+在实际运行它之前，从命令行发出声明式流水线。
+这可以通过使用 Jenkins CLI 命令或用适当的参数创建一个
+HTTP POST请求来完成。
+建议使用
+<a href="#../managing/cli#ssh">SSH interface</a>
+来运行linter。请参阅 <a href="#../managing/cli#">Jenkins CLI 文档</a> 了解如何正确配置Jenkins以获取安全命令行访问的详细信息 。</p>
+</div>
+<div class="listingblock">
+<div class="title">Linting via the CLI with SSH</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># ssh (Jenkins CLI)
+# JENKINS_SSHD_PORT=[sshd port on master]
+# JENKINS_HOSTNAME=[Jenkins master hostname]
+ssh -p $JENKINS_SSHD_PORT $JENKINS_HOSTNAME declarative-linter &lt; Jenkinsfile</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Linting via HTTP POST using <code>curl</code></div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># curl (REST API)
+# Assuming &quot;anonymous read access&quot; has been enabled on your Jenkins instance.
+# JENKINS_URL=[root URL of Jenkins master]
+# JENKINS_CRUMB is needed if your Jenkins master has CRSF protection enabled as it should
+JENKINS_CRUMB=`curl &quot;$JENKINS_URL/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\&quot;:\&quot;,//crumb)&quot;`
+curl -X POST -H $JENKINS_CRUMB -F &quot;jenkinsfile=&lt;Jenkinsfile&quot; $JENKINS_URL/pipeline-model-converter/validate</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="示例"><a class="anchor" href="#示例"></a>示例</h3>
+<div class="paragraph">
+<p>下面是正在运行流水线linter的两个示例。
+第一个示例显示传递一个无效的 <code>Jenkinsfile`时的输出,这是 `agent</code> 声明中缺失的部分。</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">pipeline {
+  agent
+  stages {
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Initialize</span><span style="color:#710">'</span></span>) {
+      steps {
+        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Placeholder.</span><span style="color:#710">'</span></span>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Linter output for invalid Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash"># pass a Jenkinsfile that does not contain an &quot;agent&quot; section
+ssh -p 8675 localhost declarative-linter &lt; ./Jenkinsfile
+Errors encountered validating Jenkinsfile:
+WorkflowScript: 2: Not a valid section definition: &quot;agent&quot;. Some extra configuration is required. @ line 2, column 3.
+     agent
+     ^
+
+WorkflowScript: 1: Missing required section &quot;agent&quot; @ line 1, column 1.
+   pipeline &amp;#125;
+   ^</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在第二个示例中, <code>Jenkinsfile</code> 已被更新，它的内容包含`agent`上
+丢失的`any`。 linter 现在报告说流水线是有效的。</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">pipeline {
+  agent any
+  stages {
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Initialize</span><span style="color:#710">'</span></span>) {
+      steps {
+        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Placeholder.</span><span style="color:#710">'</span></span>
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Linter output for valid Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">ssh -p 8675 localhost declarative-linter &lt; ./Jenkinsfile
+Jenkinsfile successfully validated.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="replay"><a class="anchor" href="#replay"></a>"replay" Pipeline Runs with Modifications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>典型的流水线将在经典的 Jenkins web UI中被定义,
+或者提交一个 <code>Jenkinsfile</code> i到源代码控制。 不幸的是,
+这两种方法都不适合于流水线的快速迭代或原型开发。
+"Replay" 特性允许快速修改和执行现有流水线，而不需要修改流水线配置或创建新的提交。</p>
+</div>
+<div class="sect2">
+<h3 id="用法"><a class="anchor" href="#用法"></a>用法</h3>
+<div class="paragraph">
+<p>使用"Replay" 特性:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在构建历史中选择一个之前已完成的运行。</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../resources/pipeline/replay-previous-run.png" alt="Previous Pipeline Run">
+</div>
+</div>
+</li>
+<li>
+<p>点击右侧菜单的 "Replay" 。</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../resources/pipeline/replay-left-bar.png" alt="Replay Left-menu Button">
+</div>
+</div>
+</li>
+<li>
+<p>修改并点击 "Run"。在该示例中, 将 "ruby-2.3" 改为 "ruby-2.4"。</p>
+<div class="imageblock">
+<div class="content">
+<img src="../../resources/pipeline/replay-modified.png" alt="Replay Left-menu Button">
+</div>
+</div>
+</li>
+<li>
+<p>检查更改的结果</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>一旦你满意本次更改,
+你可以使用回放来再次查看他们, 复制他们到你的流水线作业或 `Jenkinsfile`中, 然后使用平常的工程流程提交它们。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="特性"><a class="anchor" href="#特性"></a>特性</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Can be called multiple times on the same run</strong> -
+允许对不同的更改进行简单的并行测试。</p>
+</li>
+<li>
+<p><strong>Can also be called on Pipeline runs that are still in-progress</strong> -
+只要流水线包含语法正确的 Groovy 并且能够启动,就可以回放。</p>
+</li>
+<li>
+<p><strong>Referenced Shared Library code is also modifiable</strong> - 如果一个流水线运行引用了一个
+<a href="#shared-libraries#">Shared Library</a>, 那么共享库中的代码也将作为回放页面的一部分显示和修改。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="限制"><a class="anchor" href="#限制"></a>限制</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pipeline runs with syntax errors cannot be replayed</strong> -
+意思是他们的代码不能被查看，任何在他们里面的改变都不能被检索。
+当使用回放进行更重要的修改时, 在运行之前保存你的变更到一个Jenkins之外的文件或编辑器中。
+参考<a href="https://issues.jenkins-ci.org/browse/JENKINS-37589">JENKINS-37589</a></p>
+</li>
+<li>
+<p><strong>Replayed Pipeline behavior may differ from runs started by other methods</strong> -
+对于不属于多分支流水线的流水线,原始运行和回放运行的
+提交信息可能会不同。
+参考 <a href="https://issues.jenkins-ci.org/browse/JENKINS-36453">JENKINS-36453</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ide-集成"><a class="anchor" href="#ide-集成"></a>IDE 集成</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="eclipse-jenkins-编辑器"><a class="anchor" href="#eclipse-jenkins-编辑器"></a>Eclipse Jenkins 编辑器</h3>
+<div class="paragraph">
+<p><a href="https://marketplace.eclipse.org/content/jenkins-editor">Eclipse 市场</a>存在一个名为 `Jenkins Editor`的Eclipse插件。
+这个特殊的文本编辑器提供了一些定义流水线的特性，比如:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>通过 <a href="##linter">Jenkins Linter Validation</a>验证流水线脚本。 失败会显示为Eclipse标记。</p>
+</li>
+<li>
+<p>带有专用图标的大纲(用于声明式 Jenkins 流水线 )</p>
+</li>
+<li>
+<p>语法 / 关键字高亮</p>
+</li>
+<li>
+<p>Groovy 验证</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Jenkins 编辑器插件是一个不被Jenkins项目支持的第三方工具。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unit-test"><a class="anchor" href="#unit-test"></a>流水线单元测试框架</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+流水线单元测试框架是一个不被Jenkins项目支持的第三方工具。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/lesfurets/JenkinsPipelineUnit">流水线单元测试框架</a>
+允许在运行流水线和<a href="#shared-libraries#">共享库</a>之前对他们进行
+<a href="https://en.wikipedia.org/wiki/Unit_testing">单元测试</a>。它提供了一个模拟执行环境，其中实际的流水线步骤被模拟对象所替换，你可以使用模拟对象来检查预期的行为。
+新而粗糙的边缘周围, 但有希望。
+该项目的 <a href="https://github.com/lesfurets/JenkinsPipelineUnit/blob/master/README.md">README</a>包含示例和使用说明。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../shared-libraries">
+⇐ 扩展共享库
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../syntax">
+流水线语法 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/pipeline/development.adoc" title="在 GitHub 上编辑 /doc/book/pipeline/development.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/pipeline/development.adoc" title="在 GitHub 上查看 /doc/book/pipeline/development.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

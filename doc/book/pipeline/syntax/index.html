@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+流水线语法
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="流水线语法" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="流水线语法" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="流水线语法" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/syntax/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="流水线语法" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="active">流水线</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/pipeline/getting-started" class="">流水线入门</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/jenkinsfile" class="">使用 Jenkinsfile</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/multibranch" class="">分支和pull请求</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/docker" class="">在流水线中使用Docker</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/shared-libraries" class="">扩展共享库</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/development" class="">流水线开发工具</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/syntax" class="active">流水线语法</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/scaling-pipeline" class="">规模 Pipelines</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="active">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../development">
+⇐ 流水线开发工具
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../scaling-pipeline">
+规模 Pipelines ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+流水线语法
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#声明式流水线">声明式流水线</a>
+<ul class="sectlevel2">
+<li><a href="#declarative-sections">节段</a>
+<ul class="sectlevel3">
+<li><a href="#代理">代理</a></li>
+<li><a href="#post">post</a></li>
+<li><a href="#stages">stages</a></li>
+<li><a href="#steps">steps</a></li>
+</ul>
+</li>
+<li><a href="#declarative-directives">指令</a>
+<ul class="sectlevel3">
+<li><a href="#environment">environment</a></li>
+<li><a href="#options">options</a></li>
+<li><a href="#参数">参数</a></li>
+<li><a href="#触发器">触发器</a></li>
+<li><a href="#stage">stage</a></li>
+<li><a href="#工具">工具</a></li>
+<li><a href="#input">input</a></li>
+<li><a href="#when">when</a></li>
+</ul>
+</li>
+<li><a href="#并行">并行</a>
+<ul class="sectlevel3">
+<li><a href="#parallel-stages-example">示例</a></li>
+</ul>
+</li>
+<li><a href="#declarative-steps">步骤</a>
+<ul class="sectlevel3">
+<li><a href="#脚本">脚本</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#脚本化流水线">脚本化流水线</a>
+<ul class="sectlevel2">
+<li><a href="#流控制">流控制</a></li>
+<li><a href="#scripted-steps">步骤</a></li>
+<li><a href="#区别普通-groovy">区别普通 Groovy</a></li>
+</ul>
+</li>
+<li><a href="#compare">语法比较</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节是建立在 <a href="../getting-started">流水线入门</a>内容的基础上，而且，应当被当作一个参考。
+对于在实际示例中如何使用流水线语法的更多信息, 请参阅本章在流水线插件的2.5版本中的
+<a href="../jenkinsfile">使用 Jenkinsfile</a>部分, 流水线支持两种离散的语法，具体如下对于每种的优缺点, 参见<a href="#compare">语法比较</a>。</p>
+</div>
+<div class="paragraph">
+<p>正如 <a href="../">本章开始</a>讨论的, 流水线最基础的部分是 "步骤"。基本上, 步骤告诉 Jenkins 要做什么，以及作为声明式和脚本化流水线语法的基本构建块。</p>
+</div>
+<div class="paragraph">
+<p>对于可用步骤的概述, 请参考
+<a href="/doc/pipeline/steps">流水线步骤引用</a>，它包含了一个构建到流水线的步骤和
+插件提供的步骤的全面的列表。</p>
+</div>
+</div>
+</div>
+<div class="sect1 syntax">
+<h2 id="声明式流水线"><a class="anchor" href="#声明式流水线"></a>声明式流水线</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>声明式流水线是最近添加到 Jenkins 流水线的
+<sup class="footnote" id="_footnote_declarative-version">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>，它在流水线子系统之上提供了一种更简单，更有主见的语法。</p>
+</div>
+<div class="paragraph">
+<p>所有有效的声明式流水线必须包含在一个 <code>pipeline</code> 块中, 比如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">pipeline {
+    <span style="color:#777">/* insert Declarative Pipeline here */</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在声明式流水线中有效的基本语句和表达式遵循与
+<a href="http://groovy-lang.org/syntax.html">Groovy的语法</a>同样的规则，
+有以下例外:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>流水线顶层必须是一个 <em>block</em>, 特别地: <code>pipeline { }</code></p>
+</li>
+<li>
+<p>没有分号作为语句分隔符，，每条语句都必须在自己的行上。</p>
+</li>
+<li>
+<p>块只能由 <a href="#declarative-sections">节段</a>,
+  <a href="#declarative-directives">指令</a>, <a href="#declarative-steps">步骤</a>, 或赋值语句组成。
+*属性引用语句被视为无参方法调用。 例如, input被视为 input()</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="declarative-sections"><a class="anchor" href="#declarative-sections"></a>节段</h3>
+<div class="paragraph">
+<p>声明式流水线中的节段通常包含一个或多个
+<a href="#declarative-directives">指令</a> 或 <a href="#declarative-steps">步骤</a>。</p>
+</div>
+<div class="sect3">
+<h4 id="代理"><a class="anchor" href="#代理"></a>代理</h4>
+<div class="paragraph">
+<p><code>agent</code> 部分指定了整个流水线或特定的部分, 将会在Jenkins环境中执行的位置，这取决于 <code>agent</code> 区域的位置。该部分必须在 <code>pipeline</code> 块的顶层被定义, 但是 stage 级别的使用是可选的。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><a href="#agent-parameters">Described below</a></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>In the top-level <code>pipeline</code> block and each <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="agent-parameters"><a class="anchor" href="#agent-parameters"></a>参数</h5>
+<div class="paragraph">
+<p>为了支持作者可能有的各种各样的用例流水线,
+<code>agent</code> 部分支持一些不同类型的参数。这些参数应用在`pipeline`块的顶层, 或 <code>stage</code> 指令内部。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">any</dt>
+<dd>
+<p>在任何可用的代理上执行流水线或阶段。例如: <code>agent any</code></p>
+</dd>
+<dt class="hdlist1">none</dt>
+<dd>
+<p>当在 <code>pipeline</code> 块的顶部没有全局代理，
+该参数将会被分配到整个流水线的运行中并且每个 <code>stage</code> 部分都需要包含他自己的 <code>agent</code> 部分。比如: <code>agent none</code></p>
+</dd>
+<dt class="hdlist1">label</dt>
+<dd>
+<p>在提供了标签的 Jenkins 环境中可用的代理上执行流水线或阶段。 例如: <code>agent { label 'my-defined-label' }</code></p>
+</dd>
+<dt class="hdlist1">node</dt>
+<dd>
+<p><code>agent { node { label 'labelName' } }</code> 和
+<code>agent { label 'labelName' }</code> 一样, 但是 <code>node</code> 允许额外的选项 (比如 <code>customWorkspace</code> )。</p>
+</dd>
+<dt class="hdlist1">docker</dt>
+<dd>
+<p>使用给定的容器执行流水线或阶段。该容器将在预置的 <a href="#../glossary#node">node</a>上，或在匹配可选定义的`label` 参数上，动态的供应来接受基于Docker的流水线。 <code>docker</code> 也可以选择的接受 <code>args</code> 参数，该参数可能包含直接传递到 <code>docker run</code> 调用的参数, 以及 <code>alwaysPull</code> 选项, 该选项强制 <code>docker pull</code> ，即使镜像名称已经存在。
+比如: <code>agent { docker 'maven:3-alpine' }</code> 或</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
+    docker {
+        image <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span>
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        args  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-v /tmp:/tmp</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">dockerfile</dt>
+<dd>
+<p>执行流水线或阶段, 使用从源代码库包含的 <code>Dockerfile</code> 构建的容器。为了使用该选项，
+ <code>Jenkinsfile</code> 必须从多个分支流水线中加载, 或者加载
+"Pipeline from SCM." 通常，这是源代码仓库的根目录下的 <code>Dockerfile</code> : <code>agent { dockerfile true }</code>. 如果在另一个目录下构建 <code>Dockerfile</code> , 使用 <code>dir</code> 选项: <code>agent { dockerfile {dir 'someSubDir' } }</code>。如果 <code>Dockerfile</code> 有另一个名称, 你可以使用 <code>filename</code> 选项指定该文件名。你可以传递额外的参数到 <code>docker build ...</code>
+使用 <code>additionalBuildArgs</code> 选项提交, 比如 <code>agent { dockerfile {additionalBuildArgs '--build-arg foo=bar' } }</code>。
+例如, 一个带有 <code>build/Dockerfile.build</code> 的仓库,期望一个构建参数 <code>version</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
+    <span style="color:#777">// Equivalent to &quot;docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/</span>
+    dockerfile {
+        filename <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Dockerfile.build</span><span style="color:#710">'</span></span>
+        dir <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">build</span><span style="color:#710">'</span></span>
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        additionalBuildArgs  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">--build-arg version=1.0.2</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="常见选项"><a class="anchor" href="#常见选项"></a>常见选项</h5>
+<div class="paragraph">
+<p>有一些应用于两个或更多 <code>agent</code> 的实现的选项。他们不被要求，除非特别规定。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">label</dt>
+<dd>
+<p>一个字符串。该标签用于运行流水线或个别的 <code>stage</code>。</p>
+<div class="paragraph">
+<p>该选项对 <code>node</code>, <code>docker</code> 和 <code>dockerfile</code> 可用,
+`node`要求必须选择该选项。</p>
+</div>
+</dd>
+<dt class="hdlist1">customWorkspace</dt>
+<dd>
+<p>一个字符串。在自定义工作区运行应用了 <code>agent</code> 的流水线或个别的 <code>stage</code>, 而不是默认值。 它既可以是一个相对路径, 在这种情况下，自定义工作区会存在于节点工作区根目录下, 或者一个绝对路径。比如:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">agent {
+    node {
+        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-defined-label</span><span style="color:#710">'</span></span>
+        customWorkspace <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/some/other/path</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>该选项对 <code>node</code>, <code>docker</code> 和 <code>dockerfile</code> 有用 。</p>
+</div>
+</dd>
+<dt class="hdlist1">reuseNode</dt>
+<dd>
+<p>一个布尔值, 默认为false。 如果是true, 则在流水线的顶层指定的节点上运行该容器, 在同样的工作区, 而不是在一个全新的节点上。</p>
+<div class="paragraph">
+<p>这个选项对 <code>docker</code> 和 <code>dockerfile</code> 有用, 并且只有当
+使用在个别的 <code>stage</code> 的 <code>agent</code> 上才会有效。</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="agent-example"><a class="anchor" href="#agent-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean verify</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>在一个给定名称和标签(<code>maven:3-alpine</code>)的新建的容器上执行定义在流水线中的所有步骤 。</td>
+</tr>
+</table>
+</div>
+<div class="sect5">
+<h6 id="阶段级别的-agent-部分"><a class="anchor" href="#阶段级别的-agent-部分"></a>阶段级别的 <code>agent</code> 部分</h6>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent none <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3-alpine</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, Maven</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Test</span><span style="color:#710">'</span></span>) {
+            agent { docker <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">openjdk:8-jre</span><span style="color:#710">'</span></span> } <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello, JDK</span><span style="color:#710">'</span></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">java -version</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>在流水线顶层定义 <code>agent none</code> 确保
+<a href="#../glossary#executor">an Executor</a> 没有被分配。
+使用 <code>agent none</code> 也会强制 <code>stage</code> 部分包含他自己的 <code>agent</code> 部分。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>使用镜像在一个新建的容器中执行该阶段的该步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>使用一个与之前阶段不同的镜像在一个新建的容器中执行该阶段的该步骤。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="post"><a class="anchor" href="#post"></a>post</h4>
+<div class="paragraph">
+<p><code>post</code> 部分定义一个或多个<a href="#declarative-steps">steps</a>
+，这些阶段根据流水线或阶段的完成情况而
+运行(取决于流水线中 <code>post</code> 部分的位置). <code>post</code> 支持以下 <a href="#post-conditions">post-condition</a> 块中的其中之一: <code>always</code>,
+<code>changed</code>, <code>failure</code>, <code>success</code>, <code>unstable</code>, 和 <code>aborted</code>。这些条件块允许在  <code>post</code> 部分的步骤的执行取决于流水线或阶段的完成状态。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>In the top-level <code>pipeline</code> block and each <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="post-conditions"><a class="anchor" href="#post-conditions"></a>Conditions</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>always</code></dt>
+<dd>
+<p>无论流水线或阶段的完成状态如何，都允许在 <code>post</code> 部分运行该步骤。</p>
+</dd>
+<dt class="hdlist1"><code>changed</code></dt>
+<dd>
+<p>只有当前流水线或阶段的完成状态与它之前的运行不同时，才允许在 <code>post</code> 部分运行该步骤。</p>
+</dd>
+<dt class="hdlist1"><code>failure</code></dt>
+<dd>
+<p>只有当前流水线或阶段的完成状态为"failure"，才允许在 <code>post</code> 部分运行该步骤, 通常web UI是红色。</p>
+</dd>
+<dt class="hdlist1"><code>success</code></dt>
+<dd>
+<p>只有当前流水线或阶段的完成状态为"success"，才允许在 <code>post</code> 部分运行该步骤, 通常web UI是蓝色或绿色。</p>
+</dd>
+<dt class="hdlist1"><code>unstable</code></dt>
+<dd>
+<p>只有当前流水线或阶段的完成状态为"unstable"，才允许在 <code>post</code> 部分运行该步骤, 通常由于测试失败,代码违规等造成。通常web UI是黄色。</p>
+</dd>
+<dt class="hdlist1"><code>aborted</code></dt>
+<dd>
+<p>只有当前流水线或阶段的完成状态为"aborted"，才允许在 <code>post</code> 部分运行该步骤, 通常由于流水线被手动的aborted。通常web UI是灰色。</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="post-example"><a class="anchor" href="#post-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+    post { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+        always { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I will always say Hello again!</span><span style="color:#710">'</span></span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>按照惯例,  <code>post</code> 部分应该放在流水线的底部。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><a href="#post-conditions">Post-condition</a> 块包含与 <a href="#steps">steps</a> 部分相同的<a href="#declarative-steps">steps</a>。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stages"><a class="anchor" href="#stages"></a>stages</h4>
+<div class="paragraph">
+<p>包含一系列一个或多个 <a href="#stage">stage</a> 指令,  <code>stages</code> 部分是流水线描述的大部分"work" 的位置。 建议 <code>stages</code> 至少包含一个 <a href="#stage">stage</a> 指令用于连续交付过程的每个离散部分,比如构建, 测试, 和部署。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="stages-example"><a class="anchor" href="#stages-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>stages</code> 部分通常会遵循诸如 <code>agent</code>,
+<code>options</code> 等的指令。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="steps"><a class="anchor" href="#steps"></a>steps</h4>
+<div class="paragraph">
+<p><code>steps</code> 部分在给定的 <code>stage</code> 指令中执行的定义了一系列的一个或多个<a href="#declarative-steps">steps</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Yes</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Inside each <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="steps-example"><a class="anchor" href="#steps-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>steps</code> 部分必须包含一个或多个步骤。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="declarative-directives"><a class="anchor" href="#declarative-directives"></a>指令</h3>
+<div class="sect3">
+<h4 id="environment"><a class="anchor" href="#environment"></a>environment</h4>
+<div class="paragraph">
+<p><code>environment</code> 指令制定一个 键-值对序列，该序列将被定义为所有步骤的环境变量，或者是特定于阶段的步骤，
+这取决于 <code>environment</code> 指令在流水线内的位置。</p>
+</div>
+<div class="paragraph">
+<p>该指令支持一个特殊的助手方法 <code>credentials()</code> ，该方法可用于在Jenkins环境中通过标识符访问预定义的凭证。对于类型为 "Secret Text"的凭证,
+<code>credentials()</code> 将确保指定的环境变量包含秘密文本内容。对于类型为 "SStandard
+username and password"的凭证, 指定的环境变量指定为
+<code>username:password</code> ，并且两个额外的环境变量将被自动定义 :分别为 <code>MYVARNAME_USR</code> 和 <code>MYVARNAME_PSW</code> 。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Inside the <code>pipeline</code> block, or within <code>stage</code> directives.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="environment-example"><a class="anchor" href="#environment-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    environment { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+        CC = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clang</span><span style="color:#710">'</span></span>
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            environment { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+                AN_ACCESS_KEY = credentials(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-prefined-secret-text</span><span style="color:#710">'</span></span>) <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
+            }
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">printenv</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>顶层流水线块中使用的 <code>environment</code> 指令将适用于流水线中的所有步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>在一个 <code>stage</code> 中定义的 <code>environment</code> 指令只会将给定的环境变量应用于 <code>stage</code> 中的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>environment</code> 块有一个 助手方法 <code>credentials()</code> 定义，该方法可以在 Jenkins 环境中用于通过标识符访问预定义的凭证。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="options"><a class="anchor" href="#options"></a>options</h4>
+<div class="paragraph">
+<p><code>options</code> 指令允许从流水线内部配置特定于流水线的选项。 流水线提供了许多这样的选项, 比如 <code>buildDiscarder</code>,但也可以由插件提供, 比如
+<code>timestamps</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="可用选项"><a class="anchor" href="#可用选项"></a>可用选项</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">buildDiscarder</dt>
+<dd>
+<p>为最近的流水线运行的特定数量保存组件和控制台输出。例如: <code>options { buildDiscarder(logRotator(numToKeepStr: '1')) }</code></p>
+</dd>
+<dt class="hdlist1">disableConcurrentBuilds</dt>
+<dd>
+<p>不允许同时执行流水线。 可被用来防止同时访问共享资源等。 例如: <code>options { disableConcurrentBuilds() }</code></p>
+</dd>
+<dt class="hdlist1">overrideIndexTriggers</dt>
+<dd>
+<p>允许覆盖分支索引触发器的默认处理。
+如果分支索引触发器在多分支或组织标签中禁用, <code>options { overrideIndexTriggers(true) }</code>
+将只允许它们用于促工作。否则, <code>options { overrideIndexTriggers(false) }</code> 只会禁用改作业的分支索引触发器。</p>
+</dd>
+<dt class="hdlist1">skipDefaultCheckout</dt>
+<dd>
+<p>在`agent` 指令中，跳过从源代码控制中检出代码的默认情况。例如: <code>options { skipDefaultCheckout() }</code></p>
+</dd>
+<dt class="hdlist1">skipStagesAfterUnstable</dt>
+<dd>
+<p>一旦构建状态变得UNSTABLE，跳过该阶段。例如: <code>options { skipStagesAfterUnstable() }</code></p>
+</dd>
+<dt class="hdlist1">checkoutToSubdirectory</dt>
+<dd>
+<p>在工作空间的子目录中自动地执行源代码控制检出。例如: <code>options { checkoutToSubdirectory('foo') }</code></p>
+</dd>
+<dt class="hdlist1">timeout</dt>
+<dd>
+<p>设置流水线运行的超时时间, 在此之后，Jenkins将中止流水线。例如: <code>options { timeout(time: 1, unit: 'HOURS') }</code></p>
+</dd>
+<dt class="hdlist1">retry</dt>
+<dd>
+<p>在失败时, 重新尝试整个流水线的指定次数。
+For example: <code>options { retry(3) }</code></p>
+</dd>
+<dt class="hdlist1">timestamps</dt>
+<dd>
+<p>预谋所有由流水线生成的控制台输出，与该流水线发出的时间一致。
+例如: <code>options { timestamps() }</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="options-example"><a class="anchor" href="#options-example"></a>Example</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    options {
+        timeout(<span style="color:#606">time</span>: <span style="color:#00D">1</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">HOURS</span><span style="color:#710">'</span></span>) <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>指定一个小时的全局执行超时, 在此之后，Jenkins 将中止流水线运行。</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>一个完整的可用选项列表正在等待完成第
+<a href="https://issues.jenkins-ci.org/browse/INFRA-1053">INFRA-1503</a>次。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="阶段选项"><a class="anchor" href="#阶段选项"></a>阶段选项</h5>
+<div class="paragraph">
+<p><code>stage</code> 的 <code>options</code> 指令类似于流水线根目录上的 <code>options</code> 指令。然而， <code>stage</code> -级别 <code>options</code> 只能包括 <code>retry</code>, <code>timeout</code>, 或 <code>timestamps</code> 等步骤, 或与 <code>stage</code> 相关的声明式选项，如 <code>skipDefaultCheckout</code>。</p>
+</div>
+<div class="paragraph">
+<p>在`stage`, <code>options</code> 指令中的步骤在进入 <code>agent</code> 之前被调用或在 <code>when</code> 条件出现时进行检查。</p>
+</div>
+<div class="sect5">
+<h6 id="可选的阶段选项"><a class="anchor" href="#可选的阶段选项"></a>可选的阶段选项</h6>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">skipDefaultCheckout</dt>
+<dd>
+<p>在 <code>agent</code> 指令中跳过默认的从源代码控制中检出代码。例如: <code>options { skipDefaultCheckout() }</code></p>
+</dd>
+<dt class="hdlist1">timeout</dt>
+<dd>
+<p>设置此阶段的超时时间, 在此之后， Jenkins 会终止该阶段。 例如: <code>options { timeout(time: 1, unit: 'HOURS') }</code></p>
+</dd>
+<dt class="hdlist1">retry</dt>
+<dd>
+<p>在失败时, 重试此阶段指定次数。
+例如: <code>options { retry(3) }</code></p>
+</dd>
+<dt class="hdlist1">timestamps</dt>
+<dd>
+<p>预谋此阶段生成的所有控制台输出以及该行发出的时间一致。例如: <code>options { timestamps() }</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect5">
+<h6 id="stage-options-example"><a class="anchor" href="#stage-options-example"></a>示例</h6>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            options {
+                timeout(<span style="color:#606">time</span>: <span style="color:#00D">1</span>, <span style="color:#606">unit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">HOURS</span><span style="color:#710">'</span></span>) <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>指定 <code>Example</code> 阶段的执行超时时间, 在此之后，Jenkins 将中止流水线运行。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="参数"><a class="anchor" href="#参数"></a>参数</h4>
+<div class="paragraph">
+<p><code>parameters</code> 指令提供了一个用户在触发流水线时应该提供的参数列表。这些用户指定参数的值可通过 <code>params</code> 对象提供给流水线步骤,
+了解更多请参考<a href="#parameters-example">示例</a>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="可用参数"><a class="anchor" href="#可用参数"></a>可用参数</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">string</dt>
+<dd>
+<p>字符串类型的参数, 例如: <code>parameters { string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') }</code></p>
+</dd>
+<dt class="hdlist1">booleanParam</dt>
+<dd>
+<p>布尔参数, 例如: <code>parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="parameters-example"><a class="anchor" href="#parameters-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    parameters {
+        string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">PERSON</span><span style="color:#710">'</span></span>, <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Mr Jenkins</span><span style="color:#710">'</span></span>, <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Who should I say hello to?</span><span style="color:#710">'</span></span>)
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>params.PERSON<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>一份完整的可用参数列表正在等待
+<a href="https://issues.jenkins-ci.org/browse/INFRA-1053">INFRA-1503</a>的完成。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="触发器"><a class="anchor" href="#触发器"></a>触发器</h4>
+<div class="paragraph">
+<p><code>triggers</code> 指令定义了流水线被重新触发的自动化方法。对于集成了源（ 比如 GitHub 或 BitBucket）的流水线, 可能不需要 <code>triggers</code> ，因为基于 web 的集成很肯能已经存在。
+当前可用的触发器是
+<code>cron</code>, <code>pollSCM</code> 和 <code>upstream</code>。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Only once, inside the <code>pipeline</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">cron</dt>
+<dd>
+<p>接收 cron 样式的字符串来定义要重新触发流水线的常规间隔 ,比如: <code>triggers { cron('H */4 * * 1-5') }</code></p>
+</dd>
+<dt class="hdlist1">pollSCM</dt>
+<dd>
+<p>接收 cron 样式的字符串来定义一个固定的间隔，在这个间隔中，Jenkins 会检查新的源代码更新。如果存在更改, 流水线就会被重新触发。例如: <code>triggers { pollSCM('H */4 * * 1-5') }</code></p>
+</dd>
+<dt class="hdlist1">upstream</dt>
+<dd>
+<p>接受逗号分隔的工作字符串和阈值。 当字符串中的任何作业以最小阈值结束时，流水线被重新触发。例如:
+<code>triggers { upstream(upstreamProjects: 'job1,job2', threshold: hudson.model.Result.SUCCESS) }</code></p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>pollSCM</code> 只在Jenkins 2.22 及以上版本中可用。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="triggers-example"><a class="anchor" href="#triggers-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    triggers {
+        cron(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">H */4 * * 1-5</span><span style="color:#710">'</span></span>)
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stage"><a class="anchor" href="#stage"></a>stage</h4>
+<div class="paragraph">
+<p><code>stage</code> 指令在 <code>stages</code> 部分进行，应该包含一个
+实际上, 流水巷所做的所有实际工作都将封装进一个或多个 <code>stage</code> 指令中。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>At least one</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>One mandatory parameter, a string for the name of the stage.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Inside the <code>stages</code> section.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="stage-example"><a class="anchor" href="#stage-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="工具"><a class="anchor" href="#工具"></a>工具</h4>
+<div class="paragraph">
+<p>定义自动安装和放置 <code>PATH</code> 的工具的一部分。如果 <code>agent none</code> 指定，则忽略该操作。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Inside the <code>pipeline</code> block or a <code>stage</code> block.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="支持工具"><a class="anchor" href="#支持工具"></a>支持工具</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">maven</dt>
+<dt class="hdlist1">jdk</dt>
+<dt class="hdlist1">gradle</dt>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="tools-example"><a class="anchor" href="#tools-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    tools {
+        maven <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">apache-maven-3.0.1</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    }
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn --version</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The tool name must be pre-configured in Jenkins under <strong>Manage Jenkins</strong> &#8594;
+<strong>Global Tool Configuration</strong>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="input"><a class="anchor" href="#input"></a>input</h4>
+<div class="paragraph">
+<p><code>stage</code> 的 <code>input</code> 指令允许你使用
+<a href="https://jenkins.io/doc/pipeline/steps/pipeline-input-step/#input-wait-for-interactive-input"><code>input</code> step</a>提示输入。
+在应用了 <code>options</code> 后，进入 <code>stage</code> 的 <code>agent</code> 或评估 <code>when</code> 条件前，
+<code>stage</code> 将暂停。 如果 <code>input</code>
+被批准,  <code>stage</code> 将会继续。 作为 <code>input</code> 提交的一部分的任何参数都将在环境中用于其他
+<code>stage</code>。</p>
+</div>
+<div class="sect4">
+<h5 id="配置项"><a class="anchor" href="#配置项"></a>配置项</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">message</dt>
+<dd>
+<p>必需的。 这将在用户提交 <code>input</code> 时呈现给用户。</p>
+</dd>
+<dt class="hdlist1">id</dt>
+<dd>
+<p><code>input</code> 的可选标识符， 默认为 <code>stage</code> 名称。</p>
+</dd>
+<dt class="hdlist1">ok</dt>
+<dd>
+<p>`input`表单上的"ok" 按钮的可选文本。</p>
+</dd>
+<dt class="hdlist1">submitter</dt>
+<dd>
+<p>可选的以逗号分隔的用户列表或允许提交 <code>input</code> 的外部组名。默认允许任何用户。</p>
+</dd>
+<dt class="hdlist1">submitterParameter</dt>
+<dd>
+<p>环境变量的可选名称。如果存在，用 <code>submitter</code> 名称设置。</p>
+</dd>
+<dt class="hdlist1">parameters</dt>
+<dd>
+<p>提示提交者提供的一个可选的参数列表。
+更多信息参见 <a href="#parameters">[parameters]</a>。</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="input-example"><a class="anchor" href="#input-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            input {
+                message <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Should we continue?</span><span style="color:#710">&quot;</span></span>
+                ok <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Yes, we should.</span><span style="color:#710">&quot;</span></span>
+                submitter <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alice,bob</span><span style="color:#710">&quot;</span></span>
+                parameters {
+                    string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">PERSON</span><span style="color:#710">'</span></span>, <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Mr Jenkins</span><span style="color:#710">'</span></span>, <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Who should I say hello to?</span><span style="color:#710">'</span></span>)
+                }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>PERSON<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, nice to meet you.</span><span style="color:#710">&quot;</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="when"><a class="anchor" href="#when"></a>when</h4>
+<div class="paragraph">
+<p><code>when</code> 指令允许流水线根据给定的条件决定是否应该执行阶段。
+<code>when</code> 指令必须包含至少一个条件。
+如果 <code>when</code> 指令包含多个条件,
+所有的子条件必须返回True，阶段才能执行。
+这与子条件在 <code>allOf</code> 条件下嵌套的情况相同
+(参见下面的<a href="#when-example">示例</a>)。</p>
+</div>
+<div class="paragraph">
+<p>使用诸如 <code>not</code>, <code>allOf</code>, 或 <code>anyOf</code> 的嵌套条件可以构建更复杂的条件结构 can be built
+嵌套条件刻意潜逃到任意深度。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch syntax">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 90%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Required</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>No</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Parameters</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p><em>None</em></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">Allowed</p></th>
+<td class="tableblock halign-right valign-top"><div class="content"><div class="paragraph">
+<p>Inside a <code>stage</code> directive</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="内置条件"><a class="anchor" href="#内置条件"></a>内置条件</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">branch</dt>
+<dd>
+<p>当正在构建的分支与模式给定的分支匹配时，执行这个阶段, 例如: <code>when { branch 'master' }</code>。注意，这只适用于多分支流水线。</p>
+</dd>
+<dt class="hdlist1">environment</dt>
+<dd>
+<p>当指定的环境变量是给定的值时，执行这个步骤, 例如: <code>when { environment name: 'DEPLOY_TO', value: 'production' }</code></p>
+</dd>
+<dt class="hdlist1">expression</dt>
+<dd>
+<p>当指定的Groovy表达式评估为true时，执行这个阶段, 例如: <code>when { expression { return params.DEBUG_BUILD } }</code></p>
+</dd>
+<dt class="hdlist1">not</dt>
+<dd>
+<p>当嵌套条件是错误时，执行这个阶段,必须包含一个条件，例如: <code>when { not { branch 'master' } }</code></p>
+</dd>
+<dt class="hdlist1">allOf</dt>
+<dd>
+<p>当所有的嵌套条件都正确时，执行这个阶段,必须包含至少一个条件，例如: <code>when { allOf { branch 'master'; environment name: 'DEPLOY_TO', value: 'production' } }</code></p>
+</dd>
+<dt class="hdlist1">anyOf</dt>
+<dd>
+<p>当至少有一个嵌套条件为真时，执行这个阶段,必须包含至少一个条件，例如: <code>when { anyOf { branch 'master'; branch 'staging' } }</code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4">
+<h5 id="在进入-stage-的-agent-前评估-when"><a class="anchor" href="#在进入-stage-的-agent-前评估-when"></a>在进入 <code>stage</code> 的 <code>agent</code> 前评估 <code>when</code></h5>
+<div class="paragraph">
+<p>默认情况下, 如果定义了某个阶段的代理，在进入该`stage` 的 <code>agent</code> 后该 <code>stage</code> 的
+<code>when</code> 条件将会被评估。但是, 可以通过在 <code>when</code> 块中指定 <code>beforeAgent</code> 选项来更改此选项。
+如果 <code>beforeAgent</code> 被设置为 <code>true</code>, 那么就会首先对 <code>when</code> 条件进行评估 , 并且只有在 <code>when</code> 条件验证为真时才会进入 <code>agent</code> 。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="when-example"><a class="anchor" href="#when-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            when {
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            when {
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            when {
+                allOf {
+                    branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            when {
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                anyOf {
+                    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">staging</span><span style="color:#710">'</span></span>
+                }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            when {
+                expression { BRANCH_NAME ==~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">(production|staging)</span><span style="color:#404">/</span></span> }
+                anyOf {
+                    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+                    environment <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DEPLOY_TO</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">staging</span><span style="color:#710">'</span></span>
+                }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent none
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Build</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example Deploy</span><span style="color:#710">'</span></span>) {
+            agent {
+                label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">some-label</span><span style="color:#710">&quot;</span></span>
+            }
+            when {
+                beforeAgent <span style="color:#069">true</span>
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploying</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="并行"><a class="anchor" href="#并行"></a>并行</h3>
+<div class="paragraph">
+<p>声明式流水线的阶段可以在他们内部声明多隔嵌套阶段, 它们将并行执行。
+注意，一个阶段必须只有一个 <code>steps</code> 或 <code>parallel</code> 的阶段。
+嵌套阶段本身不能包含进一步的 <code>parallel</code> 阶段,
+但是其他的阶段的行为与任何其他 <code>stage</code> 相同。任何包含 <code>parallel</code> 的阶段不能包含 <code>agent</code> 或
+<code>tools</code> 阶段, 因为他们没有相关 <code>steps</code>。</p>
+</div>
+<div class="paragraph">
+<p>另外, 通过添加 <code>failFast true</code> 到包含 <code>parallel`的 `stage</code> 中，
+当其中一个进程失败时，你可以强制所有的 <code>parallel</code> 阶段都被终止。</p>
+</div>
+<div class="sect3">
+<h4 id="parallel-stages-example"><a class="anchor" href="#parallel-stages-example"></a>示例</h4>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Non-Parallel Stage</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This stage will be executed first.</span><span style="color:#710">'</span></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Parallel Stage</span><span style="color:#710">'</span></span>) {
+            when {
+                branch <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">master</span><span style="color:#710">'</span></span>
+            }
+            failFast <span style="color:#069">true</span>
+            parallel {
+                stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Branch A</span><span style="color:#710">'</span></span>) {
+                    agent {
+                        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">for-branch-a</span><span style="color:#710">&quot;</span></span>
+                    }
+                    steps {
+                        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">On Branch A</span><span style="color:#710">&quot;</span></span>
+                    }
+                }
+                stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Branch B</span><span style="color:#710">'</span></span>) {
+                    agent {
+                        label <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">for-branch-b</span><span style="color:#710">&quot;</span></span>
+                    }
+                    steps {
+                        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">On Branch B</span><span style="color:#710">&quot;</span></span>
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="declarative-steps"><a class="anchor" href="#declarative-steps"></a>步骤</h3>
+<div class="paragraph">
+<p>声明式流水线可能使用在 <a href="/doc/pipeline/steps">流水线步骤引用</a>中记录的所有可用的步骤,
+它包含一个完整的步骤列表, 其中添加了下面列出的步骤，这些步骤只在声明式流水线中 <strong>only supported</strong> 。</p>
+</div>
+<div class="sect3">
+<h4 id="脚本"><a class="anchor" href="#脚本"></a>脚本</h4>
+<div class="paragraph">
+<p><code>script</code> 步骤需要 <a href="#scripted-pipeline">[scripted-pipeline]</a>块并在声明式流水线中执行。
+对于大多数用例来说,应该声明式流水线中的“脚本”步骤是不必要的，
+但是它可以提供一个有用的"逃生出口"。
+非平凡的规模和/或复杂性的 <code>script</code> 块应该被转移到 <a href="#shared-libraries#">共享库</a> 。</p>
+</div>
+<div class="sect4">
+<h5 id="script-example"><a class="anchor" href="#script-example"></a>示例</h5>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello World</span><span style="color:#710">'</span></span>
+
+                script {
+                    <span style="color:#080;font-weight:bold">def</span> browsers = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">chrome</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">firefox</span><span style="color:#710">'</span></span>]
+                    <span style="color:#080;font-weight:bold">for</span> (<span style="color:#339;font-weight:bold">int</span> i = <span style="color:#00D">0</span>; i &lt; browsers.size(); ++i) {
+                        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Testing the </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>browsers[i]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> browser</span><span style="color:#710">&quot;</span></span>
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 syntax">
+<h2 id="脚本化流水线"><a class="anchor" href="#脚本化流水线"></a>脚本化流水线</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>脚本化流水线, 与<a href="#declarative-pipeline">[declarative-pipeline]</a>一样的是, 是建立在底层流水线的子系统上的。与声明式不同的是, 脚本化流水线实际上是由 <a href="http://groovy-lang.org/syntax.html">Groovy</a>构建的通用 DSL
+<sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>。
+Groovy 语言提供的大部分功能都可以用于脚本化流水线的用户。这意味着它是一个非常有表现力和灵活的工具，可以通过它编写持续交付流水线。</p>
+</div>
+<div class="sect2">
+<h3 id="流控制"><a class="anchor" href="#流控制"></a>流控制</h3>
+<div class="paragraph">
+<p>脚本化流水线从 <code>Jenkinsfile</code> 的顶部开始向下串行执行, 就像 Groovy 或其他语言中的大多数传统脚本一样。
+因此，提供流控制取决于 Groovy 表达式, 比如
+<code>if/else</code> 条件, 例如:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-script"
+        style="display: true">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+        <span style="color:#080;font-weight:bold">if</span> (env.BRANCH_NAME == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">master</span><span style="color:#710">'</span></span>) {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I only execute on the master branch</span><span style="color:#710">'</span></span>
+        } <span style="color:#080;font-weight:bold">else</span> {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I execute elsewhere</span><span style="color:#710">'</span></span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>另一种方法是使用Groovy的异常处理支持来管理脚本化流水线流控制。当 <a href="#scripted-steps">步骤</a> 失败 ，无论什么原因，它们都会抛出一个异常。处理错误的行为必须使用Groovy中的 <code>try/catch/finally</code> 块 , 例如:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-script"
+        style="display: true">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+        <span style="color:#080;font-weight:bold">try</span> {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">exit 1</span><span style="color:#710">'</span></span>
+        }
+        <span style="color:#080;font-weight:bold">catch</span> (exc) {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Something failed, I should sound the klaxons!</span><span style="color:#710">'</span></span>
+            <span style="color:#080;font-weight:bold">throw</span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect2">
+<h3 id="scripted-steps"><a class="anchor" href="#scripted-steps"></a>步骤</h3>
+<div class="paragraph">
+<p>正如 <a href="../">本章开始</a>所讨论的, 流水线最基础的部分是"步骤"。从根本上说, 步骤告诉 Jenkins要做 <em>what</em> ，并作为声明式和脚本化流水线已发的基本构建块。</p>
+</div>
+<div class="paragraph">
+<p>脚本化流水线 <strong>not</strong> 不引入任何特定于其语法的步骤;
+<a href="/doc/pipeline/steps">流水线步骤引用</a> 包括流水线和插件提供的步骤的完整列表。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="区别普通-groovy"><a class="anchor" href="#区别普通-groovy"></a>区别普通 Groovy</h3>
+<div class="paragraph">
+<p>为了提供 <em>durability</em>, 这意味着运行流水线可以在Jenkins <a href="#../glossary#master">master</a>
+重启后继续运行，脚本化的流水线序列化数据到主服务器。由于这个设计需求, 一些Groovy 习惯用语，比如 <code>collection.each { item -&gt; /* perform operation */ }</code> 都不完全支持。详情参见
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-27421">JENKINS-27421</a>
+和
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-26481">JENKINS-26481</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compare"><a class="anchor" href="#compare"></a>语法比较</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当Jenkins 流水线第一次构建时, Groovy 被选为基础。
+Jenkins长期使用嵌入式 Groovy引擎来为管理员和用户提供
+高级脚本功能。另外, Jenkins流水线的实现者发现 Groovy是
+构建现在成为 "脚本化流水线" DSL的坚实基础
+<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>。</p>
+</div>
+<div class="paragraph">
+<p>由于它是一个功能齐全的编程环境, 脚本化流水线为Jenkins用户提供了
+大量的灵活性性和可扩展性。
+Groovy学习曲线通常不适合给定团队的所有成员, 因此创造了声明式流水线来为编写Jenkins流水线提供一种更简单、更有主见的语法。</p>
+</div>
+<div class="paragraph">
+<p>两者本质上是相同的流水线子系统。 underneath. 他们都是 "流水线即代码" 的持久实现。它们都能够使用构建到流水线中或插件提供的步骤。它们都能够使用
+<a href="#shared-libraries#">共享库</a></p>
+</div>
+<div class="paragraph">
+<p>但是它们的区别在于语法和灵活性。 声明式限制了用户使用更严格和预定义的结构，
+使其成为更简单的持续交付流水线的理想选择。 脚本化提供了很少的限制, 以至于对脚本和语法的唯一限制往往是由Groovy子集本身定义的，而不是任何特定于流水线的系统,
+这使他成为权利用户和那些有更复杂需求的人的理想选择。 顾名思义, 声明式流水线鼓励
+声明式编程模型。
+<sup class="footnote" id="_footnote_declarative">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>
+而脚本化流水线遵循一个更命令式的编程模型
+<sup class="footnote" id="_footnote_imperative">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Version 2.5 of the "Pipeline plugin" introduces support for Declarative Pipeline syntax
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Domain-specific_language">Domain-specific language</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Declarative_programming">Declarative Programming</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Imperative_programming">Imperative Programming</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../development">
+⇐ 流水线开发工具
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../scaling-pipeline">
+规模 Pipelines ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/pipeline/syntax.adoc" title="在 GitHub 上编辑 /doc/book/pipeline/syntax.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/pipeline/syntax.adoc" title="在 GitHub 上查看 /doc/book/pipeline/syntax.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

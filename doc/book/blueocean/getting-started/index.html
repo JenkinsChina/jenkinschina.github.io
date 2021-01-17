@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Blue Ocean 入门
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Blue Ocean 入门" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Blue Ocean 入门" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="Blue Ocean 入门" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/blueocean/getting-started/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="Blue Ocean 入门" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="active">Blue Ocean</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/blueocean/getting-started" class="active">Blue Ocean 入门</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/creating-pipelines" class="">创建流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/dashboard" class="">仪表盘</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/activity" class="">活动视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-run-details" class="">流水线运行细节视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-editor" class="">流水线编辑器</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../creating-pipelines">
+创建流水线 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+Blue Ocean 入门
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#安装-blue-ocean">安装 Blue Ocean</a>
+<ul class="sectlevel2">
+<li><a href="#在已有jenkins实例上安装">在已有Jenkins实例上安装</a></li>
+<li><a href="#作为jenkins-docker镜像的一部分">作为Jenkins-Docker镜像的一部分</a></li>
+</ul>
+</li>
+<li><a href="#访问-blue-ocean">访问 Blue Ocean</a></li>
+<li><a href="#导航栏">导航栏</a></li>
+<li><a href="#切换到经典界面">切换到经典界面</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节将介绍如何开始使用BlueOcean。介绍如何
+ <a href="#installing-blue-ocean">安装和配置Blue Ocean</a> ，
+<a href="#accessing-blue-ocean">进入Blue Ocean UI</a> 和
+<a href="#switching-to-the-classic-ui">返回 Jenkins 经典 UI</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="安装-blue-ocean"><a class="anchor" href="#安装-blue-ocean"></a>安装 Blue Ocean</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 可以用以下方式安装：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>作为
+<a href="#on-an-existing-jenkins-instance">已有Jenkins实例</a>上的一组插件</p>
+</li>
+<li>
+<p><a href="#as-part-of-jenkins-in-docker">Jenkins-Docker镜像</a>的一部分</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="在已有jenkins实例上安装"><a class="anchor" href="#在已有jenkins实例上安装"></a>在已有Jenkins实例上安装</h3>
+<div class="paragraph">
+<p>在大多数平台安装Jenkins时，默认情况下不安装
+<a href="https://plugins.jenkins.io/blueocean">Blue Ocean 插件</a> 及其所有其他依赖插件（组成Blue Ocean“插件套件”）。</p>
+</div>
+<div class="paragraph">
+<p>要在现有的Jenkins实例上安装Blue Ocean插件套件，您的Jenkins实例必须运行Jenkins 2.7.x或更高版本。</p>
+</div>
+<div class="paragraph">
+<p>任何拥有 <strong>Administer</strong> 权限（通过 <strong>基于Matrix</strong> 安全设置）的Jenkins用户都可以在Jenkins实例上安装插件 。
+拥有次权限的Jenkins用户还可以配置系统上其他用户的权限。在
+<a href="../../managing/security">管理安全性</a> 的
+<a href="../../managing/security/#authorization">授权</a> 部分了解更多信息</p>
+</div>
+<div class="paragraph">
+<p>要将Blue Ocean安装到您的Jenkins实例：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>如果需要，请确保您已经登录到jenkins(作为具有
+<strong>管理员</strong> 权限的用户).</p>
+</li>
+<li>
+<p>从Jenkins主页（即Jenkins经典用户界面的仪表板），单机左侧的 <strong>管理Jenkins</strong> ，然后单击中心的 <strong>管理插件</strong> 。</p>
+</li>
+<li>
+<p>点击 <strong>可用的</strong> 选项卡，然后在 <strong>过滤</strong> 文本框键入 <code>blue ocean</code> ，将过两次插件列表为名称/描述包含“blue”和“ocean”的插件名单。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/blueocean/intro/blueocean-plugins-filtered.png" alt="Blue Ocean plugins filtered" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>选择 <strong>安装</strong> 列顶部附近的 <strong>Blue Ocean</strong> 插件复选框，然后单击 <strong>立刻下载并在重启后安装</strong> 按钮（推荐）或
+ <strong>安装而不重新启动按钮</strong> ，
+ <br>
+<strong>注意：</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>无需选择此过滤列表中其他插件的复选框，因为 <strong>Blue Ocean</strong> 插件具有其他插件的依赖关系（构成Blue Ocean的插件套件），当您点击安装，
+其他插件将被自动选择和安装。</p>
+</li>
+<li>
+<p>如果你选择 <strong>安装不重启</strong> 按钮, 你可能需要重启Jenkins来获取Blue Ocean的完整功能。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>阅读
+<a href="../../managing/plugins">管理 插件</a> 页面中有关如何安装和管理插件的更多信息 。</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean 在安装后不需要额外的配置，现有的pipeline 和其他项目（如自由风格作业）将照常运行。</p>
+</div>
+<div class="paragraph">
+<p>但是，请注意， 首次使用特定的 Git 服务（即GitHub，Bitbucket或普通Git服务器）在
+<a href="../creating-pipelines">Blue Ocean中创建pipeline</a> 时，Blue Ocean会提示您输入credentials
+以访问Git服务器上的存储库。在Blue Ocean可以将 ``Jenkinsfile`` 写入存储库之前</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="作为jenkins-docker镜像的一部分"><a class="anchor" href="#作为jenkins-docker镜像的一部分"></a>作为Jenkins-Docker镜像的一部分</h3>
+<div class="paragraph">
+<p>Blue Ocean套件也与Jenkins捆绑在一起，作为Jenkins Docker镜像
+(<a href="https://hub.docker.com/r/jenkinsci/blueocean/"><code>jenkinsci/blueocean</code></a>)的一部分，该镜像可以从 <a href="https://hub.docker.com/">Docker Hub 存储库</a>获得。</p>
+</div>
+<div class="paragraph">
+<p>参阅
+<a href="../../installing">安装 Jenkins</a> 页面的
+<a href="../../installing/#docker">Docker</a> 部分获取更多信息</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="访问-blue-ocean"><a class="anchor" href="#访问-blue-ocean"></a>访问 Blue Ocean</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>一旦Jenkins环境安装了Blue Ocean，登录到Jenkins经典UI 后，您可以通过点击左侧的 <strong>打开Blue Ocean</strong> 来访问Blue Ocean页面。</p>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/blueocean/intro/open-blue-ocean-link.png" alt="Open Blue Ocean link" width="20%"></span></p>
+</div>
+<div class="paragraph">
+<p>或者，您可以在您的Jenkins url后面追加 <code>/blue</code> 直接访问Blue Ocean - 如  <code>http://jenkins-server-url/blue</code>.</p>
+</div>
+<div class="paragraph">
+<p>如果您的Jenkins实例：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>已经存在pipeline或其他项目，则显示
+<a href="../dashboard">Blue Ocean 仪表板</a>。</p>
+</li>
+<li>
+<p>是新的或者没有配置项目，则Blue Ocean 会显示 <strong>Welcome to Jenkins</strong> 对话框，其中包含了 <strong>Create a new Pipeline</strong> 按钮。您可以使用
+该按钮开始创建新的pipeline 项目。参阅
+ <a href="../creating-pipelines">创建 Pipeline</a>获取更多信息<br></p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/blueocean/creating-pipelines/create-a-new-pipeline-box.png" alt="<em>Welcome to Jenkins - Create a New Pipeline message box</em>" width="50%"></span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="导航栏"><a class="anchor" href="#导航栏"></a>导航栏</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 用户界面顶部有一个导航栏，可以让您访问Blue Ocean 的不同视图和其他功能。</p>
+</div>
+<div class="paragraph">
+<p>导航栏分为两部分 - 占据了Blue Ocean视图顶部大部分的公共部分和下面的上下文相关部分。上下文部分取决于您正在查看的Blue Ocean界面。</p>
+</div>
+<div class="paragraph">
+<p>导航栏的公共部分包含以下按钮：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Jenkins</strong> 图标 - 点击返回 <a href="../dashboard">Dashboard</a>，如果您正在该页面，则重新加载。</p>
+</li>
+<li>
+<p><strong>Pipelines</strong> - 也会将您带到仪表板，如果您已经在查看仪表板，则不会执行任何操作。 当您查看 <a href="../pipeline-run-details">Pipeline 运行细节</a> 页面时，此按钮有不同的用途。</p>
+</li>
+<li>
+<p><strong>Administration</strong> - 点击进入经典UI的 <strong><a href="../../managing">管理Jenkins</a></strong> 页面<br>
+<strong>注意:</strong> 如果您的Jenkins用户没有
+<strong>Administer</strong> 权限 (通过 <strong>基于Matrix安全性设置</strong>). 参阅
+ <a href="../../managing/security">管理 安全性</a> 的
+<a href="../../managing/security/#authorization">授权</a> 部分获取更多信息</p>
+</li>
+<li>
+<p><strong>Go to classic</strong> 图标 - 点击返回经典Jenkins界面。 参阅 <a href="#切换到经典界面">切换到经典界面</a>获取更多信息</p>
+</li>
+<li>
+<p><strong>Logout</strong> - 注销当前Jenkins用户并返回Jenkins登录界面</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>使用标准导航栏的视图会在其下方添加另一栏，并带有该视图特定的选项。一些视图将普通的导航栏替换为特别适合该视图的导航栏。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="切换到经典界面"><a class="anchor" href="#切换到经典界面"></a>切换到经典界面</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 不支持一些用户需要的Jenkins遗留或管理的功能。</p>
+</div>
+<div class="paragraph">
+<p>如果您需要放弃Blue Ocean用户体验来访问这些功能，请单击Blue Ocean <a href="#navigation-bar">navigation bar</a>公共部分顶部的 *转到经典*图标。</p>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../resources/blueocean/intro/go-to-classic-icon.png" alt="Go to classic icon" width="5%"></span></p>
+</div>
+<div class="paragraph">
+<p>点击此按钮即可进入Jenkins经典用户界面的等效界面，或者Blue Ocean中与经典界面最相似的界面</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../creating-pipelines">
+创建流水线 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/blueocean/getting-started.adoc" title="在 GitHub 上编辑 /doc/book/blueocean/getting-started.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/blueocean/getting-started.adoc" title="在 GitHub 上查看 /doc/book/blueocean/getting-started.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

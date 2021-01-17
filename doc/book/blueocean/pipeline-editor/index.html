@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+流水线编辑器
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="流水线编辑器" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="流水线编辑器" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="流水线编辑器" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/blueocean/pipeline-editor/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="流水线编辑器" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="active">Blue Ocean</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/blueocean/getting-started" class="">Blue Ocean 入门</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/creating-pipelines" class="">创建流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/dashboard" class="">仪表盘</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/activity" class="">活动视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-run-details" class="">流水线运行细节视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-editor" class="active">流水线编辑器</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../pipeline-run-details">
+⇐ 流水线运行细节视图
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../managing">
+管理Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+流水线编辑器
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#启动编辑器">启动编辑器</a></li>
+<li><a href="#限制">限制</a></li>
+<li><a href="#导航栏">导航栏</a></li>
+<li><a href="#流水线设置">流水线设置</a>
+<ul class="sectlevel2">
+<li><a href="#代理">代理</a></li>
+<li><a href="#环境">环境</a></li>
+</ul>
+</li>
+<li><a href="#阶段编辑器">阶段编辑器</a></li>
+<li><a href="#阶段配置">阶段配置</a></li>
+<li><a href="#步骤配置">步骤配置</a></li>
+<li><a href="#保存流水线对话框">保存流水线对话框</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>流水线编辑器是任何人在Jenkins中开始构建流水线的最简单的方式。这也是现有的Jenkins用户
+开始采用流水线的很好的方式。</p>
+</div>
+<div class="paragraph">
+<p>该编辑器允许用户创建和编辑声明式流水线, 添加可同时运行的阶段和并行任务, 这取决于它们的需要。完成后, 编辑器将流水线作为`Jenkinsfile`保存到源代码控制仓库中。如果流水线需要再次更改,
+Blue Ocean 可以轻松的返回到视图编辑器来随时修改流水线。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/overview.png" alt="Pipeline Editor"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="启动编辑器"><a class="anchor" href="#启动编辑器"></a>启动编辑器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>要使用编辑器，用户首先要
+<a href="#creating-pipelines">在Blue Ocean中创建流水线</a>
+或者在Jenkins中已创建一个或多个现有的流水线。
+如果编辑现有的流水线, 该流水线的凭证必须允许push更改到目标仓库。</p>
+</div>
+<div class="paragraph">
+<p>编辑器可通过以下方式启动:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>仪表板的 "New Pipeline" 按钮</p>
+</li>
+<li>
+<p>单个运行的活动视图</p>
+</li>
+<li>
+<p>流水线运行细节</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="限制"><a class="anchor" href="#限制"></a>限制</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>只能是基于SCM的声明式流水线</p>
+</li>
+<li>
+<p>凭证必须有写权限</p>
+</li>
+<li>
+<p>没有与声明式流水线完全对等</p>
+</li>
+<li>
+<p>流水线重新排序，删除评论</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="导航栏"><a class="anchor" href="#导航栏"></a>导航栏</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>流水线编辑器包括顶部的<a href="#getting-started#navigation-bar">标准导航栏</a>, 下面是一个本地导航栏。
+本地导航栏包括:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pipeline Name</strong> -这将包括分支依赖或者方式</p>
+</li>
+<li>
+<p><strong>Cancel</strong> - 放弃对流水线所做的更改</p>
+</li>
+<li>
+<p><strong>Save</strong> - 打开 <a href="##save-pipeline-dialog">保存流水线对话框</a>。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="流水线设置"><a class="anchor" href="#流水线设置"></a>流水线设置</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>默认情况下, 编辑器右侧显示 "Pipeline Settings"。
+该表单可以通过点击
+<a href="##stage-editor">Stage editor</a>的任何地方来访问，
+这不是一个阶段，也不是"Add Stage" 按钮。</p>
+</div>
+<div class="sect2">
+<h3 id="代理"><a class="anchor" href="#代理"></a>代理</h3>
+<div class="paragraph">
+<p>"Agent" 吧部分控制流水线将要使用的代理。
+这与 <a href="#../pipeline/syntax#agent">"agent" 指令</a>相同。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="环境"><a class="anchor" href="#环境"></a>环境</h3>
+<div class="paragraph">
+<p>"Environment" 允许我们为流水线设置一个环境变量，
+这与<a href="#../pipeline/syntax#environment">"environment" 指令</a>相。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="阶段编辑器"><a class="anchor" href="#阶段编辑器"></a>阶段编辑器</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>左侧的编辑器屏幕包括阶段编辑器,
+用于创建流水线的各个阶段。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-editor-basic.png" alt="Stage editor simple"></span></p>
+</div>
+<div class="paragraph">
+<p>可以通过点击现有阶段右侧的 "+" 按钮，将阶段添加到流水线中。
+Parallel stages can be added 通过点击现有阶段下面的  "\+" 按钮，将并行阶段添加到流水线中。
+可以使用 <a href="#stage-configuration">阶段配置表中的上下文菜单</a>删除阶段。</p>
+</div>
+<div class="paragraph">
+<p>一旦设置完毕，该阶段编辑器就会显示每个阶段的名称。
+包含不完整或无效信息的阶段将显示一个警告符号。
+流水线可以在编辑时显示验证错，但是直到错误被修复前不能保存。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-editor-error.png" alt="Stage editor with error"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="阶段配置"><a class="anchor" href="#阶段配置"></a>阶段配置</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在阶段配置器中选择一个阶段， 将打开右侧的 "Stage Configuration" 表。
+在这里，我们可以改变阶段的名称, 删除该阶段,并添加步骤到阶段。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/stage-configuration.png" alt="Stage Configuration"></span></p>
+</div>
+<div class="paragraph">
+<p>阶段的名称可以在阶段配置表的顶部配置。
+上下文菜单(右上角的三个点)可以用来删除当前阶段。
+点击 "Add step"将会显示可用步骤类型的列表 ，顶部有一个搜索栏。
+步骤可以使用上下文的 <a href="#step-configuration">在步骤配置表中的上下文菜单</a>删除。
+添加步骤或选择一个现有的步骤将打开 <a href="#step-configuration">步骤配置表中</a>。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-list.png" alt="Step list filtered by <em>file</em>"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="步骤配置"><a class="anchor" href="#步骤配置"></a>步骤配置</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>从阶段配置表中选择一个步骤将打开步骤配置表。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-configuration.png" alt="Step configuration for JUnit step"></span></p>
+</div>
+<div class="paragraph">
+<p>这张表将根据步骤类型而有所不同,
+它包含了所需的任何字段或控件。
+步骤的名称不能被更改。
+上下文菜单 (右上角的三个点), 可以用来删除当前步骤。
+包含不完整或无效信息的字段将会显示一个警告符号。
+流水线可以在编辑时显示验证错，但是直到错误被修复前不能保存。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/step-error.png" alt="Step configuration with error"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="保存流水线对话框"><a class="anchor" href="#保存流水线对话框"></a>保存流水线对话框</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>为了运行, 必须在源代码控制中保存对流水线的更改。
+"Save Pipeline" 对话框控制源代码控制的更改保存。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/editor/save-pipeline.png" alt="Save Pipeline Dialog"></span></p>
+</div>
+<div class="paragraph">
+<p>可以添加或保留对更改的有用描述。该对话框也支持保存相同的分支或进入一个新的分支来保存。
+点击 "Save &amp; run" 将会把流水线的任何更改保存为新的提交,
+将启动一个基于这些更改的新的流水线运行, 并且导航到该流水线的
+<a href="#activity#">活动视图</a> 。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../pipeline-run-details">
+⇐ 流水线运行细节视图
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../managing">
+管理Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/blueocean/pipeline-editor.adoc" title="在 GitHub 上编辑 /doc/book/blueocean/pipeline-editor.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/blueocean/pipeline-editor.adoc" title="在 GitHub 上查看 /doc/book/blueocean/pipeline-editor.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

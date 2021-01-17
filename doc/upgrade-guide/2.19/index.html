@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins 升级指南
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins 升级指南" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins 升级指南" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="Jenkins 升级指南" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/upgrade-guide/2.19/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="Jenkins 升级指南" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="active">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="sect1">
+<h2 id="升级到jenkins-lts-2-19-x"><a class="anchor" href="#升级到jenkins-lts-2-19-x"></a>升级到Jenkins LTS 2.19.x</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>每个部分涵盖了从之前的LTS版本升级，2.19.1的部分涵盖了从2.7.4升级。</p>
+</div>
+<div class="sect2">
+<h3 id="升级到-jenkins-lts-2-19-4"><a class="anchor" href="#升级到-jenkins-lts-2-19-4"></a>升级到 Jenkins LTS 2.19.4</h3>
+<div class="sect3">
+<h4 id="jnlp代理协议选项未正确保存"><a class="anchor" href="#jnlp代理协议选项未正确保存"></a>JNLP代理协议选项未正确保存</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-39465">JENKINS-39465</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins重新启动后，无法从磁盘加载JNLP代理程序协议配置。</p>
+</div>
+<div class="paragraph">
+<p>如果您自2.19.1开始自定义这些设置，请检查它们是否按预期配置。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="honor-jenkins-model-jenkins-slaveagentport-again"><a class="anchor" href="#honor-jenkins-model-jenkins-slaveagentport-again"></a>Honor <code>jenkins.model.Jenkins.slaveAgentPort</code> again</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-38187">JENKINS-38187</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins 2.0中的回归使Jenkins忽略了系统属性 <code>jenkins.model.Jenkins.slaveAgentPort</code>.</p>
+</div>
+<div class="paragraph">
+<p>之前的行为已被恢复，并且添加有一个新的System属性 <code>jenkins.model.Jenkins.slaveAgentPort</code>,如果设置，将在每个Jenkins启动时强制执行JNLP代理端口，并且不允许通过UI更改该值。</p>
+</div>
+<div class="paragraph">
+<p>为了进行故障排除，它仍然可以通过Groovy脚本进行更改，但任何更改都将在启动时恢复。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="配置屏幕上的文本框将不再延伸以适应长行"><a class="anchor" href="#配置屏幕上的文本框将不再延伸以适应长行"></a>配置屏幕上的文本框将不再延伸以适应长行</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-27367">JENKINS-27367</a></p>
+</div>
+<div class="paragraph">
+<p>如果用户不插入额外换行符来打破长行，则作业配置屏幕的布局将不再中断。 相反，文本框将允许水平滚动。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="不要在代理构建历史页面上产生大量线程"><a class="anchor" href="#不要在代理构建历史页面上产生大量线程"></a>不要在代理构建历史页面上产生大量线程</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-23244">JENKINS-23244</a></p>
+</div>
+<div class="paragraph">
+<p>特定代理的构建历史很久以来就导致了许多可能长期运行的线程产生。 这已被修复。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="仪表板上的内存泄漏已修复"><a class="anchor" href="#仪表板上的内存泄漏已修复"></a>仪表板上的内存泄漏已修复</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-10912">JENKINS-10912</a></p>
+</div>
+<div class="paragraph">
+<p>仪表板（查看页面）上的内存泄漏已修复，因此浏览器内存使用将不再增长无限。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="升级到-jenkins-lts-2-19-3"><a class="anchor" href="#升级到-jenkins-lts-2-19-3"></a>升级到 Jenkins LTS 2.19.3</h3>
+<div class="sect3">
+<h4 id="序列化黑名单的扩展"><a class="anchor" href="#序列化黑名单的扩展"></a>序列化黑名单的扩展</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-11-16">Security Advisory 2016-11-16</a></p>
+</div>
+<div class="paragraph">
+<p>安全修补程序的主要部分是用于远程处理（Jenkins CLI和主/从代理通信）和XStream（XML配置和数据文件）的序列化黑名单的扩展。</p>
+</div>
+<div class="paragraph">
+<p>黑名单软件包中类的合法使用将不再有效。 日志中的异常消息中会显示以下任何信息:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Rejected: com.sun.jndi.rmi.EvilClass
+Refusing to unmarshal com.sun.jndi.rmi.EvilClass for security reasons
+Refusing to marshal com.sun.jndi.rmi.EvilClass for security reasons</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在这些示例中, <code>com.sun.jndi.rmi.EvilClass</code> 是一个真正的类名的占位符。</p>
+</div>
+<div class="paragraph">
+<p>通过为 Jenkins 主机 <code>java`调用设置 `hudson.remoting.ClassFilter.DEFAULTS_OVERRIDE_LOCATION</code> 系统属性，可以自定义使用的黑名单 。 预计将设置为包含完整的自定义黑名单的文件的路径，覆盖默认的黑名单。</p>
+</div>
+<div class="paragraph">
+<p>在 <a href="https://github.com/jenkinsci/remoting/blob/remoting-3.2/src/main/java/hudson/remoting/ClassFilter.java#L57&#8230;&#8203;L79"><code>ClassFilter.java</code> in the remoting component</a>中定义了默认的黑名单。 在用于`hudson.remoting.ClassFilter.DEFAULTS_OVERRIDE_LOCATION`的配置文件中, 默认的黑名单将如下所示:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">^bsh[.].*
+^com[.]google[.]inject[.].*
+^com[.]mchange[.]v2[.]c3p0[.].*
+^com[.]sun[.]jndi[.].*
+^com[.]sun[.]corba[.].*
+^com[.]sun[.]javafx[.].*
+^com[.]sun[.]org[.]apache[.]regex[.]internal[.].*
+^java[.]awt[.].*
+^java[.]rmi[.].*
+^javax[.]management[.].*
+^javax[.]naming[.].*
+^javax[.]script[.].*
+^javax[.]swing[.].*
+^org[.]apache[.]commons[.]beanutils[.].*
+^org[.]apache[.]commons[.]collections[.]functors[.].*
+^org[.]apache[.]myfaces[.].*
+^org[.]apache[.]wicket[.].*
+.*org[.]apache[.]xalan.*
+^org[.]codehaus[.]groovy[.]runtime[.].*
+^org[.]hibernate[.].*
+^org[.]python[.].*
+^org[.]springframework[.](?!(\p{Alnum}+[.])*\p{Alnum}*Exception$).*
+^sun[.]rmi[.].*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>要检查是否有任何给定的类名被列入黑名单，请在 _Manage Jenkins » Script Console_中运行以下命令，用要检查的类名替换 <code>com.sun.jndi.rmi.EvilClass</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">hudson.remoting.ClassFilter.DEFAULT.isBlacklisted('com.sun.jndi.rmi.EvilClass')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>删除或放宽黑名单上的条目必须小心谨慎，以免让自己暴露于已知的漏洞攻击。 可能的替代方案可能是通过HTTP和JNLP代理端口禁用CLI（请参见下文）以防止未经身份验证的使用。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="禁用-cli"><a class="anchor" href="#禁用-cli"></a>禁用 CLI</h4>
+<div class="paragraph">
+<p>Jenkins 2.19.3中的另一个变化是通过将系统属性`jenkins.CLI.disabled` 设置为 `true`来禁用通过HTTP的CLI和JNLP的新功能。这是一个更方便的选择来运行 <a href="https://github.com/jenkinsci-cert/SECURITY-218/">Groovy script provided as a workaround to SECURITY-218 and SECURITY-360</a> ，对于那些不希望允许对Jenkins CLI进行未经身份验证访问的用户，即使是安全修补程序也是如此。
+虽然CLI也可以使用Jenkins集成的SSH守护进程来使用，但这需要身份验证，所以它不是未经身份验证的攻击的载体。 要禁用此功能，请在 _Manage Jenkins » Configure Jenkins » SSH Server_中禁用SSH服务器端口。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="升级到-jenkins-lts-2-19-2"><a class="anchor" href="#升级到-jenkins-lts-2-19-2"></a>升级到 Jenkins LTS 2.19.2</h3>
+<div class="sect3">
+<h4 id="修复通过http的cli"><a class="anchor" href="#修复通过http的cli"></a>修复通过HTTP的CLI</h4>
+<div class="paragraph">
+<p>HTTP上的CLI（禁用JNLP端口时）现在可以与CSRF保护一起使用，并且不需要明确设置+hudson.diyChunking+。 因此，现在可以恢复应用于以前版本的Jenkins以使CLI工作的任何解决方法。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="升级到-jenkins-lts-2-19-1"><a class="anchor" href="#升级到-jenkins-lts-2-19-1"></a>升级到 Jenkins LTS 2.19.1</h3>
+<div class="sect3">
+<h4 id="插件依赖关系解决修复"><a class="anchor" href="#插件依赖关系解决修复"></a>插件依赖关系解决修复</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-21486">JENKINS-21486</a></p>
+</div>
+<div class="paragraph">
+<p>以前的版本允许Jenkins以无效的插件配置运行。 例如，即使这些依赖关系过时或禁用，依赖于其他插件的插件也会被加载。 这可能会导致在运行时很难调试错误。</p>
+</div>
+<div class="paragraph">
+<p>现在，Jenkins将拒绝加载依赖性不足的插件。 解释此问题的诊断信息将在启动过程中写入Jenkins日志，我们强烈建议在升级后监控该日志。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="表单自动完成已禁用"><a class="anchor" href="#表单自动完成已禁用"></a>表单自动完成已禁用</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-18435">JENKINS-18435</a></p>
+</div>
+<div class="paragraph">
+<p>使用JavaScript的配置表单长期存在的问题是提交表单，然后使用Web浏览器“返回”按钮返回表单，导致表单内容错误。 再次提交表单会导致意外损坏的配置。</p>
+</div>
+<div class="paragraph">
+<p>要解决此问题，我们禁用了几乎所有表单字段的自动完成功能。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="安全配置中的代理协议选择"><a class="anchor" href="#安全配置中的代理协议选择"></a>安全配置中的代理协议选择</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-37032">JENKINS-37032</a></p>
+</div>
+<div class="paragraph">
+<p>“配置全局安全性”表单现在包含启用/禁用特定代理协议版本的选项，以及每种协议的简短说明。 关于何时自定义特定协议的状态没有一般指导，但将来可能需要。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="隐藏java-web-start启动器"><a class="anchor" href="#隐藏java-web-start启动器"></a>隐藏Java Web Start启动器</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-36996">JENKINS-36996</a></p>
+</div>
+<div class="paragraph">
+<p>默认情况下，新的Jenkins 2实例将禁用JNLP代理端口。 由于这是建立代理工作的JNLP Web Start启动方法的要求，所以如果端口被禁用，则此表单选项将被隐藏。 要显示它，只需在全局安全配置中启用JNLP代理端口即可。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/upgrade-guide/2.19.adoc" title="在 GitHub 上编辑 /doc/upgrade-guide/2.19.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/upgrade-guide/2.19.adoc" title="在 GitHub 上查看 /doc/upgrade-guide/2.19.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

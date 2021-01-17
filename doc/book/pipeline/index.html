@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+流水线
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="流水线" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="流水线" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="流水线" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="流水线" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="active">流水线</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/pipeline/getting-started" class="">流水线入门</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/jenkinsfile" class="">使用 Jenkinsfile</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/multibranch" class="">分支和pull请求</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/docker" class="">在流水线中使用Docker</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/shared-libraries" class="">扩展共享库</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/development" class="">流水线开发工具</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/scaling-pipeline" class="">规模 Pipelines</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../using">
+⇐ 使用 Jenkins
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="index doc-page-link" href="../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row"></div>
+<a class="next doc-page-link" href="getting-started">
+流水线入门 ⇒
+</a>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+流水线
+</h1>
+<div id="subsections">
+<div class="toc">
+<div id="toc-title">
+子章节
+</div>
+<ul>
+<li>
+<a href="getting-started">
+流水线入门
+</a>
+</li>
+<li>
+<a href="jenkinsfile">
+使用 Jenkinsfile
+</a>
+</li>
+<li>
+<a href="multibranch">
+分支和pull请求
+</a>
+</li>
+<li>
+<a href="docker">
+在流水线中使用Docker
+</a>
+</li>
+<li>
+<a href="shared-libraries">
+扩展共享库
+</a>
+</li>
+<li>
+<a href="development">
+流水线开发工具
+</a>
+</li>
+<li>
+<a href="syntax">
+流水线语法
+</a>
+</li>
+<li>
+<a href="scaling-pipeline">
+规模 Pipelines
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#overview">什么是Jenkins的流水线?</a>
+<ul class="sectlevel2">
+<li><a href="#声明式和脚本化的流水线语法">声明式和脚本化的流水线语法</a></li>
+</ul>
+</li>
+<li><a href="#why">Why Pipeline?</a></li>
+<li><a href="#流水线概念">流水线概念</a>
+<ul class="sectlevel2">
+<li><a href="#流水线">流水线</a></li>
+<li><a href="#节点">节点</a></li>
+<li><a href="#阶段">阶段</a></li>
+<li><a href="#步骤">步骤</a></li>
+</ul>
+</li>
+<li><a href="#流水线语法概述">流水线语法概述</a>
+<ul class="sectlevel2">
+<li><a href="#声明式流水线基础">声明式流水线基础</a></li>
+<li><a href="#脚本化流水线基础">脚本化流水线基础</a></li>
+</ul>
+</li>
+<li><a href="#流水线示例">流水线示例</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This chapter covers all recommended aspects of Jenkins Pipeline functionality,
+including how to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="getting-started">get started with Pipeline</a> - covers how to
+<a href="getting-started#defining-a-pipeline">define a Jenkins Pipeline</a> (i.e. your
+<code>Pipeline</code>) through
+<a href="getting-started#through-blue-ocean">Blue Ocean</a>, through the
+<a href="getting-started#through-the-classic-ui">classic UI</a> or in
+<a href="getting-started#defining-a-pipeline-in-scm">SCM</a>,</p>
+</li>
+<li>
+<p><a href="jenkinsfile">create and use a <code>Jenkinsfile</code></a> - covers use-case scenarios
+on how to craft and construct your <code>Jenkinsfile</code>,</p>
+</li>
+<li>
+<p>work with <a href="multibranch">branches and pull reqeusts</a>,</p>
+</li>
+<li>
+<p><a href="docker">use Docker with Pipeline</a> - covers how Jenkins can invoke Docker
+containers on agents/nodes (from a <code>Jenkinsfile</code>) to build your Pipeline
+projects,</p>
+</li>
+<li>
+<p><a href="shared-libraries">extend Pipeline with shared libraries</a>,</p>
+</li>
+<li>
+<p>use different <a href="development">development tools</a> to facilitate the creation
+of your Pipeline, and</p>
+</li>
+<li>
+<p>work with <a href="syntax">Pipeline syntax</a> - this page is a comprehensive
+reference of all Declarative Pipeline syntax.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>有关Jenkins用户手册的内容的概述, 请前往
+<a href="getting-started">用户手册概述</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>什么是Jenkins的流水线?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins 流水线 (或简单的带有大写"P"的"Pipeline") 是一套插件，它支持实现和集成 <em>continuous delivery pipelines</em> 到Jenkins。</p>
+</div>
+<div class="paragraph">
+<p>_continuous delivery (CD) pipeline_是你的进程的自动表达，用于从版本控制向用户和客户获取软件。 你的软件的每次的变更 (在源代码控制中提交)在它被释放的路上都经历了一个复杂的过程 on its way to being released. 这个过程包括以一种可靠并可重复的方式构建软件, 以及通过多个测试和部署阶段来开发构建好的软件 (c成为 "build") 。</p>
+</div>
+<div class="paragraph">
+<p>流水线提供了一组可扩展的工具，通过
+<a href="syntax">Pipeline domain-specific language (DSL) syntax</a>.
+<sup class="footnote" id="_footnote_dsl">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>对从简单到复杂的交付流水线 "作为代码" 进行建模。</p>
+</div>
+<div class="paragraph">
+<p>对Jenkins 流水线的定义被写在一个文本文件中 (成为
+<a href="jenkinsfile"><code>Jenkinsfile</code></a>)，该文件可以被提交到项目的源代码的控制仓库。
+<sup class="footnote" id="_footnote_scm">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>
+这是"流水线即代码"的基础; 将CD 流水线作为应用程序的一部分，像其他代码一样进行版本化和审查。
+创建 `Jenkinsfile`并提交它到源代码控制中提供了一些即时的好处:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>自动地为所有分支创建流水线构建过程并拉取请求。</p>
+</li>
+<li>
+<p>在流水线上代码复查/迭代 (以及剩余的源代码)。</p>
+</li>
+<li>
+<p>对流水线进行审计跟踪。</p>
+</li>
+<li>
+<p>该流水线的真正的源代码
+<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, 可以被项目的多个成员查看和编辑。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While定义流水线的语法, 无论是在 web UI 还是在
+<code>Jenkinsfile</code> 中都是相同的, 通常认为在`Jenkinsfile` 中定义并检查源代码控制是最佳实践。</p>
+</div>
+<div class="sect2">
+<h3 id="声明式和脚本化的流水线语法"><a class="anchor" href="#声明式和脚本化的流水线语法"></a>声明式和脚本化的流水线语法</h3>
+<div class="paragraph">
+<p><code>Jenkinsfile</code> 能使用两种语法进行编写 - 声明式和脚本化。</p>
+</div>
+<div class="paragraph">
+<p>声明式和脚本化的流水线从根本上是不同的。
+声明式流水线的是 Jenkins 流水线更近的特性:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>相比脚本化的流水线语法，它提供更丰富的语法特性,</p>
+</li>
+<li>
+<p>是为了使编写和读取流水线代码更容易而设计的。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>然而，写到`Jenkinsfile`中的许多单独的语法组件(或者 "步骤"), 通常都是声明式和脚本化相结合的流水线。
+在下面的 <a href="#pipeline-concepts">[pipeline-concepts]</a>
+和 <a href="#pipeline-syntax-overview">[pipeline-syntax-overview]</a> 了解更多这两种语法的不同。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="why"><a class="anchor" href="#why"></a>Why Pipeline?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>本质上，Jenkins 是一个自动化引擎，它支持许多自动模式。 流水线向Jenkins中添加了一组强大的工具, 支持用例 简单的持续集成到全面的CD流水线。通过对一系列的相关任务进行建模, 用户可以利用流水线的很多特性:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code</strong>: 流水线是在代码中实现的，通常会检查到源代码控制, 使团队有编辑, 审查和迭代他们的交付流水线的能力。</p>
+</li>
+<li>
+<p><strong>Durable</strong>: 流水线可以从Jenkins的主分支的计划内和计划外的重启中存活下来。</p>
+</li>
+<li>
+<p><strong>Pausable</strong>: 流水线可以有选择的停止或等待人工输入或批准，然后才能继续运行流水线。</p>
+</li>
+<li>
+<p><strong>Versatile</strong>: 流水线支持复杂的现实世界的 CD 需求, 包括fork/join, 循环, 并行执行工作的能力。</p>
+</li>
+<li>
+<p><strong>Extensible</strong>:流水线插件支持扩展到它的DSL
+<sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>的惯例和与其他插件集成的多个选项。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>然而， Jenkins一直允许以将自由式工作链接到一起的初级形式来执行顺序任务,
+<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> 流水线使这个概念成为了Jenkins的头等公民。</p>
+</div>
+<div class="paragraph">
+<p>构建一个的可扩展的核心Jenkins值, 流水线也可以通过 <a href="shared-libraries">Pipeline Shared Libraries</a> 的用户和插件开发人员来扩展。
+<sup class="footnote" id="_footnote_ghof">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>下面的流程图是一个 CD 场景的示例，在Jenkins中很容易对该场景进行建模:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../resources/pipeline/realworld-pipeline-flow.png" alt="Pipeline Flow" width="100%"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="流水线概念"><a class="anchor" href="#流水线概念"></a>流水线概念</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>下面的概念是Jenkins流水线很关键的一方面 , 它与流水线语法紧密相连 (参考 <a href="#pipeline-syntax-overview">overview</a> below).</p>
+</div>
+<div class="sect2">
+<h3 id="流水线"><a class="anchor" href="#流水线"></a>流水线</h3>
+<div class="paragraph">
+<p>流水线是用户定义的一个CD流水线模型 。流水线的代码定义了整个的构建过程, 他通常包括构建, 测试和交付应用程序的阶段 。</p>
+</div>
+<div class="paragraph">
+<p>另外 ， <code>pipeline</code> 块是
+<a href="#declarative-pipeline-fundamentals">声明式流水线语法的关键部分</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="节点"><a class="anchor" href="#节点"></a>节点</h3>
+<div class="paragraph">
+<p>节点是一个机器 ，它是Jenkins环境的一部分 and is capable of执行流水线。</p>
+</div>
+<div class="paragraph">
+<p>另外,  `node`块是
+<a href="#scripted-pipeline-fundamentals">脚本化流水线语法的关键部分</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="阶段"><a class="anchor" href="#阶段"></a>阶段</h3>
+<div class="paragraph">
+<p><code>stage</code> 块定义了在整个流水线的执行任务的概念性地不同的的子集(比如 "Build", "Test" 和 "Deploy" 阶段),
+它被许多插件用于可视化 或Jenkins流水线目前的
+状态/进展.
+<sup class="footnote" id="_footnote_blueocean">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="步骤"><a class="anchor" href="#步骤"></a>步骤</h3>
+<div class="paragraph">
+<p>本质上 ，一个单一的任务, a step 告诉Jenkins 在特定的时间点要做_what_ (或过程中的 "step")。 举个例子,要执行shell命令 ，请使用 <code>sh</code> 步骤: <code>sh 'make'</code>。当一个插件扩展了流水线DSL, <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> 通常意味着插件已经实现了一个新的 <em>step</em>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="流水线语法概述"><a class="anchor" href="#流水线语法概述"></a>流水线语法概述</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>下面的流水线代码骨架说明了<a href="#declarative-pipeline-fundamentals">声明式流水线语法</a>和
+<a href="#scripted-pipeline-fundamentals">脚本化流水线语法</a>之间的根本差异。</p>
+</div>
+<div class="paragraph">
+<p>请注意 <a href="#stage">阶段</a> and <a href="#step">步骤</a> (上面的) 都是声明式和脚本化流水线语法的常见元素。</p>
+</div>
+<div class="sect2">
+<h3 id="声明式流水线基础"><a class="anchor" href="#声明式流水线基础"></a>声明式流水线基础</h3>
+<div class="paragraph">
+<p>在声明式流水线语法中, <code>pipeline</code> 块定义了整个流水线中完成的所有的工作。</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+            steps {
+                <span style="color:#777">// <i class="conum" data-value="3"></i><b>(3)</b></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="4"></i><b>(4)</b></span>
+            steps {
+                <span style="color:#777">// <i class="conum" data-value="5"></i><b>(5)</b></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="6"></i><b>(6)</b></span>
+            steps {
+                <span style="color:#777">// <i class="conum" data-value="7"></i><b>(7)</b></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>在任何可用的代理上，执行流水线或它的任何阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>定义 "Build" 阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>执行与 "Build" 阶段相关的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>定义"Test" 阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>执行与"Test" 阶段相关的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>定义 "Deploy" 阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>执行与 "Deploy" 阶段相关的步骤。</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="脚本化流水线基础"><a class="anchor" href="#脚本化流水线基础"></a>脚本化流水线基础</h3>
+<div class="paragraph">
+<p>在脚本化流水线语法中, 一个或多个 <code>node</code> 块在整个流水线中执行核心工作。 虽然这不是脚本化流水线语法的强制性要求, 但它限制了你的流水线的在`node`块内的工作做两件事:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>通过在Jenkins队列中添加一个项来调度块中包含的步骤。 节点上的执行器一空闲, 该步骤就会运行。</p>
+</li>
+<li>
+<p>创建一个工作区(特定为特定流水间建立的目录)，其中工作可以在从源代码控制检出的文件上完成。<br>
+<strong>Caution:</strong> 根据你的 Jenkins 配置,在一系列的空闲后，一些工作区可能不会自动清理 。参考
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-2111">JENKINS-2111</a> 了解更多信息。</p>
+</li>
+</ol>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-script"
+        style="display: true">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node {  <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+        <span style="color:#777">// <i class="conum" data-value="3"></i><b>(3)</b></span>
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="4"></i><b>(4)</b></span>
+        <span style="color:#777">// <i class="conum" data-value="5"></i><b>(5)</b></span>
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="6"></i><b>(6)</b></span>
+        <span style="color:#777">// <i class="conum" data-value="7"></i><b>(7)</b></span>
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>在任何可用的代理上，执行流水线或它的任何阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>定义 "Build" 阶段。 <code>stage</code> 块 在脚本化流水线语法中是可选的。 然而, 在脚本化流水线中实现 <code>stage</code> 块 ，可以清楚的显示Jenkins UI中的每个 <code>stage</code> 的任务子集。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>执行与 "Build" 阶段相关的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>定义 "Test" 阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>执行与 "Test" 阶段相关的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>定义 "Deploy" 阶段。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>执行与 "Deploy" 阶段相关的步骤。</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="流水线示例"><a class="anchor" href="#流水线示例"></a>流水线示例</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>这有一个使用声明式流水线的语法编写的 <code>Jenkinsfile</code> 文件 - 可以通过点击下面 <strong>Toggle Scripted Pipeline</strong> 链接来访问它的等效的脚本化语法：</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline { <span style="color:#777"><i class="conum" data-value="1"></i><b>(1)</b></span>
+    agent any <span style="color:#777"><i class="conum" data-value="2"></i><b>(2)</b></span>
+    stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
+            steps { <span style="color:#777"><i class="conum" data-value="4"></i><b>(4)</b></span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="5"></i><b>(5)</b></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>){
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make check</span><span style="color:#710">'</span></span>
+                junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**/*.xml</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="6"></i><b>(6)</b></span>
+            }
+        }
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
+            steps {
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make publish</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Scripted Pipeline</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">node { <span style="color:#777"><i class="conum" data-value="7"></i><b>(7)</b></span>
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) { <span style="color:#777"><i class="conum" data-value="3"></i><b>(3)</b></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="5"></i><b>(5)</b></span>
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make check</span><span style="color:#710">'</span></span>
+        junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**/*.xml</span><span style="color:#710">'</span></span> <span style="color:#777"><i class="conum" data-value="6"></i><b>(6)</b></span>
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make publish</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div></div></div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><a href="syntax#declarative-pipeline"><code>pipeline</code></a> 是声明式流水线的一种特定语法，他定义了包含执行整个流水线的所有内容和指令的 "block" 。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><a href="syntax#agent"><code>agent</code></a>是声明式流水线的一种特定语法，它指示 Jenkins 为整个流水线分配一个执行器 (在节点上)和工作区。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>stage</code> 是一个描述
+<a href="#stage">stage of this Pipeline</a>的语法块。在 <a href="syntax#stage">Pipeline syntax</a> 页面阅读更多有关声明式流水线语法的`stage`块的信息。如 <a href="#scripted-pipeline-fundamentals">above</a>所述, 在脚本化流水线语法中，<code>stage</code> 块是可选的。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><a href="syntax#steps"><code>steps</code></a> 是声明式流水线的一种特定语法，它描述了在这个 <code>stage</code> 中要运行的步骤。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>sh</code> 是一个执行给定的shell命令的流水线 <a href="syntax#steps">step</a> (由
+<a href="https://plugins.jenkins.io/workflow-durable-task-step">Pipeline: Nodes and Processes plugin</a>提供) 。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><code>junit</code> 是另一个聚合测试报告的流水线 <a href="syntax#steps">step</a> (由
+<a href="https://plugins.jenkins.io/junit">JUnit plugin</a>提供)。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><code>node</code> 是脚本化流水线的一种特定语法，它指示 Jenkins 在任何可用的代理/节点上执行流水线 (和包含在其中的任何阶段)这实际上等效于 声明式流水线特定语法的`agent`。</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>在 <a href="syntax">Pipeline Syntax</a> 页面阅读了解更多流水线语法的相关信息。</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://en.wikipedia.org/wiki/Domain-specific_language">Domain-specific language</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Version_control">Source control management</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Single_source_of_truth">Single source of truth</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. Additional plugins have been used to implement complex behaviors utilizing Freestyle Jobs such as the Copy Artifact, Parameterized Trigger, and Promoted Builds plugins
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. <a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder plugin</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. <a href="../blueocean">Blue Ocean</a>, <a href="https://plugins.jenkins.io/pipeline-stage-view">流水线: 阶段查看插件</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../using">
+⇐ 使用 Jenkins
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="index doc-page-link" href="../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row"></div>
+<a class="next doc-page-link" href="getting-started">
+流水线入门 ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/pipeline/index.adoc" title="在 GitHub 上编辑 /doc/book/pipeline/index.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/pipeline/index.adoc" title="在 GitHub 上查看 /doc/book/pipeline/index.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

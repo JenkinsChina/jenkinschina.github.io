@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+流水线运行细节视图
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="流水线运行细节视图" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="流水线运行细节视图" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="流水线运行细节视图" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/blueocean/pipeline-run-details/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="流水线运行细节视图" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="active">Blue Ocean</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/blueocean/getting-started" class="">Blue Ocean 入门</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/creating-pipelines" class="">创建流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/dashboard" class="">仪表盘</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/activity" class="">活动视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-run-details" class="active">流水线运行细节视图</a>
+</li>
+<li>
+<a href="/doc/book/blueocean/pipeline-editor" class="">流水线编辑器</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../activity">
+⇐ 活动视图
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../pipeline-editor">
+流水线编辑器 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+流水线运行细节视图
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#流水线运行状态">流水线运行状态</a></li>
+<li><a href="#特例">特例</a>
+<ul class="sectlevel2">
+<li><a href="#源代码控制之外的流水线">源代码控制之外的流水线</a></li>
+<li><a href="#自由式项目">自由式项目</a></li>
+<li><a href="#矩阵项目">矩阵项目</a></li>
+</ul>
+</li>
+<li><a href="#选项卡">选项卡</a>
+<ul class="sectlevel2">
+<li><a href="#流水线">流水线</a></li>
+<li><a href="#变化">变化</a></li>
+<li><a href="#测试">测试</a></li>
+<li><a href="#工件">工件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 流水线运行细节视图显示了与单个流水线运行相关的信息并允许以后编辑或回放运行。
+下面是运行细节视图部分的详细概述。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/overview.png" alt="Overview of the Pipeline Run Details"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Run Status</strong> - 此图标, 以及顶部菜单栏的背景色,表明了流水线运行的状态。</p>
+</li>
+<li>
+<p><strong>Pipeline Name</strong> - 运行的流水线的名称。</p>
+</li>
+<li>
+<p><strong>Run Number</strong> - 流水线运行的ID号。
+对于流水线的每个分支(和 Pull 请求)，ID号是唯一的。</p>
+</li>
+<li>
+<p><strong>Tab Selector</strong> - 查看该运行的一个细节 <a href="#tabs">选项卡</a>。
+默认值是"<a href="#pipeline">Pipeline</a>"。</p>
+</li>
+<li>
+<p><strong>Re-run Pipeline</strong> - 再次执行运行的流水线。</p>
+</li>
+<li>
+<p><strong>Edit Pipeline</strong> - 在 <a href="#pipeline-editor#">Pipeline Editor</a>中打开运行的流水线。</p>
+</li>
+<li>
+<p><strong>Go to Classic</strong> - 转换到该运行细节的 "经典" UI 视图。</p>
+</li>
+<li>
+<p><strong>Close Details</strong> - 这将关闭细节视图并使用户回到该流水线的
+<a href="#activity">活动视图</a>。</p>
+</li>
+<li>
+<p><strong>Branch</strong> or <strong>Pull Request</strong> - 该运行的分支或pull请求。</p>
+</li>
+<li>
+<p><strong>Commit Id</strong> - 提交本次运行的ID。</p>
+</li>
+<li>
+<p><strong>Duration</strong> - 本次运行的持续时间。</p>
+</li>
+<li>
+<p><strong>Completed Time</strong> - 多久之前运行完成。</p>
+</li>
+<li>
+<p><strong>Change Author</strong> - 更改的作者姓名。</p>
+</li>
+<li>
+<p><strong>Tab View</strong> - 显示所选选项卡的信息。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="流水线运行状态"><a class="anchor" href="#流水线运行状态"></a>流水线运行状态</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 可以很容易的查看当前流水线运行的状态，通过顶部菜单栏颜色的改变来匹配状态:
+蓝色表示 "In progress", 绿色表示 "Passed", 黄色表示 "Unstable",
+红色表示 "Failed", 灰色表示 "Aborted"。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="特例"><a class="anchor" href="#特例"></a>特例</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Blue Ocean 在源代码控制中使用流水线进行优化，但它也可以显示其他类型项目的细节。
+Blue Ocean 为所有支持的项目类型提供了同样的<a href="#tabs">选项卡</a> ,
+但这些选项卡可能显示不同的信息。</p>
+</div>
+<div class="sect2">
+<h3 id="源代码控制之外的流水线"><a class="anchor" href="#源代码控制之外的流水线"></a>源代码控制之外的流水线</h3>
+<div class="paragraph">
+<p>对于不基于源代码控制的流水线,
+Blue Ocean 仍然会显示 "提交 Id", "分支", 和 "更改",
+但是这些字段都是空白的。
+在这种情况下, 顶部菜单栏不包含 "Edit" 选项。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自由式项目"><a class="anchor" href="#自由式项目"></a>自由式项目</h3>
+<div class="paragraph">
+<p>对于自由式项目, Blue Ocean 仍然提供相同的<a href="#tabs">选项卡</a>,
+但是流水线选项卡只显示控制台日志输出。
+"Rerun"或 "Edit"选项也没有显示在顶部菜单栏中。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="矩阵项目"><a class="anchor" href="#矩阵项目"></a>矩阵项目</h3>
+<div class="paragraph">
+<p>在Blue Ocean中不支持矩阵项目。
+查看矩阵项目将重定向到该项目的 "经典UI" 视。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="选项卡"><a class="anchor" href="#选项卡"></a>选项卡</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>运行细节视图的每个选项卡都提供了运行的特定方面的信息。</p>
+</div>
+<div class="sect2">
+<h3 id="流水线"><a class="anchor" href="#流水线"></a>流水线</h3>
+<div class="paragraph">
+<p>这是默认选项卡并给出了该流水线运行的留的总体视图
+他显示每个阶段河道并行分支, 这些阶段中的步骤,
+以及这些步骤的控制台输出。上面的概述图像显示了一个成功的流水线运行。
+如果运行中的某个步骤失败, 该选项将自动默认显示来自失败步骤的控制台日志。
+下图显示了一个失败的运行。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/pipeline-failed.png" alt="Failed Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="变化"><a class="anchor" href="#变化"></a>变化</h3>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/changes-one-change.png" alt="List of Changes for a Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="测试"><a class="anchor" href="#测试"></a>测试</h3>
+<div class="paragraph">
+<p>"Tests" 选项卡显示有关此次运行的测试结果的信息。
+该选项卡只包含测试结果发布步骤的信息,
+如 "Publish JUnit test results" (<code>junit</code>) 步骤。
+如果没有结果被记录 这个表会说,
+如果所有的测试通过, 该选项会报告通过测试的总数。
+在失败的情况下。选项卡将会显示从失败中获取的如下日志细节。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/tests-unstable.png" alt="Test Results for Unstable Run"></span></p>
+</div>
+<div class="paragraph">
+<p>当先前的运行失败，而当前运行修复这些失败时,
+该选项卡会注意到固定的文本并显示它们的日志。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/tests-fixed.png" alt="Test Results for Fixed Run"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="工件"><a class="anchor" href="#工件"></a>工件</h3>
+<div class="paragraph">
+<p>"Artifacts" 选项卡显示使用"Archive Artifacts" (<code>archive</code>)步骤保存的任何工件的列表。
+单击列表中的项并下载它。
+运行中的完整输出日志可以从这个列表中下载。</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="../../resources/blueocean/pipeline-run-details/artifacts-list.png" alt="List of Artifacts from a Run"></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../activity">
+⇐ 活动视图
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ Blue Ocean
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../pipeline-editor">
+流水线编辑器 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/blueocean/pipeline-run-details.adoc" title="在 GitHub 上编辑 /doc/book/blueocean/pipeline-run-details.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/blueocean/pipeline-run-details.adoc" title="在 GitHub 上查看 /doc/book/blueocean/pipeline-run-details.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

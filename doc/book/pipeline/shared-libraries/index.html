@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+扩展共享库
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="扩展共享库" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="扩展共享库" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="扩展共享库" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/shared-libraries/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="扩展共享库" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="active">流水线</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/pipeline/getting-started" class="">流水线入门</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/jenkinsfile" class="">使用 Jenkinsfile</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/multibranch" class="">分支和pull请求</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/docker" class="">在流水线中使用Docker</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/shared-libraries" class="active">扩展共享库</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/development" class="">流水线开发工具</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/scaling-pipeline" class="">规模 Pipelines</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../docker">
+⇐ 在流水线中使用Docker
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../development">
+流水线开发工具 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+扩展共享库
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#定义共享库">定义共享库</a>
+<ul class="sectlevel2">
+<li><a href="#目录结构">目录结构</a></li>
+<li><a href="#全局共享库">全局共享库</a></li>
+<li><a href="#文件夹级别的共享库">文件夹级别的共享库</a></li>
+<li><a href="#自动分享库">自动分享库</a></li>
+</ul>
+</li>
+<li><a href="#使用库">使用库</a>
+<ul class="sectlevel2">
+<li><a href="#loading-libraries-dynamically">Loading libraries dynamically</a></li>
+<li><a href="#库版本">库版本</a></li>
+<li><a href="#检索方法">检索方法</a></li>
+</ul>
+</li>
+<li><a href="#写库">写库</a>
+<ul class="sectlevel2">
+<li><a href="#访问步骤">访问步骤</a></li>
+<li><a href="#定义全局变量">定义全局变量</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>由于流水线被组织中越来越多的项目所采用，常见的模式很可能会出现。 在多个项目之间共享流水线有助于减少冗余并保持代码
+"干燥"
+<sup class="footnote" id="_footnote_dry">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>。</p>
+</div>
+<div class="paragraph">
+<p>流水线支持创建 "共享库" ，可以在
+外部源代码控制仓库中定义并加载的现有的流水线中。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="定义共享库"><a class="anchor" href="#定义共享库"></a>定义共享库</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>共享库被一个名称, 源代码检索方法定义， 比如 SCM, 以及可选的默认版本。名称应该是一个简短的标识符，因为它将在脚本中使用。</p>
+</div>
+<div class="paragraph">
+<p>该版本可以被 SCM理解; 比如, 分支,
+标签, 和提交 hashes 所有工作给Git。你还可以声明脚本是否需要显示的请求该库 (下面详细说明), 或者在默认情况下是否存。此外, 如果你在 Jenkins 配置中指定了版本,
+你可以阻止脚本选择 <em>different</em> 版本。</p>
+</div>
+<div class="paragraph">
+<p>指定SCM 最好的方式是使用 SCM 插件，他已经被特别的更新以支持一个新的API 检出一个任意命名的版本 (<em>Modern SCM</em> 选项)。 在编写时, 最新版本的
+Git和Subversion 插件支持该模式; 其他人应该遵循。</p>
+</div>
+<div class="paragraph">
+<p>如果你的SCM 插件没有被集成, 你可以选择 <em>Legacy SCM</em> 并选择提供的任何东西。
+在这种情况下, 你需要包含
+<code>${library.yourLibName.version}</code> 在SCM的配置中, 所以在检出插件期间，将会扩展该变量来选择需要的版本比如, 对于Subversion,你可以设置 _Repository URL_为
+<code>https://svnserver/project/${library.yourLibName.version}</code> 然后使用诸如 <code>trunk</code> 或 <code>branches/dev</code> 或 `tags/1.0`的版本。</p>
+</div>
+<div class="sect2">
+<h3 id="目录结构"><a class="anchor" href="#目录结构"></a>目录结构</h3>
+<div class="paragraph">
+<p>共享库的目录结构如下:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>(root)
++- src                     # Groovy source files
+|   +- org
+|       +- foo
+|           +- Bar.groovy  # for org.foo.Bar class
++- vars
+|   +- foo.groovy          # for global 'foo' variable
+|   +- foo.txt             # help for 'foo' variable
++- resources               # resource files (external libraries only)
+|   +- org
+|       +- foo
+|           +- bar.json    # static helper data for org.foo.Bar</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`src` 目录应该看起来像标准的Java 源目录结构。当执行流水线时，该目录被添加到类路径下。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>vars</code> 目录定义可从流水线访问的全局变量的脚本。
+每个`*.groovy` 文件的基名应该是一个 Groovy (~ Java) 标识符, 通常是 <code>camelCased</code>。
+匹配 <code>*.txt</code>, 如果存在, 可以包含文档, 通过系统的配置标记格式化从处理
+(所以可能是 HTML, Markdown等，虽然 <code>txt</code> 扩展是必需的)。</p>
+</div>
+<div class="paragraph">
+<p>这些目录中的Groovy 源文件 在脚本化流水线中的 “CPS transformation”一样。</p>
+</div>
+<div class="paragraph">
+<p><code>resources</code> 目录允许从外部库中使用 <code>libraryResource</code> 步骤来加载有关的非Groovy 文件。
+目前，内部库不支持该特性。</p>
+</div>
+<div class="paragraph">
+<p>根目录下的其他目录被保留下来以便于将来的增强。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="全局共享库"><a class="anchor" href="#全局共享库"></a>全局共享库</h3>
+<div class="paragraph">
+<p>有几个地方可以定义共享库, 这取决于用例。 <em>Manage Jenkins » Configure System » Global Pipeline Libraries</em>
+必要时可以配置许多库。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/pipeline/add-global-pipeline-libraries.png" alt="Add a Global Pipeline Library">
+</div>
+</div>
+<div class="paragraph">
+<p>由于这些库将是全局可用的, 系统中的任何流水线都可以使用这些库中实现的功能。
+utilize functionality implemented in these libraries.</p>
+</div>
+<div class="paragraph">
+<p>这些库被认为是 "可信的:"他们在Java，Groovy, Jenkins内部API, Jenkins 插件, 或第三方库中运行的任何方法。
+这允许你定义将单个不安全的API封进一个更高级别的包装中以便于在流水线中使用的库。 请注意 <strong>anyone able to push commits to this SCM repository could obtain unlimited access to Jenkins</strong>。
+你需要 <em>Overall/RunScripts</em> 权限来配置这些库
+(通常这些权限会授予Jenkins 管理员)。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="文件夹级别的共享库"><a class="anchor" href="#文件夹级别的共享库"></a>文件夹级别的共享库</h3>
+<div class="paragraph">
+<p>创建的任何文件夹都可以有一个与之关联的共享库。该机制允许将特定库的范围扩展到文件夹或子文件夹的所有流水线。</p>
+</div>
+<div class="paragraph">
+<p>基于文件夹的库不被认为是 "可信的:" 他们在Groovy
+沙箱中运行，就像典型的流水线一样。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自动分享库"><a class="anchor" href="#自动分享库"></a>自动分享库</h3>
+<div class="paragraph">
+<p>其他插件可能会添加定义库的方法on the fly。比如,
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub 分支源</a> 插件提供了 "GitHub
+组织文件夹"项，它允许脚本使用一个不被信任的库，
+比如`github.com/someorg/somerepo` 而不需要任何额外的配置。在这种情况下, 指定的 GitHub 仓库将会从 `master`分支加载, 使用匿名检出。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="使用库"><a class="anchor" href="#使用库"></a>使用库</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>标记为 <em>Load implicitly</em> 的共享库允许流水线立即使用任何此库定义的类或全局变量。为了访问其他共享库, <code>Jenkinsfile</code> 需要使用 <code>@Library</code> 注解,
+指定库的名字:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/pipeline/configure-global-pipeline-library.png" alt="Configuring a Global Pipeline Library">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>) _
+<span style="color:#777">/* Using a version specifier, such as branch, tag, etc */</span>
+<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library@1.0</span><span style="color:#710">'</span></span>) _
+<span style="color:#777">/* Accessing multiple libraries with one statement */</span>
+<span style="color:#007">@Library</span>([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">otherlib@abc1234</span><span style="color:#710">'</span></span>]) _</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>该注解可以在脚本的Groovy允许注解的任何地方。当引用类库时 (在 <code>src/</code> 目录下),
+通常注释会进入 <code>import</code> 语句:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.UsefulClass</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>对于只定义了全局变量 (<code>vars/</code>)的共享库, 或者只需要一个全局变量的
+<code>Jenkinsfile`文件,
+link:http://groovy-lang.org/objectorientation.html#\_annotation[annotation]
+模式 `@Library('my-shared-library') _</code> 有助于保持代码简洁。 从本质上说, 并不是注释一个 不必要的`import` 语句,
+符号 <code>_</code> 是带注释的。</p>
+</div>
+<div class="paragraph">
+<p>不建议 <code>import</code> 一个全局变量/函数,
+由于这将强制编译器 将字段和方法解释为 <code>static</code>。
+即使他们是要实例化的。
+该例中的Groovy编译器 可以产生困惑人的错误消息。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>在脚本的 <em>compilation</em> 期间,
+在库执行之前，它被解析和加载。这允许Groovy 编译器理解在静态类型检查中使用的符号的意义， 并允许他们在脚本的类型声明中被使用，比如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">somelib</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">com.mycorp.pipeline.somelib.Helper</span>
+
+<span style="color:#339;font-weight:bold">int</span> useSomeLib(Helper helper) {
+    helper.prepare()
+    <span style="color:#080;font-weight:bold">return</span> helper.count()
+}
+
+echo useSomeLib(<span style="color:#080;font-weight:bold">new</span> Helper(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">some text</span><span style="color:#710">'</span></span>))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Global Variables however, are resolved at runtime.</p>
+</div>
+<div class="sect2">
+<h3 id="loading-libraries-dynamically"><a class="anchor" href="#loading-libraries-dynamically"></a>Loading libraries dynamically</h3>
+<div class="paragraph">
+<p>作为 <em>Pipeline: Shared Groovy Libraries</em>  2.7 版本插件,
+在脚本中有一个加载库(非隐式)的新选项t:
+在构建期间的任何时间， _dynamically_加载库的`library`步骤。</p>
+</div>
+<div class="paragraph">
+<p>如果你只对使用全局变量/方法 (从 <code>vars/</code> 目录)感兴趣,
+那么语法非常简单:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>此后, 该脚本可以访问该库的任何全局变量。</p>
+</div>
+<div class="paragraph">
+<p>使用 <code>src/</code> 目录下的类也是可行的, 但更复杂。
+然而，在编译之前，<code>@Library</code> 注释准备了脚本的 “类路径”,
+当遇到一个 <code>library</code> 步骤时，脚本已经被编译了。
+因此，你不能 <code>import</code> 或 “静态地” 引用库中的类型。</p>
+</div>
+<div class="paragraph">
+<p>但是你可以动态的使用类库(不用类型检查),
+通过`library` 步骤返回值中完全限定的名称访问它们。
+使用类似于Java的语法调用`static` 方法:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>).com.mycorp.pipeline.Utils.someStaticMethod()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>你也可以访问 <code>static</code> 字段, 并调用构造方法就像他们是名为 <code>new`的 `static</code> 方法:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">useSomeLib</span>(helper) { <span style="color:#777">// dynamic: cannot declare as Helper</span>
+    helper.prepare()
+    <span style="color:#080;font-weight:bold">return</span> helper.count()
+}
+
+<span style="color:#080;font-weight:bold">def</span> lib = library(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>).com.mycorp.pipeline <span style="color:#777">// preselect the package</span>
+
+echo useSomeLib(lib.Helper.new(lib.Constants.SOME_TEXT))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="库版本"><a class="anchor" href="#库版本"></a>库版本</h3>
+<div class="paragraph">
+<p>配置共享库的 "默认版本" 是在 "隐式加载" 被检查时使用, 或者一个流水线通过名称引用了该库,
+比如 <code>@Library('my-shared-library') _</code>。如果*not*
+定义 "默认版本" , 流水线必须制定一个版本, 比如
+<code>@Library('my-shared-library@master') _</code>。</p>
+</div>
+<div class="paragraph">
+<p>如果在共享库的配置中启用了 "允许默认版本被覆盖"， <code>@Library</code> 注解也可以覆盖为该库定义的默认版本。这同样允许在需要时从不同的版本加载一个 "隐式加载"的库。</p>
+</div>
+<div class="paragraph">
+<p>当使用 <code>library</code> 步骤你也可以指定一个版本:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library@master</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>由于这是一个常规步骤, 该版本可以被 <em>computed</em>，
+而不是像注释那样的常量; 比如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my-shared-library@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>BRANCH_NAME</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>使用与多分支`Jenkinsfile`文件相同的SCM分支加载一个库。
+作为另一个示例, 你可以通过参数选择一个库:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">properties([parameters([string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">LIB_VERSION</span><span style="color:#710">'</span></span>, <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">master</span><span style="color:#710">'</span></span>)])])
+library <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my-shared-library@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>params.LIB_VERSION<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>注意 <code>library</code> 步骤不会被用来覆盖隐式加载的库的版本。
+在脚本启动时已经加载了它, 并且一个给定名称的库不会被加载两次。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="检索方法"><a class="anchor" href="#检索方法"></a>检索方法</h3>
+<div class="paragraph">
+<p>指定SCM最好的方式是使用SCM 插件，该插件已被特别更新以支持新的 API 来检出一个任意命名的
+版本 (<strong>Modern SCM</strong> 选项)。在编写时, 最新版本的
+Git和Subversion插件支持该模式。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/pipeline/global-pipeline-library-modern-scm.png" alt="Configuring a 'Modern SCM' for a Pipeline Library">
+</div>
+</div>
+<div class="sect3">
+<h4 id="遗留-scm"><a class="anchor" href="#遗留-scm"></a>遗留 SCM</h4>
+<div class="paragraph">
+<p>还没有更新到支持共享库所需的新特性的SCM插件, 仍然可以通过 <strong>Legacy SCM</strong> 选项被使用。
+在这种情况下, 包括 <code>${library.yourlibrarynamehere.version}</code> 任何
+分支/标签/引用 都可以配置为SCM 插件。这确保在检出库的源代码期间, SCM插件会扩展改该变量来 检出库的合适的版本。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/pipeline/global-pipeline-library-legacy-scm.png" alt="Configuring a 'Legacy SCM' for a Pipeline Library">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="动态检索"><a class="anchor" href="#动态检索"></a>动态检索</h4>
+<div class="paragraph">
+<p>如果你在 <code>library</code> 步骤只指定了库的名称(optionally with version after <code>@</code>) ,
+Jenkins 将查找该名称的预配置库。
+(或者在`github.com/owner/repo` 自动库中，加载该文件)。
+但是你也可以动态的指定检索方法,
+在这种情况下不需要在Jenkins库中预定义库。
+这是一个例子:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">library <span style="color:#606">identifier</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">custom-lib@master</span><span style="color:#710">'</span></span>, <span style="color:#606">retriever</span>: modernSCM(
+  [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GitSCMSource</span><span style="color:#710">'</span></span>,
+   <span style="color:#B06;font-weight:bold">remote</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git@git.mycorp.com:my-jenkins-utils.git</span><span style="color:#710">'</span></span>,
+   <span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-private-key</span><span style="color:#710">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>最好为你的SCM的精确语法引用 <strong>Pipeline Syntax</strong> 。</p>
+</div>
+<div class="paragraph">
+<p>注意，在这些情况下，库的版本 <em>must</em> 指定。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="写库"><a class="anchor" href="#写库"></a>写库</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在基本级别, 任何有效的
+<a href="http://groovy-lang.org/syntax.html">Groovy 代码</a>
+都可以使用。 不同的数据结构, 实用方法等, 比如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Point.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo;
+
+<span style="color:#777">// point in 3D space</span>
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span> {
+  <span style="color:#339;font-weight:bold">float</span> x,y,z;
+}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="访问步骤"><a class="anchor" href="#访问步骤"></a>访问步骤</h3>
+<div class="paragraph">
+<p>类库不能直接调用 `sh`或 `git`这样的步骤。
+但是他们可以在封闭的类的范围之外实现方法，从而调用流水线步骤, 比如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// src/org/foo/Zot.groovy</span>
+<span style="color:#080;font-weight:bold">package</span> org.foo;
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">checkOutFrom</span>(repo) {
+  git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">git@github.com:jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>repo<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}
+
+<span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这可以从一个脚本化流水线中调用:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> z = <span style="color:#080;font-weight:bold">new</span> org.foo.Zot()
+z.checkOutFrom(repo)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>该方法有一定的局限性; 比如, 它避免了父类的声明。</p>
+</div>
+<div class="paragraph">
+<p>此外,在构造函数中, 或只是在一个方法中使用 <code>this`可以将一组 `steps</code> 显式地传递给类库:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> <span style="color:#088;font-weight:bold">implements</span> <span style="color:#0a8;font-weight:bold">Serializable</span> {
+  <span style="color:#080;font-weight:bold">def</span> steps
+  <span style="color:#0a8;font-weight:bold">Utilities</span>(steps) {<span style="color:#950">this</span>.steps = steps}
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(args) {
+    steps.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>steps.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>当在类上保存状态时, 如上图, 类 <strong>must</strong> 实现
+<code>Serializable</code> 接口。确保使用类的流水线可以在Jenkins中适当的挂起和恢复, 如下所示。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities</span>
+<span style="color:#080;font-weight:bold">def</span> utils = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">Utilities</span>(<span style="color:#950">this</span>)
+node {
+  utils.mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果该库需要访问全局变量, 比如 <code>env</code>, 则应该以类似的方式显式地传递给类库或方法。</p>
+</div>
+<div class="paragraph">
+<p>而不是将大量的数据从脚本化流水线传递到库中。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">package</span> org.foo
+<span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Utilities</span> {
+  <span style="color:#088;font-weight:bold">static</span> <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mvn</span>(script, args) {
+    script.sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Maven</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -s </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>script.env.HOME<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/jenkins.xml -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>args<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上面的示例显示传递给 <code>static</code> 方法的脚本,该方法从脚本化流水线中调用:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">static</span> <span style="color:#B44;font-weight:bold">org.foo.Utilities.*</span>
+node {
+  mvn <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean package</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="定义全局变量"><a class="anchor" href="#定义全局变量"></a>定义全局变量</h3>
+<div class="paragraph">
+<p>在内部, <code>vars`目录中的脚本根据需求以单例的方式实例化，这允许在单个</code>.groovy` 文件中定义多个方法。例如:</p>
+</div>
+<div class="listingblock">
+<div class="title">vars/log.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message) {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">warning</span>(message) {
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">WARNING: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) _
+
+log.info <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Starting</span><span style="color:#710">'</span></span>
+log.warning <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nothing to do!</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>声明式流水线不允许在`script`指令之外使用全局变量
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-42360">JENKINS-42360</a>)。</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">utils</span><span style="color:#710">'</span></span>) _
+
+pipeline {
+    agent none
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Example</span><span style="color:#710">'</span></span>) {
+        steps {
+             script { <i class="conum" data-value="1"></i><b>(1)</b>
+                 log.info <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Starting</span><span style="color:#710">'</span></span>
+                 log.warning <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nothing to do!</span><span style="color:#710">'</span></span>
+             }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>`script`指令在声明式流水线中访问全局变量。</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>定义在共享库的变量只会在Jenkins加载后显示在 <em>Global Variables Reference</em> (再 _Pipeline Syntax_下面) ，并将该库作为成功的流水线运行的一部分。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Avoid preserving state in global variables</div>
+<div class="paragraph">
+<p>避免使用交互或保存状态的方法来定义全局变量。
+使用静态类或实例化一个类的局部变量。</p>
+</div>
+<div class="paragraph">
+<p>=== 定义自定义步骤</p>
+</div>
+<div class="paragraph">
+<p>共享库也可以定义全局变量，和定义内置步骤的操作类似, 比如 <code>sh</code> 或 <code>git</code>。定义在共享库中 的全局变量*must* 必须以全小写或 "camelCased" 命名以便于能够在流水线中正确的加载。
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>例如, 要定义 <code>sayHello</code>, 需要创建 <code>vars/sayHello.groovy`文件并实现`call</code> 方法。<code>call</code> 方法
+允许全局变量以一种类似于步骤的方式被调用:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/sayHello.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">String</span> name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">human</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">// Any valid steps can be called from this code, just like in other</span>
+    <span style="color:#777">// Scripted Pipeline</span>
+    echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>然后流水线就能引用或调用该变量:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sayHello <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Joe</span><span style="color:#710">'</span></span>
+sayHello() <span style="color:#777">/* invoke with default arguments */</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>如果用块调用, <code>call</code> 方法会接收一个
+<a href="http://groovy-lang.org/closures.html"><code>Closure</code></a>。
+应明确定义类型来说明该步骤的意义, 例如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/windows.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(Closure body) {
+    node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">windows</span><span style="color:#710">'</span></span>) {
+        body()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>然后流水线就能使用这个变量，就像内置的步骤一样，它接收一个块:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">windows {
+    bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cmd /?</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>=== 定义更结构化的 DSL</p>
+</div>
+<div class="paragraph">
+<p>如果你有很多类似的流水线, 全局变量机制提供了一个便利的工具来构建更高级别的获取相似度的 DSL。 比如, 所有的Jenkins插件用同样的方式构建和测试, 所以我们可能会写一个名为
+`buildPlugin`的步骤:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/buildPlugin.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">Map</span> config) {
+    node {
+        git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/jenkinsci/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">-plugin.git</span><span style="color:#710">&quot;</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn install</span><span style="color:#710">'</span></span>
+        mail <span style="color:#606">to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>, <span style="color:#606">subject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>config.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> plugin build</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>假设脚本已经被加载为
+<a href="#global-shared-libraries">全局共享库</a> 或
+<a href="#folder-level-shared-libraries">文件的共享库</a>
+生成的 <code>Jenkinsfile</code> 将会大大简化:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-script"
+        style="display: true">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">buildPlugin <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git</span><span style="color:#710">'</span></span></code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>还有一个使用 Groovy的 <code>Closure.DELEGATE_FIRST</code>“构建模式” 技巧,
+它允许 <code>Jenkinsfile</code> 看起来更像一个配置文件，而不是程序,
+但它更复杂，容易出错，不推荐使用。</p>
+</div>
+<div class="paragraph">
+<p>=== 使用第三方库</p>
+</div>
+<div class="paragraph">
+<p>在*trusted* 库代码中使用 <code>@Grab</code> 注释，可以使用第三方库, 它通常在
+<a href="http://search.maven.org/">Maven Central</a>中找到。详情请参阅
+<a href="http://docs.groovy-lang.org/latest/html/documentation/grape.html#_quick_start">Grape documentation</a>, 但简单地说:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Grab</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">org.apache.commons:commons-math3:3.4.1</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#B44;font-weight:bold">org.apache.commons.math3.primes.Primes</span>
+<span style="color:#339;font-weight:bold">void</span> parallelize(<span style="color:#339;font-weight:bold">int</span> count) {
+  <span style="color:#080;font-weight:bold">if</span> (!Primes.isPrime(count)) {
+    error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> was not prime</span><span style="color:#710">&quot;</span></span>
+  }
+  <span style="color:#777">// …</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在默认情况下，第三方库会被缓存到Jenkins主机的 <code>~/.groovy/grapes/</code> 文件中。</p>
+</div>
+<div class="paragraph">
+<p>=== 加载资源</p>
+</div>
+<div class="paragraph">
+<p>外部库可以使用`libraryResource` 步骤从 <code>resources/</code> 目录加载附属的 文件。参数是相对路径名, 类似于Java资源加载:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> request = libraryResource <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">com/mycorp/pipeline/somelib/request.json</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>该文件做为字符串被加载,适合传递给某些 API或使用 `writeFile`保存到工作区。</p>
+</div>
+<div class="paragraph">
+<p>建议使用一个独特的包结构，这样你就不会意外地与另一个库发生冲突。</p>
+</div>
+<div class="paragraph">
+<p>=== 事前测试库的变更</p>
+</div>
+<div class="paragraph">
+<p>如果你在构建一个不被信任的库时注意到一个错误，
+只需点击 <em>Replay</em> 链接尝试编辑它的一个或多个源文件,
+查看是否构建结果和预期一样。
+一旦你对该结果感到满意, 就可以从构建的状态页追踪diff链接,
+并将其应用到库的仓库并提交。</p>
+</div>
+<div class="paragraph">
+<p>(即使请求库的版本是一个分支, 而不是像标记一样的固定版本,
+重放构建将会使用与原始构建完全相同的修订:
+库源不会被再次检出)。</p>
+</div>
+<div class="paragraph">
+<p>目前，<em>Replay</em> 不支持受信任的库，在 _Replay_期间也不支持修改资源文件。</p>
+</div>
+<div class="paragraph">
+<p>=== 定义声明式流水线</p>
+</div>
+<div class="paragraph">
+<p>从2017年9月下旬发布的声明式 1.2开始, 你也可以在你的共享库里定义声明式流水线。下面是一个示例,
+它将会执行一个不同的流水线，这取决于构建号是奇数还是偶数:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// vars/evenOrOdd.groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#339;font-weight:bold">int</span> buildNumber) {
+  <span style="color:#080;font-weight:bold">if</span> (buildNumber % <span style="color:#00D">2</span> == <span style="color:#00D">0</span>) {
+    pipeline {
+      agent any
+      stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Even Stage</span><span style="color:#710">'</span></span>) {
+          steps {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The build number is even</span><span style="color:#710">&quot;</span></span>
+          }
+        }
+      }
+    }
+  } <span style="color:#080;font-weight:bold">else</span> {
+    pipeline {
+      agent any
+      stages {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Odd Stage</span><span style="color:#710">'</span></span>) {
+          steps {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The build number is odd</span><span style="color:#710">&quot;</span></span>
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// Jenkinsfile</span>
+<span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-shared-library</span><span style="color:#710">'</span></span>) _
+
+evenOrOdd(currentBuild.getNumber())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>只有整个 <code>流水线`s can be defined in shared libraries as of this time. This can only be done in `vars/*.groovy</code>, 和 `call`方法。在单个构建中只有一个声明式流水线可以执行,如果你尝试执行第二个, 你的构建就会失败。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" class="bare">en.wikipedia.org/wiki/Don't_repeat_yourself</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://gist.github.com/rtyler/e5e57f075af381fce4ed3ae57aa1f0c2" class="bare">gist.github.com/rtyler/e5e57f075af381fce4ed3ae57aa1f0c2</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../docker">
+⇐ 在流水线中使用Docker
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../development">
+流水线开发工具 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/pipeline/shared-libraries.adoc" title="在 GitHub 上编辑 /doc/book/pipeline/shared-libraries.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/pipeline/shared-libraries.adoc" title="在 GitHub 上查看 /doc/book/pipeline/shared-libraries.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

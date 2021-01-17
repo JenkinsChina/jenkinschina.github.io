@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+使用Blue Ocean生成Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="使用Blue Ocean生成Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="使用Blue Ocean生成Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="使用Blue Ocean生成Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/tutorials/create-a-pipeline-in-blue-ocean/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="使用Blue Ocean生成Pipeline" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="active">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+使用Blue Ocean生成Pipeline
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#配置要求">配置要求</a></li>
+<li><a href="#在-docker中运行jenkins">在 Docker中运行Jenkins</a>
+<ul class="sectlevel3">
+<li><a href="#在-macos-和-linux-系统上">在 macOS 和 Linux 系统上</a></li>
+<li><a href="#在-windows-系统">在 Windows 系统</a></li>
+<li><a href="#访问-jenkinsblue-ocean-docker-容器">访问 Jenkins/Blue Ocean Docker 容器</a></li>
+<li><a href="#setup-wizard">安装向导</a></li>
+<li><a href="#停止和重启-jenkins">停止和重启 Jenkins</a></li>
+</ul>
+</li>
+<li><a href="#fork-sample-repository">Fork GitHub上的示例仓库</a></li>
+<li><a href="#在blue-ocean创建你的流水线项目">在Blue Ocean创建你的流水线项目</a></li>
+<li><a href="#创建你的初始流水线">创建你的初始流水线</a></li>
+<li><a href="#给你的流水线添加测试阶段">给你的流水线添加测试阶段</a></li>
+<li><a href="#给你的流水线添加最终交付阶段">给你的流水线添加最终交付阶段</a></li>
+<li><a href="#跟踪-可选">跟踪 (可选)</a></li>
+<li><a href="#结束语">结束语</a></li>
+</ul>
+</div>
+<div class="paragraph">
+<p>该教程展示如何使用Jenkins的 <a href="/doc/book/blueocean/">Blue Ocean</a>
+特性生成一个流水线，该流水线将协调构建一个简单的应用程序。</p>
+</div>
+<div class="paragraph">
+<p>在学习本教程前, 建议您先从<a href="..">Tutorials overview</a> 页面至少浏览一组入门教程来熟悉CI/CD 概念 (与你
+最熟悉的技术栈有) 以及这些概念是如何在Jenkins中实现的。
+Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>本教程使用与<a href="../build-a-node-js-and-react-app-with-npm">Build a Node.js and React app
+with npm</a> 教程相同的应用程序
+. 因此, 你这次将完全通过Blue Ocean构建相同的应用程序。 自从 Blue Ocean
+提供了简化的 Git处理经验, 你将直接与
+GitHub上的仓库进行交互 (相对于该存储库的本地clone)。</p>
+</div>
+<div class="paragraph">
+<p><strong>Duration:</strong> 本教程需花费 20-40 分钟 (假设你已经
+完成下述的 <a href="#prerequisites">配置要求</a> )。 确切的时间取决于你的机器的运行速度 和是否你已经在<a href="..">另一个教程</a>中
+<a href="#run-jenkins-in-docker">run Jenkins in Docker</a>。</p>
+</div>
+<div class="paragraph">
+<p>你可以随时停止本教程，并且从你离开的地方继续 。</p>
+</div>
+<div class="paragraph">
+<p>如果你已经完成 <a href="..">另一个教程</a>, 你可以跳过下面的
+<a href="#prerequisites">配置要求</a> 和 <a href="#run-jenkins-in-docker">Run Jenkins in
+Docker</a>部分并继续 <a href="#fork-sample-repository">fork示例仓库</a>。如果你需要重启Jenkins,只需遵循<a href="#stopping-and-restarting-jenkins">停止和重启
+Jenkins</a>中的重启指示然后继续。</p>
+</div>
+<div class="sect2">
+<h3 id="配置要求"><a class="anchor" href="#配置要求"></a>配置要求</h3>
+<div class="paragraph">
+<p>对于本教程，您将需要：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>安装有macOS，Linux或Windows操作系统的机器，并拥有以下配置：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>最小256MB内存, 推荐512MB以上。</p>
+</li>
+<li>
+<p>10GB硬盘空间， 用于安装Jenkins，您的Docker镜像和容器。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>安装有以下软件:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.docker.com/">Docker</a> - 在<a href="/doc/book/installing/">安装Jenkins</a>页面的<a href="/doc/book/installing/#installing-docker">安装Docker</a>章节阅读更多信息。<br>
+<strong>注意:</strong> 如果您使用Linux，本教程假定您没有以root用户的身份运行Docker命令，而是使用单个用户帐户访问本教程中使用的其他工具。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="在-docker中运行jenkins"><a class="anchor" href="#在-docker中运行jenkins"></a>在 Docker中运行Jenkins</h3>
+<div class="paragraph">
+<p>在本教程中, 将Jenkins作为 Docker 容器并从
+<a href="https://hub.docker.com/r/jenkinsci/blueocean/"><code>jenkinsci/blueocean</code></a> Docker
+镜像中运行。</p>
+</div>
+<div class="paragraph">
+<p>要在 Docker中运行Jenkins, 请遵循下面的<a href="#on-macos-and-linux">macOS 和 Linux</a> 或 <a href="#on-windows">Windows</a>相关文档说明进行操作。
+.</p>
+</div>
+<div class="paragraph">
+<p>你可以在
+<a href="../../book/installing#docker">Docker</a>和 <a href="../../book/installing">Installing Jenkins</a> 页面的
+<a href="../../book/installing#downloading-and-running-jenkins-in-docker">Downloading and running Jenkins in Docker</a>部分阅读更多有关Docker容器和镜像概念的信息。</p>
+</div>
+<div class="sect3">
+<h4 id="在-macos-和-linux-系统上"><a class="anchor" href="#在-macos-和-linux-系统上"></a>在 macOS 和 Linux 系统上</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>打开终端窗口</p>
+</li>
+<li>
+<p>使用下面的
+ <a href="https://docs.docker.com/engine/reference/commandline/run/"><code>docker run</code></a>
+命令运行 <code>jenkinsci/blueocean</code> 镜像作为Docker中的一个容器(记住，如果本地没有镜像，这个命令会自动下载):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>docker run \
+  --rm \
+  -u root \
+  -p 8080:8080 \
+  -v jenkins-data:/var/jenkins_home \ <i class="conum" data-value="1"></i><b>(1)</b>
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v "$HOME":/home \ <i class="conum" data-value="2"></i><b>(2)</b>
+  jenkinsci/blueocean</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>将容器中的 <code>/var/jenkins_home</code> 目录映射到 Docker
+<a href="https://docs.docker.com/engine/admin/volumes/volumes/">volume</a> ，并将其命名为
+<code>jenkins-data</code>。如果该卷不存在, 那么 <code>docker run</code> 命令会自动为你创建卷。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>将主机上的`$HOME` 目录 (即你的本地)映射到  (通常是 <code>/Users/&lt;your-username&gt;</code> 目录) 到容器的 <code>/home</code> 目录。</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> 如果复制或粘贴上面的命令片段不起作用, 尝试复制和粘贴这个没有注释的版本:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>docker run \
+  --rm \
+  -u root \
+  -p 8080:8080 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v "$HOME":/home \
+  jenkinsci/blueocean</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>继续 <a href="#setup-wizard">安装向导</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="在-windows-系统"><a class="anchor" href="#在-windows-系统"></a>在 Windows 系统</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>打开命令提示窗口。</p>
+</li>
+<li>
+<p>使用下面的
+ <a href="https://docs.docker.com/engine/reference/commandline/run/"><code>docker run</code></a>
+命令运行 <code>jenkinsci/blueocean</code> 镜像作为Docker中的一个容器(记住，如果本地没有镜像，这个命令会自动下载):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">docker run ^
+  --rm ^
+  -u root ^
+  -p 8080:8080 ^
+  -v jenkins-data:/var/jenkins_home ^
+  -v /var/run/docker.sock:/var/run/docker.sock ^
+  -v "%HOMEPATH%":/home ^
+  jenkinsci/blueocean</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>对这些选项的解释, 请参考上面的 <a href="#on-macos-and-linux">macOS 和 Linux</a> 说明。</p>
+</div>
+</li>
+<li>
+<p>继续<a href="#setup-wizard">安装向导</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="访问-jenkinsblue-ocean-docker-容器"><a class="anchor" href="#访问-jenkinsblue-ocean-docker-容器"></a>访问 Jenkins/Blue Ocean Docker 容器</h4>
+<div class="paragraph">
+<p>如果你有一些使用 Docker 的经验，希望或需要使用
+<a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a>
+命令通过一个终端/命令提示符来访问
+Jenkins/Blue Ocean Docker 容器, 你可以添加如 <code>--name jenkins-tutorials</code> 选项(与上面的
+<a href="https://docs.docker.com/engine/reference/commandline/run/"><code>docker run</code></a>
+), 这将会给Jenkins/Blue Ocean Docker容器一个名字
+"jenkins-tutorials"。</p>
+</div>
+<div class="paragraph">
+<p>这意味着你可以通过 <code>docker exec</code> 命令访问Jenkins/Blue Ocean 容器(通过一个单独的终端
+/命令提示窗口) ，例如:</p>
+</div>
+<div class="paragraph">
+<p><code>docker exec -it jenkins-tutorials bash</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setup-wizard"><a class="anchor" href="#setup-wizard"></a>安装向导</h4>
+<div class="paragraph">
+<p>在你访问 Jenkins之前, 你需要执行一些快速的 "一次性" 步骤。</p>
+</div>
+<div class="sect4">
+<h5 id="解锁-jenkins"><a class="anchor" href="#解锁-jenkins"></a>解锁 Jenkins</h5>
+<div class="paragraph">
+<p>当你第一次访问一个新的 Jenkins 实例时, 要求你使用自动生成的密码对其进行解锁。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>当在终端/命令提示窗口出现两组星号时,
+浏览 <code>http://localhost:8080</code> 并等待 <strong>Unlock Jenkins</strong> 页面出现。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/setup-jenkins-01-unlock-jenkins-page.jpg" alt="Unlock Jenkins page" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>再次从终端/命令提示窗口, 复制自动生成的字母数字密码(在两组星号之间)。
+<span class="image"><img src="../../book/resources/tutorials/setup-jenkins-02-copying-initial-admin-password.png" alt="Copying initial admin password" width="100%"></span></p>
+</li>
+<li>
+<p>在 <strong>Unlock Jenkins</strong> 页面, 粘贴该密码到 <strong>Administrator password</strong> 字段并点击 <strong>Continue</strong>。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="使用插件自定义-jenkins"><a class="anchor" href="#使用插件自定义-jenkins"></a>使用插件自定义 Jenkins</h5>
+<div class="paragraph">
+<p>在 <a href="#unlocking-jenkins">解锁 Jenkins</a>后, <strong>Customize Jenkins</strong> 页面出现。</p>
+</div>
+<div class="paragraph">
+<p>在该页面，点击 <strong>Install suggested plugins</strong>。</p>
+</div>
+<div class="paragraph">
+<p>安装向导显示了正在配置的Jenkins的进程，以及建议安装的插件。这个过程肯需要几分钟。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="创建第一个管理员用户"><a class="anchor" href="#创建第一个管理员用户"></a>创建第一个管理员用户</h5>
+<div class="paragraph">
+<p>最后, Jenkins 要求创建你的第一个管理员用户。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>当 <strong>Create First Admin User</strong> 页面出现, 在相应的字段中指定你的详细消息并点击 <strong>Save and Finish</strong>。</p>
+</li>
+<li>
+<p>当 <strong>Jenkins is ready</strong> 页面出现, 点击 <strong>Start using Jenkins</strong>。<br>
+<strong>Notes:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>该页面可能表明 <strong>Jenkins is almost ready!</strong> 如果相反, 点击
+<strong>Restart</strong>.</p>
+</li>
+<li>
+<p>如果该页面在一分钟后没有自动刷新, 使用你的web浏览器手动刷新。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>如果需要,登录 Jenkins ， 你就可以开始使用 Jenkins了!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="停止和重启-jenkins"><a class="anchor" href="#停止和重启-jenkins"></a>停止和重启 Jenkins</h4>
+<div class="paragraph">
+<p>在本教程的其余部分, 你可以通过在终端/命令提示窗口输入 <code>Ctrl-C`停止 Jenkins/Blue Ocean
+Docker 容器，你可以从中运行&lt;&lt;run-jenkins-in-docker,上面&gt;&gt;的 `docker run ...</code> 命令。</p>
+</div>
+<div class="paragraph">
+<p>要重启Jenkins/Blue Ocean Docker 容器:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在上面的 <a href="#on-macos-and-linux">macOS,Linux</a> 或 <a href="#on-windows">Windows</a>上运行相同的 <code>docker run ...</code> 命令 。<br>
+<strong>Note:</strong> 如果有更新的话，该进程会更新 <code>jenkinsci/blueocean</code> Docker 镜像。</p>
+</li>
+<li>
+<p>浏览`http://localhost:8080`。</p>
+</li>
+<li>
+<p>等待直到登录页面出现并登陆。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fork-sample-repository"><a class="anchor" href="#fork-sample-repository"></a>Fork GitHub上的示例仓库</h3>
+<div class="paragraph">
+<p>Fork GitHub上的示例 "Welcome to React" Node.js 和 React 应用到你自己的
+GitHub 账户 。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>确保你有 GitHub 账户。 如果没有, 在 <a href="https://github.com/">GitHub
+网站</a>注册一个免费账号。</p>
+</li>
+<li>
+<p>在GitHub Fork
+ <a href="https://github.com/jenkins-docs/creating-a-pipeline-in-blue-ocean"><code>creating-a-pipeline-in-blue-ocean</code></a>
+  到本地的 GitHub 账号。 在这个过程中如果需要帮助,
+请参考GitHub网站的 <a href="https://help.github.com/articles/fork-a-repo/">Fork A Repo</a>
+ 文档 了解更多信息。<br>
+ <strong>Note:</strong> 这是不同于<a href="../build-a-node-js-and-react-app-with-npm">使用npm构建 Node.js 和 React 应用程序
+ </a> 教程的另一个仓库。
+ 尽管这些仓库包含相同的应用程序代码, 但请确保在继续之前正确的fork 和使用 。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="在blue-ocean创建你的流水线项目"><a class="anchor" href="#在blue-ocean创建你的流水线项目"></a>在Blue Ocean创建你的流水线项目</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>回到Jenkins并进入Blue Ocean 界面。要做到这一点, 你应该:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>浏览 <code>http://localhost:8080/blue</code> 并登陆<br>
+或</p>
+</li>
+<li>
+<p>已浏览 `http://localhost:8080/`且登录后在左侧点击 <strong>Open
+Blue Ocean</strong> 。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>在Blue Ocean界面中心的 <strong>Welcome to Jenkins</strong> ,
+点击 <strong>Create a new Pipeline</strong> 来启动流水线创建向导。<br>
+<strong>Note:</strong> 如果你没有看到这个框, 点击右上方的 <strong>New Pipeline</strong> 。</p>
+</li>
+<li>
+<p>在 <strong>Where do you store your code?</strong>, 点击 <strong>GitHub</strong>。</p>
+</li>
+<li>
+<p>在 <strong>Connect to GitHub</strong>, 点击 <strong>Create an access key here</strong>。这将在一个新的浏览器选项卡中打开 GitHub。<br>
+<strong>Note:</strong> 如果你之前配置了 Blue Ocean，使用个人的访问令牌连接到GitHub, then Blue Ocean 将直接带你到 <a href="#choose-github-account">below</a>的第9步。</p>
+</li>
+<li>
+<p>在新的选项卡中, 登录到 GitHub 账户 (如果需要) 并进入
+ GitHub的 <strong>New Personal Access Token</strong> 页面, 为你的 GitHub 访问令牌 (e.g. <code>Blue Ocean</code>)指定一个简短的 <strong>Token description</strong>
+。<br>
+ <strong>Note:</strong> 访问令牌通常是一个字母数字的字符串 ，它代表你的
+ GitHub 账户具有访问各种 GitHub 特性
+ 和区域的特权。该访问令牌将具有预选的适当权限, 该权限为Blue Ocean 需要访问你的GitHub账号并与其交互。</p>
+</li>
+<li>
+<p>向下滚动到页面的底部 (保留所有的 <strong>Select scopes</strong> 选项
+的默认设置) 并点击 <strong>Generate token</strong>。</p>
+</li>
+<li>
+<p>在生成的*Personal access tokens* 页面上, 复制新生成的访问令牌。</p>
+</li>
+<li>
+<p>回到Blue Ocean, 粘贴访问令牌到 <strong>Your GitHub access token</strong>
+域并点击 <strong>Connect</strong>。
++</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-01-connecting-to-github.png" alt="Connecting to GitHub" width="80%"></span><br>
+  <a id="choose-github-account"></a>Jenkins现在在访问你的 GitHub 账户
+  (由你的访问令牌提供).</p>
+</div>
+</li>
+<li>
+<p>在 <strong>Which organization does the repository belong
+to?</strong>, 点击你的 GitHub 账号 (你<a href="#fork-sample-repository">above</a>fork仓库的地方
+).</p>
+</li>
+<li>
+<p>在 <strong>Choose a repository</strong>, 点击fork的仓库的
+<strong>creating-a-pipeline-in-blue-ocean</strong>。</p>
+</li>
+<li>
+<p>点击 <strong>Create Pipeline</strong>.<br>
+Blue Ocean 检测到在存储库的`master` 主分支的根级别上没有 Jenkinsfile 文件 然后就帮你创建一个。 (因此,
+你要点击在页面的尾部另一个 <strong>Create Pipeline</strong> 来继续。)<br>
+<strong>Note:</strong> 在, 通过Blue Ocean创建的流水线项目实际上是 "多分支流水线"。 因此, Jenkins 在你的存储库的任何分支上至少找到一个Jenkinsfile文件。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="创建你的初始流水线"><a class="anchor" href="#创建你的初始流水线"></a>创建你的初始流水线</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在创建流水线项目之后
+(<a href="#create-your-pipeline-project-in-blue-ocean">above</a>), 在流水线编辑器中, 从右边的 <strong>Pipeline Settings*面板中的*Agent*下拉框中选择 *docker</strong>。
++</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-11-initial-pipeline-editor-page.png" alt="Initial to GitHub" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>在出现的 <strong>Image</strong> 和 <strong>Args</strong> 域中, 分别指定`node:6-alpine` 和
+<code>-p 3000:3000</code> 。<br></p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-12-agent-section.png" alt="Configuring the agent" width="50%"></span><br>
+  <strong>Note:</strong> 对这些值的解释, 请参考<a href="../build-a-node-js-and-react-app-with-npm/#create-your-initial-pipeline-as-a-jenkinsfile">&#8220;Create
+  your initial Pipeline&#8230;&#8203;&#8221; section of the Build a Node.js and React app</a>
+  教程的声明式流水线的注释 <strong>1</strong> 和 <strong>2</strong>。</p>
+</div>
+</li>
+<li>
+<p>在主流水线编辑器中, 点击 <strong>+</strong> 图标, 它会打开右侧的新阶段面板。<br>
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-13-add-build-stage.png" alt="Add <em>Build</em> stage" width="30%"></span></p>
+</li>
+<li>
+<p>在该面板中, 在 <strong>Name your stage*域中输入 <code>Build</code>，然后点击下面的
+*Add Step</strong> 按钮, 它会打开 <strong>Choose step type</strong> 面板。<br></p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-14-adding-the-build-stage.png" alt="Adding the Build stage" width="50%"></span></p>
+</div>
+</li>
+<li>
+<p>在这个面板中,点击列表顶部附近的 <strong>Shell Script</strong> (选择该步骤类型), 它打开 <strong>Build / Shell Script</strong> 面板, 在这儿你可以输入该步骤的值。
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-15-choosing-a-step-type.png" alt="Choosing a step type" width="50%"></span><br>
+  <strong>Tip:</strong> 最常用的步骤类型出现在最靠近列表顶部的地方。要想在这个列表中找到其他的步骤, 你可以使用 <strong>Find steps by name</strong> 选项筛选这个列表。</p>
+</li>
+<li>
+<p>在 <strong>Build / Shell Script</strong> 面板, 指定 <code>npm
+install</code>。<br></p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16-specifying-a-shell-step-value.png" alt="Specifying a shell step value" width="80%"></span><br>
+  <strong>Note:</strong> 对该步骤的解释, 请参考 <a href="../build-a-node-js-and-react-app-with-npm/#create-your-initial-pipeline-as-a-jenkinsfile">&#8220;Create
+  your initial Pipeline&#8230;&#8203;&#8221; section of the Build a Node.js and React app</a>
+  教程的声明式流水线的注解 <strong>4</strong> 。</p>
+</div>
+</li>
+<li>
+<p>( <em>Optional</em> ) 点击左上的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 回到主流水线编辑器。</p>
+</li>
+<li>
+<p>点击右上方的 <strong>Save</strong> 按钮 开始保存你的带有"Build" 阶段的新流水线 。</p>
+</li>
+<li>
+<p>在 <strong>Save Pipeline</strong> 对话框, 在
+<strong>Description</strong> 域输入命令信息  (比如 <code>Add initial Pipeline (Jenkinsfile)</code>)。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-18-save-pipeline-dialog-box.png" alt="Save Pipeline dialog box" width="70%"></span><br></p>
+</div>
+</li>
+<li>
+<p>保留所有其他选项, 点击 <strong>Save &amp; run</strong> ，Jenkins 就会继续构建你的流水线。</p>
+</li>
+<li>
+<p>当出现Blue Ocean 的主界面时, 点击该行来查看 Jenkins 构建你的流水线项目。+
+<strong>Note:</strong> 你可能需要几分钟来完成第一次的运行。
+在此期间, Jenkins 进行了如下动作:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>将你的流水线作为 <code>Jenkinsfile</code> 提交到仓库的唯一分支 (也就是 <code>master</code>)。</p>
+</li>
+<li>
+<p>最初让项目在代理上排队构建。</p>
+</li>
+<li>
+<p>下载 Node Docker 镜像并在Docker的一个容器上运行。</p>
+</li>
+<li>
+<p>在Node容器中执行 <code>Build</code> 阶段 (定义在 <code>Jenkinsfile</code>)。(在此期间, <code>npm</code> 下载了一些需要的依赖来运行你的Node.js 和 React 应用程序, 他最终被保存在
+本地的Jenkins主目录的 <code>node_modules</code> 目录中).</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-19-initial-pipeline-downloading-npm-dependencies.png" alt="Downloading <em>npm</em> dependencies" width="100%"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>如果Jenkins成功构建了你的应用程序，Blue Ocean 界面会变成绿色。</p>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-19a-initial-pipeline-runs-successfully.png" alt="Initial Pipeline runs successfully" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>点击右上方的 <strong>X</strong> 回到 Blue Ocean 的主界面。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-19b-main-blue-ocean-interface.png" alt="Main Blue Ocean interface" width="100%"></span><br>
+  <strong>Note:</strong> 再继续之前, 你可以检查到Jenkins已为你在你fork的GitHub仓库创建了
+  <code>Jenkinsfile</code>  (在仓库的唯一的 <code>master</code> 分支)。</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="给你的流水线添加测试阶段"><a class="anchor" href="#给你的流水线添加测试阶段"></a>给你的流水线添加测试阶段</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在Blue Ocean 界面, 点击右上方的 <strong>Branches</strong> 访问你的仓库的分支页面, 在这儿你可以访问 <code>master</code>
+分支。+</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-21-repository-branches-page.png" alt="Repository branches page" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>点击 <code>master</code> 分支的 "Edit Pipeline" 图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-21a-edit-pipeline-on-branch.png" alt="Edit Pipeline on branch" width="3%"></span>
+打开该分支的流水线编辑器。<br></p>
+</li>
+<li>
+<p>在主流水线编辑器中, 点击在<a href="#create-your-initial-pipeline">above</a>创建的*Build*阶段的右侧的 <strong>+</strong> 图标，打开右侧的新阶段面板。<br>
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-22-add-test-stage.png" alt="Add <em>Test</em> stage" width="45%"></span></p>
+</li>
+<li>
+<p>在这个面板中, 在 <strong>Name your stage*域输入 <code>Test</code> ，点击下面的
+*Add Step</strong> 按钮来打开 <strong>Choose step type</strong> 面板。</p>
+</li>
+<li>
+<p>在这个面板中, 点击列表顶部附近的 <strong>Shell Script</strong>。</p>
+</li>
+<li>
+<p>在生成的 <strong>Test / Shell Script</strong> 面板, 指定
+<code>./jenkins/scripts/test.sh</code> ，然后点击左上方的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 返回到流水线阶段编辑器。<br></p>
+</li>
+<li>
+<p>在面板的右下方, 点击 <strong>Settings</strong> 以显示面板的这一部分。</p>
+</li>
+<li>
+<p>点击*Environment* 标题右边的 <strong>+</strong> 图标  (你将配置一个环境变量)。</p>
+</li>
+<li>
+<p>在出现的 <strong>Name</strong> 和 <strong>Value</strong> 域中, 分别指定 <code>CI</code> and <code>true</code>。+
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-23-environment-directive.png" alt="Environment directive" width="50%"></span><br>
+  <strong>Note:</strong> 对该指令以及它的步骤的解释, 请参考<a href="../build-a-node-js-and-react-app-with-npm/#add-a-test-stage-to-your-pipeline">&#8220;Add
+  a test stage&#8230;&#8203;&#8221; section of the Build a Node.js and React app</a>
+  教程的生命是流水线的注解 <strong>1</strong> 和 <strong>3</strong>。</p>
+</li>
+<li>
+<p>( <em>Optional</em> ) 点击左上方的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 回到主流水线编辑器 。</p>
+</li>
+<li>
+<p>点击右上方的 <strong>Save</strong> 按钮开始保存你的带有新得"Test"阶段的流水线。</p>
+</li>
+<li>
+<p>在 <strong>Save Pipeline</strong> 对话框的*Description*域, 输入提交信息(比如 <code>Add 'Test' stage</code>)。</p>
+</li>
+<li>
+<p>保留所有其它选项, 点击 <strong>Save &amp; run</strong> ， Jenkins 就会构建你改进后的流水线。</p>
+</li>
+<li>
+<p>当Blue Ocean的主界面出现时, 点击 <em>top</em> 行来查看Jenkins
+构建你的流水线项目。<br>
+<strong>Note:</strong> 你会注意到在这次运行中Jenkins 不再需要下载
+Node Docker 镜像。  Jenkins 只是需要从之前下载过的Node镜像中运行一个新的容器。因此， 在接下来的时间运行你的流水线会更快些。<br>
+如果你改进后的流水巷运行成功, Blue Ocean界面应如下图所示。注意另外的"Test" 阶段。你可以点击之前的 "Build" 阶段来循环的访问这些阶段的输出。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-24-test-stage-runs-successfully-with-output.png" alt="Test stage runs successfully (with output)" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>点击右上方的 <strong>X</strong> 回到 Blue Ocean 的主界面。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="给你的流水线添加最终交付阶段"><a class="anchor" href="#给你的流水线添加最终交付阶段"></a>给你的流水线添加最终交付阶段</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在 Blue Ocean 的主界面, 点击右上方的 <strong>Branches</strong> 以访问你仓库的 <code>master</code> 分支。</p>
+</li>
+<li>
+<p>点击 <code>master</code> 分支的 "编辑流水线" 图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-21a-edit-pipeline-on-branch.png" alt="Edit Pipeline on branch" width="3%"></span>
+为该分支打开流水线编辑器。</p>
+</li>
+<li>
+<p>在主流水线编辑器中, 点击在<a href="#add-a-test-stage-to-your-pipeline">above</a>创建的*Test*阶段右侧的 <strong>+</strong> 图标来打开新阶段面板。<br>
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-31-add-deliver-stage.png" alt="Add <em>Deliver</em> stage" width="60%"></span></p>
+</li>
+<li>
+<p>在这个面板中的 <strong>Name your stage</strong> 域, 输入 <code>Deliver</code> 并点击下面的 <strong>Add Step</strong> 按钮打开 <strong>Choose step type</strong> 面板。</p>
+</li>
+<li>
+<p>在该面板中, 点击列表顶部附近的 <strong>Shell Script</strong> 。</p>
+</li>
+<li>
+<p>在生成的 <strong>Deliver / Shell Script</strong> 面板, 指定
+<code>./jenkins/scripts/deliver.sh</code> ，然后点击左上的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 回到流水线阶段编辑器。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-32-add-next-step.png" alt="Add next step" width="50%"></span><br>
+  <strong>Note:</strong> 对该步骤的解释, 请参考`deliver.sh`文件，它位于你在GitHub fork的仓库的  <code>jenkins/scripts</code> 中。</p>
+</div>
+</li>
+<li>
+<p>再次点击 <strong>Add Step</strong> 按钮。</p>
+</li>
+<li>
+<p>在 <strong>Choose step type</strong> 面板的 <strong>Find steps by name</strong>
+域输入 <code>input</code>。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-33-choosing-input-step-type.png" alt="Choosing the input step type" width="50%"></span></p>
+</div>
+</li>
+<li>
+<p>点击过滤后的 <strong>Wait for interactive input</strong> 步骤类型。</p>
+</li>
+<li>
+<p>在生成的 <strong>Deliver / Wait for interactive input</strong> 面板,在 <strong>Message</strong>
+域指定
+<code>Finished using the web site? (Click "Proceed" to continue)</code>，然后点击左上方的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 回到流水线阶段编辑器。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-34-specifying-input-step-message-value.png" alt="Specifying input step message value" width="55%"></span><br>
+  <strong>Note:</strong> 对该步骤的解释, 请参考<a href="../build-a-node-js-and-react-app-with-npm/#add-a-final-deliver-stage-to-your-pipeline">&#8220;Add
+  a final deliver stage&#8230;&#8203;&#8221; section of the Build a Node.js and React app</a>
+  教程的声明式流水线的注释 <strong>4</strong>。</p>
+</div>
+</li>
+<li>
+<p>点击 <strong>Add Step</strong> 按钮 (最后一次)。</p>
+</li>
+<li>
+<p>点击列表顶部附近的 <strong>Shell Script</strong>。</p>
+</li>
+<li>
+<p>在生成的 <strong>Deliver / Shell Script</strong> 面板, 指定
+<code>./jenkins/scripts/kill.sh</code>.<br>
+<strong>Note:</strong> 对该步骤的解释,请参考 <code>kill.sh</code> 文件，它
+位于你在GitHub上fork的仓库的 <code>jenkins/scripts</code> 中。</p>
+</li>
+<li>
+<p>( <em>Optional</em> ) 点击左上方的图标按钮
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span>回到主流水线编辑器。</p>
+</li>
+<li>
+<p>点击右上方的 <strong>Save</strong> 按钮开始保存你的带有新"Deliver" 阶段的流水线。</p>
+</li>
+<li>
+<p>在 <strong>Save Pipeline</strong> 对话框的 <strong>Description</strong> 域填写提交信息  (比如 <code>Add 'Deliver' stage</code>)。</p>
+</li>
+<li>
+<p>保留所有其它选项, 点击 <strong>Save &amp; run</strong> ，Jenkins 就会对你改进后的流水线进行构建。</p>
+</li>
+<li>
+<p>当Blue Ocean主界面出现时, 点击 _top_行来查看Jenkins
+构建你的流水线项目。+
+ 如果你改进后的流水巷线运行成功,  Blue Ocean
+ 界面应如下图所示。注意另外的 "Deliver" 阶段。 点击之前的"Test" 和 "Build" 阶段循环的访问这些阶段的输出。
+<br></p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-35-deliver-stage-pauses-for-user-input.png" alt="Deliver stage pauses for user input" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>确保你正在查看 "Deliver" 阶段 (如果必要的话点击它), 探后点击绿色的 <strong><code>./jenkins/scripts/deliver.sh</code></strong> 步骤来扩展它的内容并向下滚动直到你看到 <code>http://localhost:3000</code> 链接。
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-36-deliver-stage-opened-deliver-sh-step.png" alt="Deliver stage output only" width="100%"></span></p>
+</li>
+<li>
+<p>点击 <code>http://localhost:3000</code> 链接查看你的 Node.js 和 React
+应用程序在一个新的web浏览器选项卡中运行 (在开发模式下)。 你将会看到一个标题为*Welcome to React*的网页/站点。</p>
+</li>
+<li>
+<p>当你查看完该网页/站点时, 点击 <strong>Proceed</strong> 按钮以完成流水线的执行。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-37-deliver-stage-runs-successfully.png" alt="Deliver stage runs successfully" width="100%"></span></p>
+</div>
+</li>
+<li>
+<p>点击右上方的 <strong>X</strong> 回到Blue Ocean 的主界面，
+它以时间顺序的反序的方式列出了你的流水线运行的历史记录。</p>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-38-main-blue-ocean-interface-with-all-previous-runs-displayed.png" alt="Main Blue Ocean interface with all previous runs displayed" width="100%"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="跟踪-可选"><a class="anchor" href="#跟踪-可选"></a>跟踪 (可选)</h3>
+<div class="paragraph">
+<p>如果你检查在你fork的`creating-a-pipeline-in-blue-ocean` 仓库的根目录下的Blue Ocean生成的 <code>Jenkinsfile</code> 的内容 , 注意
+<a href="/doc/book/pipeline/syntax#environment"><code>environment</code></a>
+指令的位置。 该指令在"Test" 阶段的位置意味着环境变量
+ <code>CI</code> (它的值为`true`) 只是在"Test"阶段的范围内可用的变量。</p>
+</div>
+<div class="paragraph">
+<p>你可以在Blue Ocean中设置该指令以便于它的环境变量在整个流水线中都是可用的(和
+<a href="../build-a-node-js-and-react-app-with-npm/">使用npm构建Node.js 和 React
+应用程序</a> 教程中一样)。要做到这一点:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>从Blue Ocean的主界面, 点击右上方的 *Branches*来访问仓库的 <code>master</code> 分支。</p>
+</li>
+<li>
+<p>点击 <code>master</code> 分支的"编辑流水线" 图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-21a-edit-pipeline-on-branch.png" alt="Edit Pipeline on branch" width="3%"></span>为该分支打开流水线编辑器。</p>
+</li>
+<li>
+<p>在主流水线编辑器中, 点击 你在 <a href="#add-a-test-stage-to-your-pipeline">above</a>创建的*Test* 阶段
+开始编辑它。</p>
+</li>
+<li>
+<p>在右侧的阶段面板中, 点击 <strong>Settings</strong> 来显示面板的这一部分。</p>
+</li>
+<li>
+<p>点击 `CI`环境变量(你之前创建的)右边的减 (<strong>-</strong>) 图标来删除它。</p>
+</li>
+<li>
+<p>点击左上的箭头图标
+<span class="image"><img src="../../book/resources/tutorials/pipeline-in-blueocean-16a-return-from-step-icon.png" alt="Return from step icon" width="3%"></span> 返回主流水线编辑器。</p>
+</li>
+<li>
+<p>在 <strong>Pipeline Settings</strong> 面板,点击*Environment*标题右边的 <strong>+</strong> 图标
+(你将为此配置一个 <em>global</em> 环境指令)。</p>
+</li>
+<li>
+<p>在出现的 <strong>Name</strong> 和 <strong>Value</strong> 域中, 分别指定 <code>CI</code> 和 <code>true</code>。</p>
+</li>
+<li>
+<p>点击右上的*Save* 按钮开始保存你的迁移了环境指令的流水线。</p>
+</li>
+<li>
+<p>在*Save Pipeline* 对话框的*Description*域指定提交消息(比如 <code>Make environment directive global</code>)。</p>
+</li>
+<li>
+<p>保留所有的其他设置, 点击 <strong>Save &amp; run</strong> ，Jenkins 继续去构建你的改进后的流水线。</p>
+</li>
+<li>
+<p>当出现Blue Ocean 的主界面时, 点击 <em>top</em> 行来查看Jenkins
+构建你的流水线项目。<br>
+ 你应该看到与当你添加最终交付阶段(<a href="#add-a-final-deliver-stage-to-your-pipeline">above</a>)完成后相同的构建工程。
+ 然而, 当你再次检查 <code>Jenkinsfile</code> , 你会注意到
+ <code>environment</code> 指令是 <code>agent</code> 部分的兄弟。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="结束语"><a class="anchor" href="#结束语"></a>结束语</h3>
+<div class="paragraph">
+<p>做得好！您刚刚使用Jenkins的Blue Ocean特性以及npm构建了一个简单的Node.js 和React应用程序！</p>
+</div>
+<div class="paragraph">
+<p>您在上面创建的 "Build", "Test" 和 "Deliver" 阶段是在Jenkins中使用技术栈构建其他应用程序的基础，包括更复杂的应用程序以及将多个技术栈组合在一起的应用程序。</p>
+</div>
+<div class="paragraph">
+<p>由于Jenkins具有极高的可扩展性，因此可以对其进行修改和配置，以处理构建协调和自动化的几乎任何方面。</p>
+</div>
+<div class="paragraph">
+<p>要详细了解Jenkins可以做什么，请查看：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/tutorials">教程概览</a> 页面中的其他介绍教程。</p>
+</li>
+<li>
+<p><a href="/doc/book">用户手册</a> 使用Jenkins的更多细节，例如 <a href="/doc/book/pipeline">Pipelines</a> (尤其是 <a href="/doc/book/pipeline/syntax">Pipeline 语法</a>)
+和 <a href="/doc/book/blueocean">Blue Ocean</a> 界面。</p>
+</li>
+<li>
+<p><a href="/node">Jenkins blog</a> 资讯，其他教程和更新。</p>
+</li>
+</ul>
+</div>
+<hr>
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/tutorials/create-a-pipeline-in-blue-ocean.adoc" title="在 GitHub 上编辑 /doc/tutorials/create-a-pipeline-in-blue-ocean.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/tutorials/create-a-pipeline-in-blue-ocean.adoc" title="在 GitHub 上查看 /doc/tutorials/create-a-pipeline-in-blue-ocean.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+安装Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="安装Jenkins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="安装Jenkins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="安装Jenkins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/installing/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="安装Jenkins" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="active">安装Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../getting-started">
+⇐ 用户手册概述
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="index doc-page-link" href="../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row"></div>
+<a class="next doc-page-link" href="../using">
+使用 Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+安装Jenkins
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#系统要求">系统要求</a></li>
+<li><a href="#安装平台">安装平台</a>
+<ul class="sectlevel2">
+<li><a href="#docker">Docker</a>
+<ul class="sectlevel3">
+<li><a href="#安装docker">安装Docker</a></li>
+<li><a href="#在docker中下载并运行jenkins">在Docker中下载并运行Jenkins</a>
+<ul class="sectlevel4">
+<li><a href="#在macos和linux上">在macOS和Linux上</a></li>
+<li><a href="#在windows上">在Windows上</a></li>
+</ul>
+</li>
+<li><a href="#访问jenkins-blue-ocean-docker容器">访问Jenkins / Blue Ocean Docker容器</a></li>
+<li><a href="#通过docker日志访问jenkins控制台日志">通过Docker日志访问Jenkins控制台日志</a></li>
+<li><a href="#访问jenkins主目录">访问Jenkins主目录</a></li>
+</ul>
+</li>
+<li><a href="#war文件">WAR文件</a></li>
+<li><a href="#苹果系统">苹果系统</a></li>
+<li><a href="#linux">Linux</a>
+<ul class="sectlevel3">
+<li><a href="#debianubuntu">Debian/Ubuntu</a></li>
+</ul>
+</li>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#其他操作系统">其他操作系统</a>
+<ul class="sectlevel3">
+<li><a href="#openindiana-hipster">OpenIndiana Hipster</a></li>
+<li><a href="#solaris-omnios-smartos-and-other-siblings">Solaris, OmniOS, SmartOS, and other siblings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#setup-wizard">安装后设置向导</a>
+<ul class="sectlevel2">
+<li><a href="#解锁-jenkins">解锁 Jenkins</a></li>
+<li><a href="#自定义jenkins插件">自定义jenkins插件</a></li>
+<li><a href="#创建第一个管理员用户">创建第一个管理员用户</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节的步骤适用于单个/本地机器上的Jenkins新安装。</p>
+</div>
+<div class="paragraph">
+<p>Jenkins通常作为一个独立的应用程序在其自己的流程中运行，
+内置<a href="https://stackoverflow.com/questions/7213541/what-is-java-servlet">Java
+                                 servlet</a> 容器/应用程序服务器（<a href="http://www.eclipse.org/jetty/">Jetty</a>）。</p>
+</div>
+<div class="paragraph">
+<p>Jenkins也可以运行在不同的Java servlet容器(（如<a href="http://tomcat.apache.org/">Apache Tomcat</a>
+或 <a href="https://javaee.github.io/glassfish/">GlassFish</a>）)中作为servlet运行.但是设置这些类型的安装的说明超出了本页的范围</p>
+</div>
+<div class="paragraph">
+<p>*注意:*尽管此页面重点关注Jenkins的本地安装，但此内容也可用于帮助在生产环境中设置Jenkins。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="系统要求"><a class="anchor" href="#系统要求"></a>系统要求</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>最低推荐配置:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>256MB可用内存</p>
+</li>
+<li>
+<p>1GB可用磁盘空间(作为一个<a href="#docker">Docker</a>容器运行jenkins的话推荐10GB)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>为小团队推荐的硬件配置:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1GB+可用内存</p>
+</li>
+<li>
+<p>50 GB+ 可用磁盘空间</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>软件配置:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java 8&#8212;&#8203;无论是Java运行时环境（JRE）还是Java开发工具包（JDK）都可以。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>注意:</strong> 如果将Jenkins作为Docker 容器运行，这不是必需的</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="安装平台"><a class="anchor" href="#安装平台"></a>安装平台</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>本节介绍如何在不同的平台和操作系统上安装/运行Jenkins。</p>
+</div>
+<div class="sect2">
+<h3 id="docker"><a class="anchor" href="#docker"></a>Docker</h3>
+<div class="paragraph">
+<p><a href="https://docs.docker.com/engine/docker-overview/">Docker</a>是一个在称为“容器”（或Docker容器）的孤立环境中可运行应用程序的平台。
+像Jenkins这样的应用程序可以作为只读的“镜像”（或Docker镜像）下载，
+每个镜像都作为容器在Docker中运行。Docker容器实际上是Docker镜像的“运行实例”。
+从这个角度来看，镜像永久存储（只要镜像更新发布），而容器暂时存储。
+在Docker文档的入门指南，<a href="https://docs.docker.com/get-started/">Getting Started, Part 1: Orientation
+               and setup</a>页面中阅读有关这些概念的更多信息 。</p>
+</div>
+<div class="paragraph">
+<p>Docker的基础平台和容器设计意味着可以在任何支持的操作系统（macOS，Linux和Windows）
+或云服务（AWS和Azure）上运行单个Docker镜像（对于任何给定的应用程序，如Jenkins）。</p>
+</div>
+<div class="sect3">
+<h4 id="安装docker"><a class="anchor" href="#安装docker"></a>安装Docker</h4>
+<div class="paragraph">
+<p>要在您的操作系统上安装Docker，请访问 <a href="https://store.docker.com/search?type=edition&amp;offering=community">Docker
+                      store</a>网站并单击适用于您的操作系统或云服务的*Docker Community Edition*框。
+                      按照其网站上的安装说明进行操作。</p>
+</div>
+<div class="paragraph">
+<p>Jenkins也可以在Docker企业版上运行，您可以通过 Docker商店网站上的*Docker EE*访问它。</p>
+</div>
+<div class="paragraph">
+<p>[ CAUTION]</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>如果您要在基于Linux的操作系统上安装Docker，请确保配置Docker，以便它可以作为非root用户进行管理。
+在Docker的<a href="https://docs.docker.com/engine/installation/linux/linux-postinstall/">Post-installation
+        steps for Linux</a>网页中了解更多关于它 的文档。
+        如何将Docker配置为默认启动的方式也可在此文档中查找。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="在docker中下载并运行jenkins"><a class="anchor" href="#在docker中下载并运行jenkins"></a>在Docker中下载并运行Jenkins</h4>
+<div class="paragraph">
+<p>几个可用的Jenkins Docker镜像.</p>
+</div>
+<div class="paragraph">
+<p>建议使用的Docker映像是<a href="https://hub.docker.com/r/jenkinsci/blueocean/"><code>jenkinsci/blueocean</code> image</a>(来自 the <a href="https://hub.docker.com/">Docker Hub repository</a>)。
+该镜像包含当前的<a href="/download">长期支持 (LTS) 的Jenkins版本</a> （可以投入使用）
+，捆绑了所有Blue Ocean插件和功能。这意味着你不需要单独安装Blue Ocean插件。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>jenkinsci/blueocean每次发布Blue Ocean新版本时，都会发布新镜像。您可以在<a href="https://hub.docker.com/r/jenkinsci/blueocean/tags/">标签</a>
+ page页上看到以前发布的镜像版本列表 。</p>
+</div>
+<div class="paragraph">
+<p>您还可以使用其他Jenkins Docker镜像（在Docker Hub上可通过<a href="https://hub.docker.com/r/jenkins/jenkins/"><code>jenkins/jenkins</code></a>获取）。
+但是，这些不会随Blue Ocean的发布而提供，需要通过
+Jenkins中的<a href="../managing"><strong>Manage Jenkins</strong></a> &gt; <a href="../managing/plugins"><strong>Manage Plugins</strong></a>页面进行安装。
+在<a href="../blueocean/getting-started">Blue Ocean入门</a>中了解更多信息。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="在macos和linux上"><a class="anchor" href="#在macos和linux上"></a>在macOS和Linux上</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>打开一个终端窗口。</p>
+</li>
+<li>
+<p>下载 <code>jenkinsci/blueocean</code> 镜像并使用以下docker run 命令将其作为Docker中的容器运行 ：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker run \
+  -u root \
+  --rm \  <i class="conum" data-value="1"></i><b>(1)</b>
+  -d \ <i class="conum" data-value="2"></i><b>(2)</b>
+  -p 8080:8080 \ <i class="conum" data-value="3"></i><b>(3)</b>
+  -p 50000:50000 \ <i class="conum" data-value="4"></i><b>(4)</b>
+  -v jenkins-data:/var/jenkins_home \ <i class="conum" data-value="5"></i><b>(5)</b>
+  -v /var/run/docker.sock:/var/run/docker.sock \ <i class="conum" data-value="6"></i><b>(6)</b>
+  jenkinsci/blueocean <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>（可选） <code>jenkinsci/blueocean</code> 关闭时自动删除Docker容器（下图为实例）。如果您需要退出Jenkins，这可以保持整洁。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>（可选）<code>jenkinsci/blueocean</code> 在后台运行容器（即“分离”模式）并输出容器ID。如果您不指定此选项，
+则在终端窗口中输出正在运行的此容器的Docker日志。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>映射（例如“发布”）<code>jenkinsci/blueocean</code> 容器的端口8080到主机上的端口8080。
+第一个数字代表主机上的端口，而最后一个代表容器的端口。因此，如果您为此选项指定 <code>-p
+                                       49000:8080</code> ，您将通过端口49000访问主机上的Jenkins。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>（可选）将 <code>jenkinsci/blueocean</code> 容器的端口50000 映射到主机上的端口50000。
+如果您在其他机器上设置了一个或多个基于JNLP的Jenkins代理程序，而这些代理程序又与 <code>jenkinsci/blueocean</code> 容器交互（充当“主”Jenkins服务器，或者简称为“Jenkins主”），
+则这是必需的。默认情况下，基于JNLP的Jenkins代理通过TCP端口50000与Jenkins主站进行通信。
+您可以通过“ 配置全局安全性” 页面更改Jenkins主服务器上的端口号。如果您要将您的Jenkins主机的JNLP代理端口的TCP端口 值更改为51000（例如），那么您需要重新运行Jenkins（通过此 docker run &#8230;&#8203;命令）并指定此“发布”选项 -p 52000:51000，其中最后一个值与Jenkins master上的这个更改值相匹配，第一个值是Jenkins主机的主机上的端口号，
+通过它，基于JNLP的Jenkins代理与Jenkins主机进行通信 - 例如52000。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>（可选，但强烈建议）映射在容器中的`/var/jenkins_home` 目录到具有名字 <code>jenkins-data</code>
+   的<a href="https://docs.docker.com/engine/admin/volumes/volumes/">volume</a>。
+   如果这个卷不存在，那么这个 <code>docker run</code> 命令会自动为你创建卷。
+   如果您希望每次重新启动Jenkins（通过此 <code>docker run ...</code> 命令）时保持Jenkins状态，则此选项是必需的 。
+   如果你没有指定这个选项，那么在每次重新启动后，Jenkins将有效地重置为新的实例。<br>
+<strong>注意:</strong>
+所述的 <code>jenkins-data</code> 卷也可以 <a href="https://docs.docker.com/engine/reference/commandline/volume_create/"><code>docker
+                                     volume create</code></a>命令创建：
+                                     <code>docker volume create jenkins-data</code>
+                                     代替映射 <code>/var/jenkins_home</code> 目录转换为Docker卷，还
+                                     可以将此目录映射到计算机本地文件系统上的目录。
+                                     例如，指定该选项 <code>-v $HOME/jenkins:/var/jenkins_home</code> 会将容器的 <code>/var/jenkins_home</code> 目录映射 到 本地计算机上目录中的  <code>jenkins</code> 子目录，
+                                     该$HOME目录通常是 <code>/Users/&lt;your-username&gt;/jenkins</code> 或`/home/&lt;your-username&gt;/jenkins` 。</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>（可选 <code>/var/run/docker.sock</code> 表示Docker守护程序通过其监听的基于Unix的套接字。
+该映射允许 <code>jenkinsci/blueocean</code> 容器与Docker守护进程通信，
+如果 <code>jenkinsci/blueocean</code> 容器需要实例化其他Docker容器，则该守护进程是必需的。
+如果运行声明式管道，其语法包含<a href="#pipeline/syntax#agent"><code>agent</code></a>部分用 <code>docker</code>
+<div class="ulist">
+<ul>
+<li>
+<p>例如， <code>agent { docker { ... } }</code> 此选项是必需的。
+在<a href="#pipeline/syntax#">Pipeline Syntax</a> 页面上阅读更多关于这个的信息 。</p>
+</li>
+</ul>
+</div></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td><code>jenkinsci/blueocean</code> Docker镜像本身。如果此镜像尚未下载，则此 <code>docker run</code> 命令
+    将自动为您下载镜像。此外，如果自上次运行此命令后发布了此镜像的任何更新，
+    则再次运行此命令将自动为您下载这些已发布的镜像更新。
+    注意：这个Docker镜像也可以使用以下
+    <a href="https://docs.docker.com/engine/reference/commandline/pull/"><code>docker pull</code></a>命令独立下载（或更新） ： <code>docker pull jenkinsci/blueocean</code>
+<strong>注意:</strong> 如果复制并粘贴上面的命令片段不起作用，请尝试在此处复制并粘贴此无注释版本：
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkinsci/blueocean</code></pre>
+</div>
+</div></td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>继续按照<a href="#setup-wizard">Post-installation setup wizard</a>安装。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="在windows上"><a class="anchor" href="#在windows上"></a>在Windows上</h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>打开命令提示符窗口。</p>
+</li>
+<li>
+<p>下载 <code>jenkinsci/blueocean</code> 镜像并使用以下
+<a href="https://docs.docker.com/engine/reference/commandline/run/"><code>docker run</code></a>
+命令将其作为Docker中的容器运行 ：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>docker run ^
+  -u root ^
+  --rm ^
+  -d ^
+  -p 8080:8080 ^
+  -p 50000:50000 ^
+  -v jenkins-data:/var/jenkins_home ^
+  -v /var/run/docker.sock:/var/run/docker.sock ^
+  jenkinsci/blueocean</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>有关这些选项的解释，请参阅上面的<a href="#on-macos-and-linux">在macOS和Linux上</a>。</p>
+</div>
+</li>
+<li>
+<p>继续按照<a href="#setup-wizard">Post-installation setup wizard</a>安装。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="访问jenkins-blue-ocean-docker容器"><a class="anchor" href="#访问jenkins-blue-ocean-docker容器"></a>访问Jenkins / Blue Ocean Docker容器</h4>
+<div class="paragraph">
+<p>如果您对Docker有一些经验，并且您希望或需要 <code>jenkinsci/blueocean</code> 通过
+命令提示符通过终端/命令提示符访问<a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a>
+，则可以添加一个选项 <code>--name jenkins-blueocean</code>（如
+                                       <a href="https://docs.docker.com/engine/reference/commandline/run/"><code>docker run</code></a>
+                                       所述）,这会为 <code>jenkinsci/blueocean</code>
+                                       容器命名为 "jenkins-blueocean" 。</p>
+</div>
+<div class="paragraph">
+<p>这意味着你可以使用如下命令访问容器（通过单独的终端/命令提示符窗口） ：</p>
+</div>
+<div class="paragraph">
+<p><code>docker exec -it jenkins-blueocean bash</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="通过docker日志访问jenkins控制台日志"><a class="anchor" href="#通过docker日志访问jenkins控制台日志"></a>通过Docker日志访问Jenkins控制台日志</h4>
+<div class="paragraph">
+<p>您可能需要访问Jenkins控制台日志。例如，在<a href="#unlocking-jenkins">解锁 Jenkins</a>
+作为安装后设置向导的一部分时。</p>
+</div>
+<div class="paragraph">
+<p>如果没有指定分离模式选项 <code>-d</code> 与 <code>docker run ...</code> 命令以上，
+那么Jenkins控制台日志是通过终端方便/命令从中运行此Docker命令提示符窗口。</p>
+</div>
+<div class="paragraph">
+<p>否则，您可以通过访问Jenkins控制台日志
+<a href="https://docs.docker.com/engine/reference/commandline/logs/">Docker logs</a>中
+的 <code>jenkinsci/blueocean</code> ，使用以下命令：</p>
+</div>
+<div class="paragraph">
+<p><code>docker logs &lt;docker-container-name&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Your <code>&lt;docker-container-name&gt;</code> can be obtained using the
+<a href="https://docs.docker.com/engine/reference/commandline/ps/"><code>docker ps</code></a>
+command. If you specified the<br>
+<code>--name jenkins-blueocean</code> option in the <code>docker run ...</code> command above (see
+also
+<a href="#accessing-the-jenkins-blue-ocean-docker-container">Accessing the Jenkins/Blue
+Ocean Docker container</a>), you can simply use the <code>docker logs</code> command:</p>
+</div>
+<div class="paragraph">
+<p>您的  <code>&lt;docker-container-name&gt;</code> 可以使用<a href="https://docs.docker.com/engine/reference/commandline/ps/"><code>docker ps</code></a>
+命令获得 。如果您在上述 <code>docker run ...`命令中指定了 `--name jenkins-blueocean</code>
+参数(请参阅<a href="#accessing-the-jenkins-blue-ocean-docker-container">访问Jenkins/Blue Ocean Docker容器</a>)
+，则只需使用以下 <code>docker logs</code> 命令：</p>
+</div>
+<div class="paragraph">
+<p><code>docker logs jenkins-blueocean</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="访问jenkins主目录"><a class="anchor" href="#访问jenkins主目录"></a>访问Jenkins主目录</h4>
+<div class="paragraph">
+<p>例如，您可能需要访问Jenkins主目录，以查看 <code>workspace</code> 子目录中Jenkins版本的详细信息。</p>
+</div>
+<div class="paragraph">
+<p>如果您将Jenkins主目录（ <code>/var/jenkins_home</code> ）映射到您计算机
+本地文件系统上的一个目录（如上面的 <code>docker run ...</code> 命令 ），
+那么您可以通过计算机常用的终端/命令提示符访问此目录的内容。</p>
+</div>
+<div class="paragraph">
+<p>否则，如果您在 <code>docker run ...</code> 命令里指定了 <code>-v jenkins-data:/var/jenkins_home</code> 选项，
+则可以 <code>jenkinsci/blueocean</code> 使用以下 <a href="https://docs.docker.com/engine/reference/commandline/exec/"><code>docker exec</code></a>
+ 命令通过容器的终端/命令提示符访问Jenkins主目录的内容：</p>
+</div>
+<div class="paragraph">
+<p><code>docker exec -it &lt;docker-container-name&gt; bash</code></p>
+</div>
+<div class="paragraph">
+<p>如<a href="#accessing-the-jenkins-console-log-through-docker-logs">上面</a>所提到，
+您的 <code>&lt;docker-container-name&gt;</code> 可以使用来获得 <a href="https://docs.docker.com/engine/reference/commandline/ps/"><code>docker ps</code></a>
+ 命令。如果您在  <code>docker run ...</code> 中指定了 <code>--name jenkins-blueocean</code> 该选项(也可参照
+ <a href="#accessing-the-jenkins-blue-ocean-docker-container">访问Jenkins / Blue Ocean Docker容器</a>))，
+ 则只需使用以下 <code>docker exec</code> 命令：</p>
+</div>
+<div class="paragraph">
+<p><code>docker exec -it jenkins-blueocean bash</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="war文件"><a class="anchor" href="#war文件"></a>WAR文件</h3>
+<div class="paragraph">
+<p>Jenkins的Web应用程序ARchive（WAR）文件版本可以安装在任何支持Java的操作系统或平台上。</p>
+</div>
+<div class="paragraph">
+<p><strong>要下载并运行Jenkins的WAR文件版本，请执行以下操作:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将<a href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">最新的稳定Jenkins WAR包</a>
+下载到您计算机上的相应目录。</p>
+</li>
+<li>
+<p>在下载的目录内打开一个终端/命令提示符窗口到。</p>
+</li>
+<li>
+<p>运行命令java -jar jenkins.war</p>
+</li>
+<li>
+<p>浏览http://localhost:8080并等到*Unlock Jenkins*页面出现。</p>
+</li>
+<li>
+<p>继续使用<a href="#setup-wizard">Post-installation setup wizard</a>后面步骤设置向导。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>将<a href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">最新的稳定Jenkins WAR包</a>下载到您计算机上的相应目录。</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>不像在Docker中下载和运行有Blue Ocean的Jenkins，这个过程不会自动安装Blue Ocean功能，
+这将分别需要在jenkins上通过 <a href="../../book/managing"><strong>Manage Jenkins</strong></a> &gt; <a href="../../book/managing/plugins/"><strong>Manage Plugins</strong></a>安装。
+在<a href="../../book/blueocean/getting-started/">Getting started with Blue Ocean</a>有关于安装Blue Ocean的详细信息 。.</p>
+</li>
+<li>
+<p>您可以通过`--httpPort`在运行`java -jar jenkins.war`命令时指定选项来更改端口。例如，要通过端口9090访问Jenkins，请使用以下命令运行Jenkins：
+<code>java -jar jenkins.war --httpPort=9090</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="苹果系统"><a class="anchor" href="#苹果系统"></a>苹果系统</h3>
+<div class="paragraph">
+<p>从网站安装的话使用这个包:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mirrors.jenkins.io/osx/latest">Download the latest package</a></p>
+</li>
+<li>
+<p>打开包装并按照说明操作</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins 也可以使用`brew`以下方式安装：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>安装最新版本</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">brew install jenkins</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>安装 LTS 版本</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">brew install jenkins-lts</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="linux"><a class="anchor" href="#linux"></a>Linux</h3>
+<div class="sect3">
+<h4 id="debianubuntu"><a class="anchor" href="#debianubuntu"></a>Debian/Ubuntu</h4>
+<div class="paragraph">
+<p>在基于Debian的发行版（如Ubuntu）上，您可通过`apt`安装Jenkins</p>
+</div>
+<div class="paragraph">
+<p>在<a href="https://pkg.jenkins.io/debian/">an apt repository</a>可获得最新版本，较老但稳定的LTS版本在<a href="https://pkg.jenkins.io/debian-stable/">this apt repository</a>这里可获得</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>安装这个软件包将会：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>将Jenkins设置为启动时启动的守护进程。查看`/etc/init.d/jenkins`获取更多细节</p>
+</li>
+<li>
+<p>创建一个'<code>jenkins</code>'用户来运行此服务</p>
+</li>
+<li>
+<p>直接将控制台日志输出到文件`/var/log/jenkins/jenkins.log`。如果您正在解决Jenkins问题，请检查此文件</p>
+</li>
+<li>
+<p>/etc/default/jenkins`为启动填充配置参数，例如JENKINS_HOME</p>
+</li>
+<li>
+<p>将Jenkins设置为在端口8080上进行监听。使用浏览器访问此端口以开始配置</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>如果你的`/etc/init.d/jenkins`文件无法启动Jenkins，编辑`/etc/default/jenkins`，
+修改 <code>----HTTP_PORT=8080----`为</code>----HTTP_PORT=8081----`
+ 在这里，“8081”也可被换为其他可用端口。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="windows"><a class="anchor" href="#windows"></a>Windows</h3>
+<div class="paragraph">
+<p>从网站安装的话, 请使用安装程序：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mirrors.jenkins.io/windows/latest">Download the latest package</a></p>
+</li>
+<li>
+<p>打开包装并按照说明操作</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="其他操作系统"><a class="anchor" href="#其他操作系统"></a>其他操作系统</h3>
+<div class="sect3">
+<h4 id="openindiana-hipster"><a class="anchor" href="#openindiana-hipster"></a>OpenIndiana Hipster</h4>
+<div class="paragraph">
+<p>在运行<a href="http://www.openindiana.org/">OpenIndiana Hipster</a>的系统上 ，
+可以使用<a href="https://en.wikipedia.org/wiki/Image_Packaging_System">Image Packaging
+    System</a> (IPS)将Jenkins安装在本地或全局区域中 。</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>免责声明：这个平台不是由Jenkins团队正式支持的，使用它需要您自担风险。
+本节中描述的打包和集成由OpenIndiana Hipster团队维护，捆绑通用的`jenkins.war` 到该操作环境中工作。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>对于运行每周最新的版本包作为独立服务器这种常见情景，只需执行：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">pkg install jenkins
+svcadm enable jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上面命令将会发生：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>创建一个`jenkins`用户来运行该服务并拥有其下的目录结构`/var/lib/jenkins`</p>
+</li>
+<li>
+<p>Pull the OpenJDK8 and other packages required to execute Jenkins, including
+the <code>jenkins-core-weekly</code> package with the latest <code>jenkins.war</code></p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+长期支持（LTS）的Jenkins版本目前不支持基于OpenZFS的系统，因此目前没有提供包安装
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>将Jenkins设置为SMF服务实例（<code>svc:/network/http:jenkins</code>），然后可以使用上面的`svcadm`命令启用它。</p>
+</li>
+<li>
+<p>设置Jenkins监听8080端口。</p>
+</li>
+<li>
+<p>配置log输出文件`/var/svc/log/network-http:jenkins.log`,由SMF管理.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>一旦jenkins运行，看log(<code>/var/svc/log/network-http:jenkins.log</code>)， 一般在
+`/var/lib/jenkins/home/secrets/initialAdminPassword`里可以获取jenkins初始化的管理员密码.
+ 然后进入<a href="http://localhost:8080">localhost:8080</a> to <a href="#setup-wizard">complete configuration of the
+                                                     Jenkins instance</a>来完成Jenkins实例的配置。
+Jenkins instance&gt;&gt;.</p>
+</div>
+<div class="paragraph">
+<p>要更改服务的属性（如环境变量JENKINS_HOME 或用于Jetty Web服务器的端口号），请使用`svccfg`：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">svccfg -s svc:/network/http:jenkins editprop
+svcadm refresh svc:/network/http:jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>您还可以参考`/lib/svc/manifest/network/jenkins-standalone.xml`
+获取有关当前支持的SMF服务可调参数的更多详细信息和评论。
+请注意，由packaging创建的`jenkins`用户帐户有特殊的特权，允许绑定1024以下的端口号。</p>
+</div>
+<div class="paragraph">
+<p>可用于OpenIndiana特定版本的Jenkins相关软件包的当前状态可以通过查询：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">pkg info -r '*jenkins*'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>升级包可以通过更新整个操作环境来执行`pkg update`，或者专门针对Jenkins核心软件进行更新：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">pkg update jenkins-core-weekly</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>更新软件包的过程将重新启动当前运行的Jenkins进程。
+如果确定需要更新，请确保在更新之前准备好关闭并完成所有正在运行的作业</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="solaris-omnios-smartos-and-other-siblings"><a class="anchor" href="#solaris-omnios-smartos-and-other-siblings"></a>Solaris, OmniOS, SmartOS, and other siblings</h4>
+<div class="paragraph">
+<p>一般来说，应该满足：安装Java 8和<a href="/download">download</a> jenkins.war，
+并运行它作为一个独立的进程或应用服务器，比如<a href="http://tomcat.apache.org">Apache Tomcat</a>。</p>
+</div>
+<div class="paragraph">
+<p>一些注意事项:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headless JVM and fonts: For OpenJDK builds on minimalized-footprint systems,
+there may be
+<a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+got+java.awt.headless+problem">issues
+running the headless JVM</a>, because Jenkins needs some fonts to render certain
+pages.
+Headless模式JVM和字体：为了OpenJDK构建在占用空间最小的系统上，
+请看链接<a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+got+java.awt.headless+problem">issues
+                                            running the headless JVM</a>，
+因为Jenkins需要一些字体来渲染某些页面。</p>
+</li>
+<li>
+<p>ZFS相关的JVM崩溃:当Jenkins在`SunOS`系统上运行时，它会通过使用bundled`libzfs.jar`映射从Java到主机操作系统提供的`libzfs.so`尝试加载集成高级ZFS功能。
+不幸的是，该库是为了在操作系统中构建和捆绑的二进制实用程序，同时与它一起制作，
+并不是作为一个稳定界面显示给消费者的。作为Solaris遗留的分支，
+包括ZFS以及随后的OpenZFS计划的发展，许多不同的二进制功能签名由不同的主机操作系统提供。
+当Jenkins`libzfs.jar`调用错误的签名时，整个JVM进程崩溃`jenkins.war`自从发布2.55（至今尚未在任何LTS中）以来，提出并整合了一个解决方案。
+使管理员能够配置哪些功能签名应该用于已知具有不同变体的每个功能，
+将其应用于其应用程序服务器初始化选项，然后运行和更新通用而不需要进一步的解决方法。
+有关更多详细信息，请参阅 <a href="https://github.com/kohsuke/libzfs4j">the libzfs4j Git repository</a>，
+包括尝试使用脚本并“锁定”您特定分发所需的配置（特别是如果您的内核更新带来新的不兼容`libzfs.so`）。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>另外请注意，OpenZFS计划的分支可能会在各种BSD，Linux和macOS发行版上提供ZFS。
+一旦Jenkins支持检测ZFS功能，而不是依赖于SunOS检查，则应考虑上述与Jenkins集成ZFS的注意事项。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-wizard"><a class="anchor" href="#setup-wizard"></a>安装后设置向导</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>下载安装并运行Jenkins后，即将开始进入安装向导。</p>
+</div>
+<div class="paragraph">
+<p>此安装向导会引导您完成几个快速“一次性”步骤来解锁Jenkins，
+使用插件对其进行自定义，并创建第一个可以继续访问Jenkins的管理员用户。</p>
+</div>
+<div class="sect2">
+<h3 id="解锁-jenkins"><a class="anchor" href="#解锁-jenkins"></a>解锁 Jenkins</h3>
+<div class="paragraph">
+<p>当您第一次访问新的Jenkins实例时，系统会要求您使用自动生成的密码对其进行解锁。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>浏览到 <code>http://localhost:8080</code>（或安装时为Jenkins配置的任何端口），并等待 <strong>解锁 Jenkins</strong> 页面出现。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../resources/tutorials/setup-jenkins-01-unlock-jenkins-page.jpg" alt="Unlock Jenkins page" width="100%"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>从Jenkins控制台日志输出中，复制自动生成的字母数字密码（在两组星号之间）。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph boxshadow">
+<p><span class="image"><img src="../resources/tutorials/setup-jenkins-02-copying-initial-admin-password.png" alt="Copying initial admin password" width="100%"></span><br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在 <strong>解锁Jenkins</strong> 页面上，将此 <strong>密码</strong> 粘贴到管理员密码字段中，然后单击 <strong>继续</strong> 。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Notes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果您以分离模式在Docker中运行Jenkins，则可以从Docker日志（<a href="#accessing-the-jenkins-console-log-through-docker-logs">above</a>）
+访问Jenkins控制台日志。</p>
+</li>
+<li>
+<p>Jenkins控制台日志显示可以获取密码的位置（在Jenkins主目录中）。
+必须在新Jenkins安装中的安装向导中输入此密码才能访问Jenkins的主UI。
+如果您在设置向导中跳过了后续的用户创建步骤，
+则此密码还可用作默认admininstrator帐户的密码（使用用户名“admin”）</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自定义jenkins插件"><a class="anchor" href="#自定义jenkins插件"></a>自定义jenkins插件</h3>
+<div class="paragraph">
+<p><a href="#unlocking-jenkins">解锁 Jenkins</a>之后，在 <strong>Customize Jenkins</strong> 页面内，
+您可以安装任何数量的有用插件作为您初始步骤的一部分。</p>
+</div>
+<div class="paragraph">
+<p>两个选项可以设置:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>安装建议的插件</strong> - 安装推荐的一组插件，这些插件基于最常见的用例.</p>
+</li>
+<li>
+<p><strong>选择要安装的插件</strong> - 选择安装的插件集。当你第一次访问插件选择页面时，默认选择建议的插件。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+如果您不确定需要哪些插件，请选择 <strong>安装建议的插件</strong> 。
+您可以通过Jenkins中的<a href="../../book/managing"><strong>Manage Jenkins</strong></a> &gt; <a href="../../book/managing/plugins/"><strong>Manage Plugins</strong></a>
+页面在稍后的时间点安装（或删除）其他Jenkins插件 。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>设置向导显示正在配置的Jenkins的进程以及您正在安装的所选Jenkins插件集。这个过程可能需要几分钟的时间</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="创建第一个管理员用户"><a class="anchor" href="#创建第一个管理员用户"></a>创建第一个管理员用户</h3>
+<div class="paragraph">
+<p>最后，在<a href="#customizing-jenkins-with-plugins">customizing Jenkins with
+    plugins</a>之后，Jenkins要求您创建第一个管理员用户。
+. 出现“ <strong>创建第一个管理员用户</strong> ”页面时，
+  请在各个字段中指定管理员用户的详细信息，然后单击 <strong>保存完成</strong> 。
+. 当 <strong>Jenkins准备好了</strong> 出现时，单击*开始使用 Jenkins*。</p>
+</div>
+<div class="paragraph">
+<p><strong>Notes:</strong>
+* 这个页面可能显示  <strong>Jenkins几乎准备好了!</strong> 相反，如果是这样，请单击 <strong>重启</strong> 。
+* 如果该页面在一分钟后不会自动刷新，请使用Web浏览器手动刷新页面。如果需要，请使用您刚刚创建的用户的凭据登录到Jenkins，并准备好开始使用Jenkins！</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+从这时起，Jenkins用户界面只能通过提供有效的用户名和密码凭证来访问。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../getting-started">
+⇐ 用户手册概述
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="index doc-page-link" href="../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row"></div>
+<a class="next doc-page-link" href="../using">
+使用 Jenkins ⇒
+</a>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/installing/index.adoc" title="在 GitHub 上编辑 /doc/book/installing/index.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/installing/index.adoc" title="在 GitHub 上查看 /doc/book/installing/index.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

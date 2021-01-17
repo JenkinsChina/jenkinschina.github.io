@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+规模 Pipelines
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="规模 Pipelines" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="规模 Pipelines" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="规模 Pipelines" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/pipeline/scaling-pipeline/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="规模 Pipelines" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="active">流水线</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/pipeline/getting-started" class="">流水线入门</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/jenkinsfile" class="">使用 Jenkinsfile</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/multibranch" class="">分支和pull请求</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/docker" class="">在流水线中使用Docker</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/shared-libraries" class="">扩展共享库</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/development" class="">流水线开发工具</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法</a>
+</li>
+<li>
+<a href="/doc/book/pipeline/scaling-pipeline" class="active">规模 Pipelines</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../syntax">
+⇐ 流水线语法
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../blueocean">
+Blue Ocean ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+规模 Pipelines
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#如何设置速度持久性设置">如何设置速度/持久性设置?</a></li>
+<li><a href="#更高性能的持久性设置能帮助我吗">更高性能的持久性设置能帮助我吗?</a></li>
+<li><a href="#为什么放弃持久性设置权衡">为什么放弃持久性设置"权衡?"</a></li>
+<li><a href="#使用持久性配置的配置要求">使用持久性配置的配置要求</a></li>
+<li><a href="#持久性配置是什么">持久性配置是什么?</a></li>
+<li><a href="#推荐的最佳实践和持久性配置">推荐的最佳实践和持久性配置</a></li>
+<li><a href="#其他规模建议">其他规模建议</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>流水线的主要瓶颈之一是它 <strong>FREQUENTLY</strong> 将临时数据写入磁盘，以便于运行流水线能够处理意外的Jenkins重启或系统崩溃。对于许多用户来说，这种持久性是有用，但是它的性能成本是一个问题。</p>
+</div>
+<div class="paragraph">
+<p>流水线现在包含了一些特性，通过减少写入磁盘的数据的量以及写入磁盘的频率  使用户提高耐用的性能-- 以一个小的成本。在一些特殊情况下,如果Jenkins突然关闭，用户没有获得写入数据的机会，就可能无法恢复或可视化正在运行的流水线。
+由于这些设置包括速度与持久性的权衡，他们最初是选择性加入的。 为了启用性能优化模式, 用户需要明确设置流水线的 <em>Speed/Durability Setting</em> 。  如果没有明确的选择, 流水线目前默认为 "最大持久性" 设置并像过去一样写入磁盘中。 在相同的插件版本中有一些 I/O 优化, 但好处要小得多。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="如何设置速度持久性设置"><a class="anchor" href="#如何设置速度持久性设置"></a>如何设置速度/持久性设置?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>有 3 种方式配置持久性设置:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Globally</strong>, 在 "管理Jenkins" &gt; "系统配置"下你可以选择一个全局默认 durability设置 , 标记 "流水线速度/持久性设置"。  你可以使用下面这些更具体的设置覆盖这些内容。</p>
+</li>
+<li>
+<p><strong>Per pipeline job:</strong> 在作业配置的顶部, 标记 "自定义流水线速度/持久性级别" - 它会覆盖全局设置。或者, 使用 "属性" 步骤 - 该设置将会应用到该步骤执行后的下一次运行(相同的结果)。</p>
+</li>
+<li>
+<p><strong>Per-branch for a multibranch project:</strong> 配置自定义分支属性策略 (在SCM下)并为自定义流水线速度/持久性级别添加属性。它会覆盖全局设置。 你还可以使用 "属性" 步骤来覆盖设置,但请记住，你可能需要再次运行该步骤来撤销该设置。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>持久性设置将会影响下一次适用的流水线运行, 而不是立即。 该设置将会显示在日志中。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="更高性能的持久性设置能帮助我吗"><a class="anchor" href="#更高性能的持久性设置能帮助我吗"></a>更高性能的持久性设置能帮助我吗?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>是的, 如果你的 Jenkins 实例使用 NFS,磁存储, 同时运行许多流水线, 或者显示高的 iowait.</p>
+</li>
+<li>
+<p>是的, 如果你运行带有许多步骤(超过几百个)的流水线。</p>
+</li>
+<li>
+<p>是的, 如果你的流水线存储大型文件或复杂数据到脚本的变量中, 保存这些变量在将来使用的范围内, 然后运行步骤。  这听起来很奇怪，但是发生的比你想象的要多。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>例如: 带有一个大的 XML/JSON文件的`readFile` 步骤 ,或者使用来自解析 <a href="https://jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#code-readjson-code-read-json-from-files-in-the-workspace">One of the Utility Steps</a>这样的文件的配置信息。</p>
+</li>
+<li>
+<p>另一个常见的模式是包含来自许多分支 (日志, 结果, 或统计数据)的数据的"summary" 对象。由于你将经常通过添加/附加或 <code>Map.put()</code> 操作添加它，通常这是可见的。</p>
+</li>
+<li>
+<p>数据的大数组或配置信息的 ``Map``是这种情况的另一个常见示例。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>不, 如果你的流水线花费几乎所有的时间等待shell/批处理脚本完成。这不是万能的 "go fast" 按钮!</p>
+</li>
+<li>
+<p>不, 如果流水线将大量数据写入日志(日志记录不变)。</p>
+</li>
+<li>
+<p>不, 如果你不使用流水线, 或者你的系统被其他因素加载。</p>
+</li>
+<li>
+<p>不, 如果你没有为流水线启用更高性能的模式。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="为什么放弃持久性设置权衡"><a class="anchor" href="#为什么放弃持久性设置权衡"></a>为什么放弃持久性设置"权衡?"</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Stability of Jenkins ITSELF is not changed regardless of this setting</strong> - 它只适用于流水线。最坏的情况是类似于自由构建&#8212;&#8203;运行不能持久存储数据的流水线可能无法恢复或显示在 Blue Ocean/阶段视图等，但会显示日志。这 <em>only</em> 影响到运行的流水线，而且只有当Jenkins被突然关闭，并且在它们完成之前没有优雅地关闭。</p>
+</div>
+<div class="paragraph">
+<p>*"graceful" shutdown*是Jenkins完全关闭进程的地方, 比如访问 http://[jenkins-server]/退出,  或者使用正常的服务关闭脚本(如果 Jenkins健壮)。 发送一个 SIGTERM/SIGINT 到 Jenkins会触发一个优雅的关闭。 注意：运行流水线不需要完成(你不需要use /safeExit来关闭)。</p>
+</div>
+<div class="paragraph">
+<p><strong>"dirty" shutdown</strong> 是当 Jenkins没有进行正常的关机过程时。如果进程被强制终止，就会发生这种情况。最常见的原因是使用 SIGKILL 终止 Jenkins 进程或杀死运行Jenkins的容器/VM 。只要Jenkins 进程能够恢复，，简单的停止或暂停容器/VM 不会造成这种情况。
+由于灾难性的系统操作故障（包括 Linux OOMKiller攻击Jenkins的java 进程以释放内存），脏关闭也有可能会发生。</p>
+</div>
+<div class="paragraph">
+<p><strong>Atomic writes:</strong>  <strong>except</strong> "最大持久性"之外的所有设置都避免了原子写入 --这意味着如果操作系统运行Jenkins失败， 写到磁盘的缓存数据不会被刷新， 它将会丢失。 这种情况非常少见, 容器或虚拟化操作停止操作系统或断开存储可能会造成这种情况。 通常这些数据会被很快地刷新到磁盘, 所以数据丢失的窗口是简短的。 在 Linux 上，刷新到磁盘可以通过运行&#8217;sync&#8217;强制执行。在一些汉奸的情况下，这也会导致无法加载的构建。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="使用持久性配置的配置要求"><a class="anchor" href="#使用持久性配置的配置要求"></a>使用持久性配置的配置要求</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins LTS 2.73+ 或以上版本 (或者 weekly 2.62+)</p>
+</li>
+<li>
+<p>下面的*all*流水线插件 , 至少安装指定的最低版本：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>流水线: API (workflow-api) v2.25</p>
+</li>
+<li>
+<p>流水线: Groovy (workflow-cps) v2.43</p>
+</li>
+<li>
+<p>流水线: Job (workflow-job) v2.17</p>
+</li>
+<li>
+<p>流水线: Supporting APIs (工作流支持) v2.17</p>
+</li>
+<li>
+<p>流水线: 多分支 (工作流多分支) v2.17 - 可选, 只需要为多分支流水线启动该设置。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>重启主机来使用更新的插件 - 注意: 你需要使用这些所有插件。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="持久性配置是什么"><a class="anchor" href="#持久性配置是什么"></a>持久性配置是什么?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>P性能优化模式 ("PERFORMANCE_OPTIMIZED") - <strong>Greatly</strong> 减少磁盘 I/O。 如果流水线没有完成 ，Jenkins 没有优雅地关闭, 它们可能会像上面的自由式项目一样丢失数据&#8201;&#8212;&#8201;在上面查看细节。</p>
+</li>
+<li>
+<p>最大持久性 ("MAX_SURVIVABILITY") - 像之前的流水线中所做的那样, 最慢的选项。 使用它来运行你最重要的流水线。</p>
+</li>
+<li>
+<p>不那么持久, 晒微快一些("SURVIVABLE_NONATOMIC") -每一步都写入数据，但是避免了原子写入。 这比更大耐久性模块要快, 尤其是在网络文件系统上。它带有一个额外的风险(在上面的 "为什么我放弃了: 原子写入"有详细说明)。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="推荐的最佳实践和持久性配置"><a class="anchor" href="#推荐的最佳实践和持久性配置"></a>推荐的最佳实践和持久性配置</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>对大多数流水线使用 "性能优化" 模式 ，尤其是基本的构建测试流水线或任何可以在需要时再次运行的东西。</p>
+</li>
+<li>
+<p>使用 "最大持久性" 和 "不那么持久" 的流水线模式 ，你需要你需要有保证的执行记录(auditing).  这些记录运行在每一步。</p>
+</li>
+<li>
+<p>当流水线修改关键基础设施的状态时,使用 "最大持久性" 和 "不那么持久"。比如, 用于产品部署。</p>
+</li>
+<li>
+<p>为持久性设置设置"性能优化"的全局默认值 (见上文), 然后 在特定的流水线作业或多分支流水线的分支 ("主分支" 或发布分支)中设置 "最大持久性"。</p>
+</li>
+<li>
+<p>你可以强制地让流水线暂停来保存数据。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="其他规模建议"><a class="anchor" href="#其他规模建议"></a>其他规模建议</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Whenever possible, run Jenkins with fast SSD-backed storage and not hard drives.  This can make a <em>huge</em> difference.</strong></p>
+</li>
+<li>
+<p>一般来说，将工具和作业联系起来。当使用构建代理运行一个复杂的过程时， 写一个简短的 Shell/Batch/Groovy/Python 脚本。 Good examples 包括处理数据, 与REST API交互, 和 解析/模板 大型的 XML 或 JSON 文件。  <code>sh</code> 和 <code>bat</code> 有助于调用这些步骤, 尤其是 <code>returnStdout: true</code> 返回该脚本的输出并将其保存为变量(脚本化流水线)。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>流水线 DSL 不是为任意的网络和计算任务 - 它是为CI/CD 脚本编写的。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>如果条件允许 ,使用流水线插件和脚本安全的最新版本，这些包含了定期的性能提高。</p>
+</li>
+<li>
+<p>尝试通过减少运行的步骤数量和使用更简单的 Groovy 代码来简化脚本化流水线的代码。</p>
+</li>
+<li>
+<p>如果可以的话，合并相同类型的顺序步骤, 比如通过使用 Shell步骤 来调用helper脚本而不是运行多个步骤。</p>
+</li>
+<li>
+<p>尝试通过流水线限制写入日志的数据量。如果你正在编写几MB的日志数据, 比如来自构建工具, 将它写入到外部文件, 压缩它, 并将它存档为构建组件。</p>
+</li>
+<li>
+<p>在使用超过6MB堆的Jenkins时，使用 <a href="https://jenkins.io/blog/2016/11/21/gc-tuning/">建议的垃圾收集调优选项</a> 来减少垃圾收集的暂停时间和开销。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../syntax">
+⇐ 流水线语法
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 流水线
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../../blueocean">
+Blue Ocean ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/pipeline/scaling-pipeline.adoc" title="在 GitHub 上编辑 /doc/book/pipeline/scaling-pipeline.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/pipeline/scaling-pipeline.adoc" title="在 GitHub 上查看 /doc/book/pipeline/scaling-pipeline.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

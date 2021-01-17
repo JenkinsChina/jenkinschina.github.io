@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins Upgrade Guide
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins Upgrade Guide" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Upgrade Guide" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="Jenkins Upgrade Guide" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/upgrade-guide/2.138/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="Jenkins Upgrade Guide" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="">管理Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="active">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="sect1">
+<h2 id="upgrading-to-jenkins-lts-2-138-x"><a class="anchor" href="#upgrading-to-jenkins-lts-2-138-x"></a>Upgrading to Jenkins LTS 2.138.x</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each section covers the upgrade from the previous LTS release, the section on 2.138.1 covers the upgrade from 2.121.3.</p>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-138-4"><a class="anchor" href="#upgrading-to-jenkins-lts-2-138-4"></a>Upgrading to Jenkins LTS 2.138.4</h3>
+<div class="sect3">
+<h4 id="SECURITY-1072"><a class="anchor" href="#SECURITY-1072"></a>Migration of user records</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2018-12-05/#SECURITY-1072">SECURITY-1072</a></p>
+</div>
+<div class="paragraph">
+<p>After applying this upgrade, Jenkins will migrate the user records to a slightly different storage format that uses a central index to map user IDs to directory names.
+This is a backwards incompatible change, so older releases of Jenkins will not be able to deal with the new storage format.
+We strongly recommend taking a full backup of at least the <code>$JENKINS_HOME/users/</code> directory before upgrading.</p>
+</div>
+<div class="paragraph">
+<p>If Jenkins crashes or is killed during startup, the migration may be incomplete, possibly making a subset of user records unavailable.
+To determine whether this is the case, check for the existence of the file <code>$JENKINS_HOME/users/users.xml</code>.
+If it does not exist, but user directories have been renamed as described below, the migration was interrupted.
+In such cases, if no backup is available, we recommend checking the Jenkins system log and using the information in it to restore directories to their previous names.
+The log entries look similar to the following message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">INFO: Migrating user 'admin' from 'users/admin/' to 'users/admin_6635238516816951048/'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, rename the directory <code>$JENKINS_HOME/users/admin_6635238516816951048/</code> to <code>$JENKINS_HOME/users/admin/</code> while Jenkins is not running.
+Repeat this for all other user directories listed in the log.
+Doing all of the above will undo the partial migration.
+Jenkins will re-run it on the next startup.</p>
+</div>
+<div class="paragraph">
+<p>If Jenkins needs to be downgraded after an update and successfully applied user directory migration, do all of the above and additionally delete the <code>$JENKINS_HOME/users/users.xml</code> file.
+This reverts the migration and restored all user records to a format compatible with Jenkins 2.138.3 and earlier.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please note that downgrading Jenkins is not generally supported, and may fail for reasons unrelated to this migration.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="SECURITY-595"><a class="anchor" href="#SECURITY-595"></a>New restrictions on HTTP request routing</h4>
+<div class="paragraph">
+<p><a href="/security/advisory/2018-12-05/#SECURITY-595">SECURITY-595</a></p>
+</div>
+<div class="paragraph">
+<p>A design flaw in the Stapler web framework allowed accessing fields and invoking methods that were not intended to be invoked this way by accessing specific URLs.
+<a href="/security/advisory/2018-12-05/#SECURITY-595">For further details, see the security advisory</a>.</p>
+</div>
+<div class="paragraph">
+<p>As a side effect of this security fix, some HTTP requests will no longer work as before.
+This typically results in <code>HTTP 404 Not Found</code> responses, although a very small subset of requests will be successful, but the response will simply be different than it would have been before the fix was applied.
+Whenever either happens, Jenkins write a message similar to the following to the Jenkins system log:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">WARNING: New Stapler routing rules result in the URL "/example" no longer being allowed. If you consider it safe to use, add the following to the whitelist: "method hudson.model.Hudson doExample". Learn more: https://jenkins.io/redirect/stapler-routing</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this happens due to legitimate use of the Jenkins UI, the affected signature can be added to the list of approved signatures.
+To do this, run the following command in the Jenkins script console as administrator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">jenkins.security.stapler.StaticRoutingDecisionProvider.get().add('method hudson.model.Hudson doExample')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will create a file called <code>stapler-whitelist.txt</code> in the Jenkins home directory, and add the specified entry.
+This file can also be modified manually, but the following script needs to be executed afterwards to apply any changes if Jenkins is already running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">jenkins.security.stapler.StaticRoutingDecisionProvider.get().reload()</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We track known affected plugins and their status in <a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+the+SECURITY-595+fix">the Jenkins wiki</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-138-3"><a class="anchor" href="#upgrading-to-jenkins-lts-2-138-3"></a>Upgrading to Jenkins LTS 2.138.3</h3>
+<div class="paragraph">
+<p>No notable changes requiring upgrade notes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-138-2"><a class="anchor" href="#upgrading-to-jenkins-lts-2-138-2"></a>Upgrading to Jenkins LTS 2.138.2</h3>
+<div class="sect3">
+<h4 id="security-hardening-to-prevent-xss-vulnerabilities"><a class="anchor" href="#security-hardening-to-prevent-xss-vulnerabilities"></a>Security hardening to prevent XSS vulnerabilities</h4>
+<div class="paragraph">
+<p>A security hardening to prevent cross-site scripting vulnerabilities from being exploitable was applied to views in Jenkins.
+This can in rare cases result in views having some content escaped twice (typically resulting in visible HTML entities).</p>
+</div>
+<div class="paragraph">
+<p>We consider these effects to be a bug in plugins that either opt out of the default test suite, or use outdated toolchains.
+We track known affected plugins and their status on <a href="https://wiki.jenkins.io/display/JENKINS/Plugins+affected+by+2018-10-10+Stapler+security+hardening">the Jenkins wiki</a>.</p>
+</div>
+<div class="paragraph">
+<p>As a temporary workaround, this hardening can be disabled by setting the system property <code>org.kohsuke.stapler.jelly.CustomJellyContext.escapeByDefault</code> to <code>false</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="warning-logged-on-first-startup-after-upgrade"><a class="anchor" href="#warning-logged-on-first-startup-after-upgrade"></a>Warning logged on first startup after upgrade</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-53998">JENKINS-53998</a></p>
+</div>
+<div class="paragraph">
+<p>When starting Jenkins 2.138.2 for the first time, a warning like the following might be logged if the <a href="https://plugins.jenkins.io/jobConfigHistory">Job Config History Plugin</a> is installed in a version older than 2.19.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Oct 10, 2018 2:27:17 PM hudson.ExtensionFinder$GuiceFinder$FaultTolerantScope$1 error
+WARNING: Failed to instantiate Key[type=jenkins.telemetry.Correlator, annotation=[none]]; skipping this component
+com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) Tried proxying jenkins.telemetry.Correlator to support a circular dependency, but it is not an interface.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This does not appear to result in further problems.
+Subsequent restarts of Jenkins will no longer log this warning.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="security-hardening-impacts-use-of-github-oauth-plugin"><a class="anchor" href="#security-hardening-impacts-use-of-github-oauth-plugin"></a>Security hardening impacts use of GitHub OAuth Plugin</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-54031">JENKINS-54031</a></p>
+</div>
+<div class="paragraph">
+<p>A security hardening in 2.138.2 and 2.146 can result in problems accessing jobs with <a href="https://plugins.jenkins.io/github-oauth">GitHub OAuth Plugin</a> due to a bug in the plugin.</p>
+</div>
+<div class="paragraph">
+<p>As a workaround, it is possible to temporarily disable part of the security hardening by setting the <a href="https://wiki.jenkins.io/display/JENKINS/Features+controlled+by+system+properties">Java system properties</a> <code>hudson.model.AbstractItem.skipPermissionCheck</code> and <code>hudson.model.Run.skipPermissionCheck</code> to <code>true</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Please see the <a href="/security/advisory/2018-12-05/#SECURITY-595">description of SECURITY-595 in the 2018-12-05 security advisory</a> for important information about this workaround.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-138-1"><a class="anchor" href="#upgrading-to-jenkins-lts-2-138-1"></a>Upgrading to Jenkins LTS 2.138.1</h3>
+<div class="sect3">
+<h4 id="new-login-and-user-signup-pages"><a class="anchor" href="#new-login-and-user-signup-pages"></a>New login and user signup pages</h4>
+<div class="paragraph">
+<p><a href="/blog/2018/06/27/new-login-page/">Announcement blog post</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-50447">JENKINS-50447</a></p>
+</div>
+<div class="paragraph">
+<p>The login and user signup pages have been redesigned.
+As a side effect, existing <code>PageDecorator</code> implementations will not be used on the redesigned pages.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="/blog/2018/06/27/new-login-page/">announcement blog post</a> for further information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="new-api-token-system"><a class="anchor" href="#new-api-token-system"></a>New API token system</h4>
+<div class="paragraph">
+<p><a href="/blog/2018/07/02/new-api-token-system/">Announcement blog post</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-32442">JENKINS-32442</a>,
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-32776">JENKINS-32776</a></p>
+</div>
+<div class="paragraph">
+<p>The per-user API tokens that allow access to the HTTP remote API have been redesigned:
+API tokens can now be created and revoked, and are stored in a non-recoverable format.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="/blog/2018/07/02/new-api-token-system/">announcement blog post</a> for further information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="disabled-deprecated-agent-protocols"><a class="anchor" href="#disabled-deprecated-agent-protocols"></a>Disabled deprecated agent protocols</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-48480">JENKINS-48480</a></p>
+</div>
+<div class="paragraph">
+<p>The deprecated Jenkins CLI Protocol versions 1 and 2, and Java Web Start Agent Protocol versions 1, 2, and 3 have been disabled.</p>
+</div>
+<div class="paragraph">
+<p>If you still use these protocols (e.g. remoting-based CLI, or old <code>slave.jar</code> files on agents), you need to re-enable these protocols after upgrade, or upgrade the clients.
+The same recommendations as in <a href="https://jenkins.io/doc/upgrade-guide/2.121/#remoting-update">the 2.121.x upgrade guide for remoting changes</a> apply here.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="require-gnu-c-library-2-7-or-above-on-unix-systems"><a class="anchor" href="#require-gnu-c-library-2-7-or-above-on-unix-systems"></a>Require GNU C Library 2.7 or above on Unix systems</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-52771">JENKINS-52771</a></p>
+</div>
+<div class="paragraph">
+<p>Starting from this version, Jenkins requires <a href="https://www.gnu.org/software/libc/">GNU C Library</a> version 2.7 or above.
+It makes some Linux distributions unsupported, in particular RHEL 5 and CentOS 5.
+See <a href="https://issues.jenkins-ci.org/browse/JENKINS-53924">JENKINS-53924</a> and <a href="https://issues.jenkins-ci.org/browse/JENKINS-53832">JENKINS-53832</a> for more info.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/upgrade-guide/2.138.adoc" title="在 GitHub 上编辑 /doc/upgrade-guide/2.138.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/upgrade-guide/2.138.adoc" title="在 GitHub 上查看 /doc/upgrade-guide/2.138.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

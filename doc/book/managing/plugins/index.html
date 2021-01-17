@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+管理插件
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="管理插件" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="管理插件" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="管理插件" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/managing/plugins/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="管理插件" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="active">管理Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/managing/system-configuration" class="">配置系统</a>
+</li>
+<li>
+<a href="/doc/book/managing/security" class="">管理安全</a>
+</li>
+<li>
+<a href="/doc/book/managing/tools" class="">管理工具</a>
+</li>
+<li>
+<a href="/doc/book/managing/plugins" class="active">管理插件</a>
+</li>
+<li>
+<a href="/doc/book/managing/cli" class="">Jenkins CLI</a>
+</li>
+<li>
+<a href="/doc/book/managing/script-console" class="">脚本控制台</a>
+</li>
+<li>
+<a href="/doc/book/managing/nodes" class="">管理节点</a>
+</li>
+<li>
+<a href="/doc/book/managing/script-approval" class="">进程内的脚本批准</a>
+</li>
+<li>
+<a href="/doc/book/managing/users" class="">管理用户</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../tools">
+⇐ 管理工具
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 管理Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../cli">
+Jenkins CLI ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+管理插件
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#安装插件">安装插件</a>
+<ul class="sectlevel2">
+<li><a href="#从web-ui">从web UI</a></li>
+<li><a href="#install-with-cli">使用Jenkins CLI</a></li>
+<li><a href="#高级安装">高级安装</a></li>
+</ul>
+</li>
+<li><a href="#更新插件">更新插件</a></li>
+<li><a href="#删除插件">删除插件</a>
+<ul class="sectlevel2">
+<li><a href="#卸载插件">卸载插件</a></li>
+<li><a href="#禁用插件">禁用插件</a></li>
+</ul>
+</li>
+<li><a href="#固定的插件">固定的插件</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>插件是为了适应组织或用户的需求，增强Jenkins环境的功能的主要手段。有
+<a href="https://plugins.jenkins.io">上千的插件</a>可以安装在Jenkins主机上，来集成不同的构建工具, 云提供程序, 分析工具等。</p>
+</div>
+<div class="paragraph">
+<p>插件以及它们的依赖能够自动地从<a href="#../glossary#update-center">更新中心</a>下载。更新中心
+是一个由Jenkins项目运营的服务，它提供了一个开源插件的清单，这些插件是由Jenkins社区的成员共同开发和维护的。</p>
+</div>
+<div class="paragraph">
+<p>这一节将涵盖从管理Jenkins web UI中的插件的基础到修改<a href="#../glossary#master">master&#8217;s</a>文件系统的所有内容。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="安装插件"><a class="anchor" href="#安装插件"></a>安装插件</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins 提供了几个不同的的方法在主机上安装插件:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在web UI使用 "插件管理器"。</p>
+</li>
+<li>
+<p>使用<a href="#install-with-cli">Jenkins CLI</a> <code>install-plugin</code> 命令。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>每个方法都会导致由Jenkins加载插件，但是需要不同的级别的访问和权衡才能使用。</p>
+</div>
+<div class="paragraph">
+<p>这两种方法要求 Jenkins 主机能够从更新中心下载元数据, 无论是由Jenkins项目运营的主更新中心
+<sup class="footnote" id="_footnote_uc">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>,
+或是自定义更新中心。</p>
+</div>
+<div class="paragraph">
+<p>插件被打包成独立的 <code>.hpi</code> 文件, 它含有所有必需的代码, 图像, 和其他插件成功运行所需要的资源。</p>
+</div>
+<div class="sect2">
+<h3 id="从web-ui"><a class="anchor" href="#从web-ui"></a>从web UI</h3>
+<div class="paragraph">
+<p>安装插件最简单，最普遍的方式是 通过
+<strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> 视图, 该视图可用于Jenkins环境的管理员。
+在 <strong>Available</strong> 选项卡下, 插件可以从已配置的更新中心检索和考虑:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-available.png" alt="Available tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>大多数插件都能安装并立即使用，通过勾选插件旁边的框并点击 <strong>Install without restart</strong>。</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>如果可用插件的列表是空的, 那么主机可能配置不正确或者没有从更新中心下载插件元数据。
+点击 <strong>Check now</strong> 按钮将会强制 Jenkins尝试连接其配置的更新中心。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-with-cli"><a class="anchor" href="#install-with-cli"></a>使用Jenkins CLI</h3>
+<div class="paragraph">
+<p>管理员也可以使用 <a href="#cli#">Jenkins CLI</a> ，它提供了一个安装插件的命令。 管理Jenkins环境或配置管理代码的脚本,可能需要安装插件，而不是在web UI中直接用户交互。 Jenkins CLI 允许命令行用户或自动化工具下载插件和它的依赖。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin SOURCE ... [-deploy] [-name VAL] [-restart]
+
+Installs a plugin either from a file, an URL, or from update center.
+
+ SOURCE    : If this points to a local file, that file will be installed. If
+             this is an URL, Jenkins downloads the URL and installs that as a
+             plugin.Otherwise the name is assumed to be the short name of the
+             plugin in the existing update center (like "findbugs"),and the
+             plugin will be installed from the update center.
+ -deploy   : Deploy plugins right away without postponing them until the reboot.
+ -name VAL : If specified, the plugin will be installed as this short name
+             (whereas normally the name is inferred from the source name
+             automatically).
+ -restart  : Restart Jenkins upon successful installation.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="高级安装"><a class="anchor" href="#高级安装"></a>高级安装</h3>
+<div class="paragraph">
+<p>更新中心只允许安装最新发布的插件版本。在需要旧版本插件的情况下,
+Jenkins管理员可以下载一个旧的 <code>.hpi</code> 存档，并手动安装到Jenkins主机上。
+install that on the Jenkins master.</p>
+</div>
+<div class="sect3">
+<h4 id="从web-ui-2"><a class="anchor" href="#从web-ui-2"></a>从web UI</h4>
+<div class="paragraph">
+<p>假设已经下载了 <code>.hpi</code> 文件, 已登录的 Jenkins 管理员可能
+从 web UI中上传文件:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在web UI中导航到 <strong>Manage Jenkins</strong> &gt; <strong>Manage Plugins</strong> 页面。</p>
+</li>
+<li>
+<p>点击 <strong>Advanced</strong> 选项卡。</p>
+</li>
+<li>
+<p>选择*Upload Plugin* 部分下面的`.hpi`文件。</p>
+</li>
+<li>
+<p><strong>Upload</strong> 插件文件。</p>
+</li>
+</ol>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-upload.png" alt="Advanced tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>一旦插件文件被上传,Jenkins主机必须手动重启，以便更改生效。
+==== 在 master</p>
+</div>
+<div class="paragraph">
+<p>假设系统管理员已经明确下载了 <code>.hpi</code> 文件, 管理员可以手动将 <code>.hpi</code> f文件放置在
+文件系统的特定位置。</p>
+</div>
+<div class="paragraph">
+<p>复制下载的 <code>.hpi</code> 文件到Jenkins主机的 <code>JENKINS_HOME/plugins</code> 目录(例如, 在 Debian系统 <code>JENKINS_HOME</code> 通常是
+<code>/var/lib/jenkins</code>)。</p>
+</div>
+<div class="paragraph">
+<p>在插件加载前重启服务器，确保它在Jenkins环境中可用。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>更新站点中插件目录的名称 <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> 并不总是和插件显示的名称相同。 搜索
+<a href="https://plugins.jenkins.io/">plugins.jenkins.io</a>
+为需要的插件提供合适到`.hpi`文件的链接。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="更新插件"><a class="anchor" href="#更新插件"></a>更新插件</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在*Manage Plugins*页面的*Updates* 选项卡中列出的更新，可以通过选中想要更新的插件的复选框并点击*Download now and install after restart*按钮来安装。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-update.png" alt="Updates tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>默认情况下, Jenkins主服务器会每隔24小时检查一次从更新中心检查更新。要手动触发更新检查, 只需点击*Updates*选项卡上的 <strong>Check now</strong> 按钮。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="删除插件"><a class="anchor" href="#删除插件"></a>删除插件</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>当一个插件不再在Jenkins环境中使用时, 从Jenkins服务器中删除插件是很谨慎的。这提供了很多好处，比如减少引导或运行时的内存开销, 减少web UI中的配置选项, 并消除未来与新插件更新的冲突。</p>
+</div>
+<div class="sect2">
+<h3 id="卸载插件"><a class="anchor" href="#卸载插件"></a>卸载插件</h3>
+<div class="paragraph">
+<p>卸载插件最简单的方式是导航到*Manage Plugins* 页面的 <strong>Installed</strong> 选项卡。从那里, Jenkins 会自动决定哪些插件是安全的卸载, 哪些不是其他插件的依赖,并提供一个这样做的按钮。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-uninstall.png" alt="Installed tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>也可以通过移除主机上 <code>JENKINS_HOME/plugins</code> 目录的对应的 `.hpi`文件来卸载插件。该插件会一直工作直到主机被重启。</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>如果插件的 <code>.hpi</code> 文件被移除，但其他插件需要该插件,Jenkins
+主机可能无法正确引导。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>卸载插件 <strong>not</strong> 删除插件创建的配置。如果有现有的工作/节点/视图/构建/等由插件创建的配置n, 在启动时，Jenkins会警告
+有些配置不能被完全加载，忽略不识别的数据。</p>
+</div>
+<div class="paragraph">
+<p>由于配置将被保留直到它们被覆盖,
+重装插件将会导致这些配置值重新出现。</p>
+</div>
+<div class="sect3">
+<h4 id="删除旧数据"><a class="anchor" href="#删除旧数据"></a>删除旧数据</h4>
+<div class="paragraph">
+<p>Jenkins提供了一个工具，它能够清除未安装插件的配置。 导航到 <strong>Manage Jenkins</strong> ，然后点击 <strong>Manage Old Data</strong> 来检查并清除旧数据。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="禁用插件"><a class="anchor" href="#禁用插件"></a>禁用插件</h3>
+<div class="paragraph">
+<p>禁用插件是让插件不再工作的一种更温和的方式。 Jenkins将继续确认插件已安装, b但是它不会启动该插件, 也不会看到插件的扩展。</p>
+</div>
+<div class="paragraph">
+<p>Jenkins管理员可以通过在*Manage Plugins*页面的*Installed* 选项卡上取消复选框来禁用插件 (见下面)。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/plugin-manager-disable.png" alt="Installed tab in the Plugin Manager">
+</div>
+</div>
+<div class="paragraph">
+<p>enkins管理员可以通过在Jenkins主机上创建一个文件来禁用插件，比如: <code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.disabled</code>.</p>
+</div>
+<div class="paragraph">
+<p>禁用插件创建的配置就像插件被卸载一样, 它们在引导时引起了警告，但被忽略掉。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="固定的插件"><a class="anchor" href="#固定的插件"></a>固定的插件</h2>
+<div class="sectionbody">
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins 2.0中删除了固定插件特性。之后的版本没有捆绑插件,而是提供了一个安装最有用插件的向导。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>pinned plugins</strong> 的概念适用于在Jenkins 1.x中绑定的插件, 例如
+<a href="https://plugins.jenkins.io/matrix-auth"><strong>Matrix Authorization plugin</strong></a>。</p>
+</div>
+<div class="paragraph">
+<p>默认情况下, 当Jenkins升级时, 其绑定的插件就会覆盖当前在`JENKINS_HOME`中安装的插件版本。</p>
+</div>
+<div class="paragraph">
+<p>然而, 手动更新捆绑插件时, Jenkins会将该插件标记为特定的版本。在文件系统中, Jenkins
+创建了一个名为 `JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned`的空文件，来表示固定。</p>
+</div>
+<div class="paragraph">
+<p>在Jenkins启动期间，固定插件永远不会被绑定插件覆盖。(如果固定的插件比当前捆绑的插件老，新版本的Jenkins就会发出警告)。
+将一个绑定的插件更新到更新中心提供的版本是安全的。 通常获取最新的特性并修复是必要的。 绑定的版本偶尔会更新, 但不是一致的。</p>
+</div>
+<div class="paragraph">
+<p>插件管理允许插件被显式的释放。
+<code>JENKINS_HOME/plugins/PLUGIN_NAME.hpi.pinned</code> 文件也能手动创建/删除，以控制固定行为。如果`pinned` 文件存在, Jenkins将使用用户指定的任何插件。
+如果文件不存在, Jenkins 将在启动时将插件恢复到默认版本。</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://updates.jenkins.io" class="bare">updates.jenkins.io</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../tools">
+⇐ 管理工具
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 管理Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../cli">
+Jenkins CLI ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/managing/plugins.adoc" title="在 GitHub 上编辑 /doc/book/managing/plugins.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/managing/plugins.adoc" title="在 GitHub 上查看 /doc/book/managing/plugins.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>

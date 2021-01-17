@@ -1,0 +1,1138 @@
+<feed xmlns='http://www.w3.org/2005/Atom'>
+  <title>Jenkins plugin releases</title>
+  <link href='https://jenkins.io/' />
+  <link href='http://kohsuke.org/test.atom' rel='self' type='application/atom+xml' />
+  <updated>2021-01-17T08:09:53.764+00:00</updated>
+  <author>
+    <name>Jenkins History Bot</name>
+  </author>
+  <id>urn:63067410335c11e0bc8e0800200c9a66:feed</id>
+  <entry>
+    <title>AnsiColor 0.7.4</title>
+    <link href='https://plugins.jenkins.io/ansicolor' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ansicolor:0.7.4</id>
+    <published>2021-01-16T11:54:53.232+00:00</published>
+    <updated>2021-01-16T11:54:53.232+00:00</updated>
+    <summary>AnsiColor 0.7.4</summary>
+  </entry>
+  <entry>
+    <title>Bitbucket Branch Source 2.9.7</title>
+    <link href='https://plugins.jenkins.io/cloudbees-bitbucket-branch-source' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source:2.9.7</id>
+    <published>2021-01-15T15:58:50.827+00:00</published>
+    <updated>2021-01-15T15:58:50.827+00:00</updated>
+    <summary>Bitbucket Branch Source 2.9.7</summary>
+  </entry>
+  <entry>
+    <title>Datadog 2.7.0</title>
+    <link href='https://plugins.jenkins.io/datadog' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.datadog.jenkins.plugins:datadog:2.7.0</id>
+    <published>2021-01-15T14:24:31.404+00:00</published>
+    <updated>2021-01-15T14:24:31.404+00:00</updated>
+    <summary>Datadog 2.7.0</summary>
+  </entry>
+  <entry>
+    <title>EC2 Fleet 2.3.0</title>
+    <link href='https://plugins.jenkins.io/ec2-fleet' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amazon.jenkins.fleet:ec2-fleet:2.3.0</id>
+    <published>2021-01-15T16:17:02.383+00:00</published>
+    <updated>2021-01-15T16:17:02.383+00:00</updated>
+    <summary>EC2 Fleet 2.3.0</summary>
+  </entry>
+  <entry>
+    <title>Environment Dashboard 1.1.10 (new)</title>
+    <link href='https://plugins.jenkins.io/environment-dashboard' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:environment-dashboard:1.1.10</id>
+    <published>2021-01-15T09:00:37.274+00:00</published>
+    <updated>2021-01-15T09:00:37.274+00:00</updated>
+    <summary>Environment Dashboard 1.1.10</summary>
+  </entry>
+  <entry>
+    <title>GitHub API 1.122</title>
+    <link href='https://plugins.jenkins.io/github-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-api:1.122</id>
+    <published>2021-01-15T23:30:57.083+00:00</published>
+    <updated>2021-01-15T23:30:57.083+00:00</updated>
+    <summary>GitHub API 1.122</summary>
+  </entry>
+  <entry>
+    <title>Java JSON Web Token (JJWT) 0.11.2-5.143e44951c52</title>
+    <link href='https://plugins.jenkins.io/jjwt-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jjwt-api:0.11.2-5.143e44951c52</id>
+    <published>2021-01-15T14:27:38.245+00:00</published>
+    <updated>2021-01-15T14:27:38.245+00:00</updated>
+    <summary>Java JSON Web Token (JJWT) 0.11.2-5.143e44951c52</summary>
+  </entry>
+  <entry>
+    <title>Kubernetes 1.28.6</title>
+    <link href='https://plugins.jenkins.io/kubernetes' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.csanchez.jenkins.plugins:kubernetes:1.28.6</id>
+    <published>2021-01-15T16:04:41.958+00:00</published>
+    <updated>2021-01-15T16:04:41.958+00:00</updated>
+    <summary>Kubernetes 1.28.6</summary>
+  </entry>
+  <entry>
+    <title>Managed Scripts 1.5.3</title>
+    <link href='https://plugins.jenkins.io/managed-scripts' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:managed-scripts:1.5.3</id>
+    <published>2021-01-15T10:58:12.102+00:00</published>
+    <updated>2021-01-15T10:58:12.102+00:00</updated>
+    <summary>Managed Scripts 1.5.3</summary>
+  </entry>
+  <entry>
+    <title>Sysdig Secure Container Image Scanner 2.1.1</title>
+    <link href='https://plugins.jenkins.io/sysdig-secure' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sysdig-secure:2.1.1</id>
+    <published>2021-01-15T10:30:36.196+00:00</published>
+    <updated>2021-01-15T10:30:36.196+00:00</updated>
+    <summary>Sysdig Secure Container Image Scanner 2.1.1</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Shared Groovy Libraries through HTTP retrieval 1.8.0</title>
+    <link href='https://plugins.jenkins.io/workflow-cps-global-lib-http' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amadeus.jenkins.plugins:workflow-cps-global-lib-http:1.8.0</id>
+    <published>2021-01-15T13:31:59.868+00:00</published>
+    <updated>2021-01-15T13:31:59.868+00:00</updated>
+    <summary>Pipeline: Shared Groovy Libraries through HTTP retrieval 1.8.0</summary>
+  </entry>
+  <entry>
+    <title>Github App Kubernetes Credentials 0.0.1 (new)</title>
+    <link href='https://plugins.jenkins.io/github-app-kubernetes-credentials' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:github-app-kubernetes-credentials:0.0.1</id>
+    <published>2021-01-14T03:14:10.347+00:00</published>
+    <updated>2021-01-14T03:14:10.347+00:00</updated>
+    <summary>Github App Kubernetes Credentials 0.0.1</summary>
+  </entry>
+  <entry>
+    <title>LDAP 2.3</title>
+    <link href='https://plugins.jenkins.io/ldap' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ldap:2.3</id>
+    <published>2021-01-14T14:39:29.564+00:00</published>
+    <updated>2021-01-14T14:39:29.564+00:00</updated>
+    <summary>LDAP 2.3</summary>
+  </entry>
+  <entry>
+    <title>Oracle Cloud Infrastructure Compute 1.0.12</title>
+    <link href='https://plugins.jenkins.io/oracle-cloud-infrastructure-compute' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:oracle-cloud-infrastructure-compute:1.0.12</id>
+    <published>2021-01-14T20:33:31.812+00:00</published>
+    <updated>2021-01-14T20:33:31.812+00:00</updated>
+    <summary>Oracle Cloud Infrastructure Compute 1.0.12</summary>
+  </entry>
+  <entry>
+    <title>P4 1.11.2</title>
+    <link href='https://plugins.jenkins.io/p4' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:p4:1.11.2</id>
+    <published>2021-01-14T21:03:39.394+00:00</published>
+    <updated>2021-01-14T21:03:39.394+00:00</updated>
+    <summary>P4 1.11.2</summary>
+  </entry>
+  <entry>
+    <title>Prisma Cloud IaC Scan 1.2</title>
+    <link href='https://plugins.jenkins.io/prisma-cloud-iac-scan' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:prisma-cloud-iac-scan:1.2</id>
+    <published>2021-01-14T18:33:34.256+00:00</published>
+    <updated>2021-01-14T18:33:34.256+00:00</updated>
+    <summary>Prisma Cloud IaC Scan 1.2</summary>
+  </entry>
+  <entry>
+    <title>Theme Manager (Incubating) 0.6</title>
+    <link href='https://plugins.jenkins.io/theme-manager' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:theme-manager:0.6</id>
+    <published>2021-01-14T19:33:29.333+00:00</published>
+    <updated>2021-01-14T19:33:29.333+00:00</updated>
+    <summary>Theme Manager (Incubating) 0.6</summary>
+  </entry>
+  <entry>
+    <title>Warnings Next Generation 8.6.1</title>
+    <link href='https://plugins.jenkins.io/warnings-ng' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:warnings-ng:8.6.1</id>
+    <published>2021-01-14T23:47:11.058+00:00</published>
+    <updated>2021-01-14T23:47:11.058+00:00</updated>
+    <summary>Warnings Next Generation 8.6.1</summary>
+  </entry>
+  <entry>
+    <title>Applitools Eyes 1.13</title>
+    <link href='https://plugins.jenkins.io/applitools-eyes' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:applitools-eyes:1.13</id>
+    <published>2021-01-13T11:59:52.310+00:00</published>
+    <updated>2021-01-13T11:59:52.310+00:00</updated>
+    <summary>Applitools Eyes 1.13</summary>
+  </entry>
+  <entry>
+    <title>Cloud Statistics 0.26</title>
+    <link href='https://plugins.jenkins.io/cloud-stats' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloud-stats:0.26</id>
+    <published>2021-01-13T08:22:37.257+00:00</published>
+    <updated>2021-01-13T08:22:37.257+00:00</updated>
+    <summary>Cloud Statistics 0.26</summary>
+  </entry>
+  <entry>
+    <title>Jackson 2 API 2.12.1</title>
+    <link href='https://plugins.jenkins.io/jackson2-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jackson2-api:2.12.1</id>
+    <published>2021-01-13T12:36:25.875+00:00</published>
+    <updated>2021-01-13T12:36:25.875+00:00</updated>
+    <summary>Jackson 2 API 2.12.1</summary>
+  </entry>
+  <entry>
+    <title>Repository Connector 2.0.3</title>
+    <link href='https://plugins.jenkins.io/repository-connector' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:repository-connector:2.0.3</id>
+    <published>2021-01-13T22:05:06.132+00:00</published>
+    <updated>2021-01-13T22:05:06.132+00:00</updated>
+    <summary>Repository Connector 2.0.3</summary>
+  </entry>
+  <entry>
+    <title>Templating Engine 2.0.1</title>
+    <link href='https://plugins.jenkins.io/templating-engine' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:templating-engine:2.0.1</id>
+    <published>2021-01-13T15:48:15.064+00:00</published>
+    <updated>2021-01-13T15:48:15.064+00:00</updated>
+    <summary>Templating Engine 2.0.1</summary>
+  </entry>
+  <entry>
+    <title>Email Extension 2.81</title>
+    <link href='https://plugins.jenkins.io/email-ext' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:email-ext:2.81</id>
+    <published>2021-01-12T17:31:12.499+00:00</published>
+    <updated>2021-01-12T17:31:12.499+00:00</updated>
+    <summary>Email Extension 2.81</summary>
+  </entry>
+  <entry>
+    <title>Orka by MacStadium 1.18</title>
+    <link href='https://plugins.jenkins.io/macstadium-orka' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:macstadium-orka:1.18</id>
+    <published>2021-01-12T11:16:40.713+00:00</published>
+    <updated>2021-01-12T11:16:40.713+00:00</updated>
+    <summary>Orka by MacStadium 1.18</summary>
+  </entry>
+  <entry>
+    <title>miniOrange SAML 1.0.2</title>
+    <link href='https://plugins.jenkins.io/miniorange-saml-sp' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:miniorange-saml-sp:1.0.2</id>
+    <published>2021-01-12T07:45:27.469+00:00</published>
+    <updated>2021-01-12T07:45:27.469+00:00</updated>
+    <summary>miniOrange SAML 1.0.2</summary>
+  </entry>
+  <entry>
+    <title>NeoLoad 2.2.7</title>
+    <link href='https://plugins.jenkins.io/neoload-jenkins-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:neoload-jenkins-plugin:2.2.7</id>
+    <published>2021-01-12T14:07:14.153+00:00</published>
+    <updated>2021-01-12T14:07:14.153+00:00</updated>
+    <summary>NeoLoad 2.2.7</summary>
+  </entry>
+  <entry>
+    <title>AccuRev 0.7.24</title>
+    <link href='https://plugins.jenkins.io/accurev' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:accurev:0.7.24</id>
+    <published>2021-01-11T11:09:04.652+00:00</published>
+    <updated>2021-01-11T11:09:04.652+00:00</updated>
+    <summary>AccuRev 0.7.24</summary>
+  </entry>
+  <entry>
+    <title>Data Theorem Mobile Security: CI/CD 2.2.1</title>
+    <link href='https://plugins.jenkins.io/datatheorem-mobile-app-security' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.datatheorem.mobileappsecurity.jenkins.plugin:datatheorem-mobile-app-security:2.2.1</id>
+    <published>2021-01-11T14:03:25.948+00:00</published>
+    <updated>2021-01-11T14:03:25.948+00:00</updated>
+    <summary>Data Theorem Mobile Security: CI/CD 2.2.1</summary>
+  </entry>
+  <entry>
+    <title>EC2 Fleet 2.2.2</title>
+    <link href='https://plugins.jenkins.io/ec2-fleet' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amazon.jenkins.fleet:ec2-fleet:2.2.2</id>
+    <published>2021-01-11T23:33:54.019+00:00</published>
+    <updated>2021-01-11T23:33:54.019+00:00</updated>
+    <summary>EC2 Fleet 2.2.2</summary>
+  </entry>
+  <entry>
+    <title>Gitee 1.2.4</title>
+    <link href='https://plugins.jenkins.io/gitee' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gitee:1.2.4</id>
+    <published>2021-01-11T09:05:26.356+00:00</published>
+    <updated>2021-01-11T09:05:26.356+00:00</updated>
+    <summary>Gitee 1.2.4</summary>
+  </entry>
+  <entry>
+    <title>miniOrange SAML 1.0.1 (new)</title>
+    <link href='https://plugins.jenkins.io/miniorange-saml-sp' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:miniorange-saml-sp:1.0.1</id>
+    <published>2021-01-11T13:56:09.909+00:00</published>
+    <updated>2021-01-11T13:56:09.909+00:00</updated>
+    <summary>miniOrange SAML 1.0.1</summary>
+  </entry>
+  <entry>
+    <title>Oversecured Scanner 1.0 (new)</title>
+    <link href='https://plugins.jenkins.io/oversecured' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:oversecured:1.0</id>
+    <published>2021-01-11T11:50:28.981+00:00</published>
+    <updated>2021-01-11T11:50:28.981+00:00</updated>
+    <summary>Oversecured Scanner 1.0</summary>
+  </entry>
+  <entry>
+    <title>Spotinst 2.1.5</title>
+    <link href='https://plugins.jenkins.io/spotinst' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:spotinst:2.1.5</id>
+    <published>2021-01-11T13:33:37.352+00:00</published>
+    <updated>2021-01-11T13:33:37.352+00:00</updated>
+    <summary>Spotinst 2.1.5</summary>
+  </entry>
+  <entry>
+    <title>Benchmark Evaluator 1.0.1</title>
+    <link href='https://plugins.jenkins.io/benchmark-evaluator' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:benchmark-evaluator:1.0.1</id>
+    <published>2021-01-10T18:52:27.572+00:00</published>
+    <updated>2021-01-10T18:52:27.572+00:00</updated>
+    <summary>Benchmark Evaluator 1.0.1</summary>
+  </entry>
+  <entry>
+    <title>SSH Build Agents 1.31.5</title>
+    <link href='https://plugins.jenkins.io/ssh-slaves' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ssh-slaves:1.31.5</id>
+    <published>2021-01-10T17:18:21.803+00:00</published>
+    <updated>2021-01-10T17:18:21.803+00:00</updated>
+    <summary>SSH Build Agents 1.31.5</summary>
+  </entry>
+  <entry>
+    <title>App Center 0.11.0</title>
+    <link href='https://plugins.jenkins.io/appcenter' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:appcenter:0.11.0</id>
+    <published>2021-01-09T15:52:20.357+00:00</published>
+    <updated>2021-01-09T15:52:20.357+00:00</updated>
+    <summary>App Center 0.11.0</summary>
+  </entry>
+  <entry>
+    <title>Git 4.5.2</title>
+    <link href='https://plugins.jenkins.io/git' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git:4.5.2</id>
+    <published>2021-01-09T13:47:01.751+00:00</published>
+    <updated>2021-01-09T13:47:01.751+00:00</updated>
+    <summary>Git 4.5.2</summary>
+  </entry>
+  <entry>
+    <title>Warnings Next Generation 8.6.0</title>
+    <link href='https://plugins.jenkins.io/warnings-ng' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:warnings-ng:8.6.0</id>
+    <published>2021-01-09T13:44:23.515+00:00</published>
+    <updated>2021-01-09T13:44:23.515+00:00</updated>
+    <summary>Warnings Next Generation 8.6.0</summary>
+  </entry>
+  <entry>
+    <title>AWS CodePipeline 0.43</title>
+    <link href='https://plugins.jenkins.io/aws-codepipeline' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amazonaws:aws-codepipeline:0.43</id>
+    <published>2021-01-08T18:20:37.507+00:00</published>
+    <updated>2021-01-08T18:20:37.507+00:00</updated>
+    <summary>AWS CodePipeline 0.43</summary>
+  </entry>
+  <entry>
+    <title>EC2 Fleet 2.2.1</title>
+    <link href='https://plugins.jenkins.io/ec2-fleet' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amazon.jenkins.fleet:ec2-fleet:2.2.1</id>
+    <published>2021-01-08T00:33:55.389+00:00</published>
+    <updated>2021-01-08T00:33:55.389+00:00</updated>
+    <summary>EC2 Fleet 2.2.1</summary>
+  </entry>
+  <entry>
+    <title>InsightAppSec 1.0.2</title>
+    <link href='https://plugins.jenkins.io/insightappsec' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:insightappsec:1.0.2</id>
+    <published>2021-01-08T10:57:32.005+00:00</published>
+    <updated>2021-01-08T10:57:32.005+00:00</updated>
+    <summary>InsightAppSec 1.0.2</summary>
+  </entry>
+  <entry>
+    <title>Metrics 4.0.2.7</title>
+    <link href='https://plugins.jenkins.io/metrics' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:metrics:4.0.2.7</id>
+    <published>2021-01-08T08:41:19.864+00:00</published>
+    <updated>2021-01-08T08:41:19.864+00:00</updated>
+    <summary>Metrics 4.0.2.7</summary>
+  </entry>
+  <entry>
+    <title>Minio 1.2.0</title>
+    <link href='https://plugins.jenkins.io/minio' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:minio:1.2.0</id>
+    <published>2021-01-08T21:31:31.268+00:00</published>
+    <updated>2021-01-08T21:31:31.268+00:00</updated>
+    <summary>Minio 1.2.0</summary>
+  </entry>
+  <entry>
+    <title>Tuleap Git Branch Source 3.0.4</title>
+    <link href='https://plugins.jenkins.io/tuleap-git-branch-source' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:tuleap-git-branch-source:3.0.4</id>
+    <published>2021-01-08T10:16:50.142+00:00</published>
+    <updated>2021-01-08T10:16:50.142+00:00</updated>
+    <summary>Tuleap Git Branch Source 3.0.4</summary>
+  </entry>
+  <entry>
+    <title>Tuleap Authentication 1.1.10</title>
+    <link href='https://plugins.jenkins.io/tuleap-oauth' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:tuleap-oauth:1.1.10</id>
+    <published>2021-01-08T10:30:57.403+00:00</published>
+    <updated>2021-01-08T10:30:57.403+00:00</updated>
+    <summary>Tuleap Authentication 1.1.10</summary>
+  </entry>
+  <entry>
+    <title>AWS Secrets Manager Credentials Provider 0.5.2</title>
+    <link href='https://plugins.jenkins.io/aws-secrets-manager-credentials-provider' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:aws-secrets-manager-credentials-provider:0.5.2</id>
+    <published>2021-01-07T13:43:59.198+00:00</published>
+    <updated>2021-01-07T13:43:59.198+00:00</updated>
+    <summary>AWS Secrets Manager Credentials Provider 0.5.2</summary>
+  </entry>
+  <entry>
+    <title>Compuware Topaz for Total Test 2.3.10</title>
+    <link href='https://plugins.jenkins.io/compuware-topaz-for-total-test' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.compuware.jenkins:compuware-topaz-for-total-test:2.3.10</id>
+    <published>2021-01-07T15:02:03.594+00:00</published>
+    <updated>2021-01-07T15:02:03.594+00:00</updated>
+    <summary>Compuware Topaz for Total Test 2.3.10</summary>
+  </entry>
+  <entry>
+    <title>Forensics API 0.8.1</title>
+    <link href='https://plugins.jenkins.io/forensics-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:forensics-api:0.8.1</id>
+    <published>2021-01-07T22:30:50.652+00:00</published>
+    <updated>2021-01-07T22:30:50.652+00:00</updated>
+    <summary>Forensics API 0.8.1</summary>
+  </entry>
+  <entry>
+    <title>Gitee 1.2.3</title>
+    <link href='https://plugins.jenkins.io/gitee' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gitee:1.2.3</id>
+    <published>2021-01-07T09:57:59.673+00:00</published>
+    <updated>2021-01-07T09:57:59.673+00:00</updated>
+    <summary>Gitee 1.2.3</summary>
+  </entry>
+  <entry>
+    <title>instant-messaging 1.41</title>
+    <link href='https://plugins.jenkins.io/instant-messaging' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:instant-messaging:1.41</id>
+    <published>2021-01-07T10:01:02.495+00:00</published>
+    <updated>2021-01-07T10:01:02.495+00:00</updated>
+    <summary>instant-messaging 1.41</summary>
+  </entry>
+  <entry>
+    <title>Kubernetes 1.28.5</title>
+    <link href='https://plugins.jenkins.io/kubernetes' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.csanchez.jenkins.plugins:kubernetes:1.28.5</id>
+    <published>2021-01-07T10:58:19.727+00:00</published>
+    <updated>2021-01-07T10:58:19.727+00:00</updated>
+    <summary>Kubernetes 1.28.5</summary>
+  </entry>
+  <entry>
+    <title>Tuleap API 2.1.2</title>
+    <link href='https://plugins.jenkins.io/tuleap-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:tuleap-api:2.1.2</id>
+    <published>2021-01-07T14:53:19.393+00:00</published>
+    <updated>2021-01-07T14:53:19.393+00:00</updated>
+    <summary>Tuleap API 2.1.2</summary>
+  </entry>
+  <entry>
+    <title>Git Forensics 0.8.1</title>
+    <link href='https://plugins.jenkins.io/git-forensics' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:git-forensics:0.8.1</id>
+    <published>2021-01-06T21:57:23.310+00:00</published>
+    <updated>2021-01-06T21:57:23.310+00:00</updated>
+    <summary>Git Forensics 0.8.1</summary>
+  </entry>
+  <entry>
+    <title>Gitee 1.2.2</title>
+    <link href='https://plugins.jenkins.io/gitee' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gitee:1.2.2</id>
+    <published>2021-01-06T06:22:02.257+00:00</published>
+    <updated>2021-01-06T06:22:02.257+00:00</updated>
+    <summary>Gitee 1.2.2</summary>
+  </entry>
+  <entry>
+    <title>Java JSON Web Token (JJWT) 0.11.2-3.3ae26ccdac4e (new)</title>
+    <link href='https://plugins.jenkins.io/jjwt-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:jjwt-api:0.11.2-3.3ae26ccdac4e</id>
+    <published>2021-01-06T19:34:19.101+00:00</published>
+    <updated>2021-01-06T19:34:19.101+00:00</updated>
+    <summary>Java JSON Web Token (JJWT) 0.11.2-3.3ae26ccdac4e</summary>
+  </entry>
+  <entry>
+    <title>Token Macro 2.14</title>
+    <link href='https://plugins.jenkins.io/token-macro' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:token-macro:2.14</id>
+    <published>2021-01-06T19:02:37.977+00:00</published>
+    <updated>2021-01-06T19:02:37.977+00:00</updated>
+    <summary>Token Macro 2.14</summary>
+  </entry>
+  <entry>
+    <title>Azure VM Agents 1.5.2</title>
+    <link href='https://plugins.jenkins.io/azure-vm-agents' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-vm-agents:1.5.2</id>
+    <published>2021-01-05T06:30:24.131+00:00</published>
+    <updated>2021-01-05T06:30:24.131+00:00</updated>
+    <summary>Azure VM Agents 1.5.2</summary>
+  </entry>
+  <entry>
+    <title>Log CLI 78.2e8168709a60</title>
+    <link href='https://plugins.jenkins.io/log-cli' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:log-cli:78.2e8168709a60</id>
+    <published>2021-01-05T03:52:28.695+00:00</published>
+    <updated>2021-01-05T03:52:28.695+00:00</updated>
+    <summary>Log CLI 78.2e8168709a60</summary>
+  </entry>
+  <entry>
+    <title>Variant 1.4</title>
+    <link href='https://plugins.jenkins.io/variant' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:variant:1.4</id>
+    <published>2021-01-05T09:26:22.188+00:00</published>
+    <updated>2021-01-05T09:26:22.188+00:00</updated>
+    <summary>Variant 1.4</summary>
+  </entry>
+  <entry>
+    <title>Analysis Model API 9.6.0</title>
+    <link href='https://plugins.jenkins.io/analysis-model-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:analysis-model-api:9.6.0</id>
+    <published>2021-01-04T14:01:03.422+00:00</published>
+    <updated>2021-01-04T14:01:03.422+00:00</updated>
+    <summary>Analysis Model API 9.6.0</summary>
+  </entry>
+  <entry>
+    <title>Apache HttpComponents Client 4.x API 4.5.13-1.0</title>
+    <link href='https://plugins.jenkins.io/apache-httpcomponents-client-4-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:apache-httpcomponents-client-4-api:4.5.13-1.0</id>
+    <published>2021-01-04T07:20:39.339+00:00</published>
+    <updated>2021-01-04T07:20:39.339+00:00</updated>
+    <summary>Apache HttpComponents Client 4.x API 4.5.13-1.0</summary>
+  </entry>
+  <entry>
+    <title>Amazon Web Services SDK 1.11.930</title>
+    <link href='https://plugins.jenkins.io/aws-java-sdk' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-java-sdk:1.11.930</id>
+    <published>2021-01-04T08:28:59.493+00:00</published>
+    <updated>2021-01-04T08:28:59.493+00:00</updated>
+    <summary>Amazon Web Services SDK 1.11.930</summary>
+  </entry>
+  <entry>
+    <title>Gitee 1.2.1</title>
+    <link href='https://plugins.jenkins.io/gitee' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gitee:1.2.1</id>
+    <published>2021-01-04T10:12:28.674+00:00</published>
+    <updated>2021-01-04T10:12:28.674+00:00</updated>
+    <summary>Gitee 1.2.1</summary>
+  </entry>
+  <entry>
+    <title>Log CLI 71.6bff03bbcecf</title>
+    <link href='https://plugins.jenkins.io/log-cli' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:log-cli:71.6bff03bbcecf</id>
+    <published>2021-01-04T19:14:03.043+00:00</published>
+    <updated>2021-01-04T19:14:03.043+00:00</updated>
+    <summary>Log CLI 71.6bff03bbcecf</summary>
+  </entry>
+  <entry>
+    <title>Managed Scripts 1.5.2</title>
+    <link href='https://plugins.jenkins.io/managed-scripts' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:managed-scripts:1.5.2</id>
+    <published>2021-01-04T10:50:20.972+00:00</published>
+    <updated>2021-01-04T10:50:20.972+00:00</updated>
+    <summary>Managed Scripts 1.5.2</summary>
+  </entry>
+  <entry>
+    <title>Analysis Model API 9.5.0</title>
+    <link href='https://plugins.jenkins.io/analysis-model-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:analysis-model-api:9.5.0</id>
+    <published>2021-01-03T14:18:52.681+00:00</published>
+    <updated>2021-01-03T14:18:52.681+00:00</updated>
+    <summary>Analysis Model API 9.5.0</summary>
+  </entry>
+  <entry>
+    <title>Artifactory 3.10.2</title>
+    <link href='https://plugins.jenkins.io/artifactory' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:artifactory:3.10.2</id>
+    <published>2021-01-03T14:01:23.407+00:00</published>
+    <updated>2021-01-03T14:01:23.407+00:00</updated>
+    <summary>Artifactory 3.10.2</summary>
+  </entry>
+  <entry>
+    <title>PagerDuty 0.6.2</title>
+    <link href='https://plugins.jenkins.io/pagerduty' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pagerduty:0.6.2</id>
+    <published>2021-01-03T23:11:04.008+00:00</published>
+    <updated>2021-01-03T23:11:04.008+00:00</updated>
+    <summary>PagerDuty 0.6.2</summary>
+  </entry>
+  <entry>
+    <title>Flexible Publish 0.16.1</title>
+    <link href='https://plugins.jenkins.io/flexible-publish' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:flexible-publish:0.16.1</id>
+    <published>2021-01-02T04:21:06.511+00:00</published>
+    <updated>2021-01-02T04:21:06.511+00:00</updated>
+    <summary>Flexible Publish 0.16.1</summary>
+  </entry>
+  <entry>
+    <title>Apache HttpComponents Client 4.x API 4.5.12-1.0</title>
+    <link href='https://plugins.jenkins.io/apache-httpcomponents-client-4-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:apache-httpcomponents-client-4-api:4.5.12-1.0</id>
+    <published>2021-01-01T11:28:20.815+00:00</published>
+    <updated>2021-01-01T11:28:20.815+00:00</updated>
+    <summary>Apache HttpComponents Client 4.x API 4.5.12-1.0</summary>
+  </entry>
+  <entry>
+    <title>Pipeline As YAML (Incubated) 0.16-rc</title>
+    <link href='https://plugins.jenkins.io/pipeline-as-yaml' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-as-yaml:0.16-rc</id>
+    <published>2021-01-01T08:13:50.834+00:00</published>
+    <updated>2021-01-01T08:13:50.834+00:00</updated>
+    <summary>Pipeline As YAML (Incubated) 0.16-rc</summary>
+  </entry>
+  <entry>
+    <title>Remote Jenkinsfile Provider 1.13</title>
+    <link href='https://plugins.jenkins.io/remote-file' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:remote-file:1.13</id>
+    <published>2021-01-01T19:03:36.327+00:00</published>
+    <updated>2021-01-01T19:03:36.327+00:00</updated>
+    <summary>Remote Jenkinsfile Provider 1.13</summary>
+  </entry>
+  <entry>
+    <title>Mask Passwords 3.0</title>
+    <link href='https://plugins.jenkins.io/mask-passwords' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:mask-passwords:3.0</id>
+    <published>2020-12-31T17:02:06.822+00:00</published>
+    <updated>2020-12-31T17:02:06.822+00:00</updated>
+    <summary>Mask Passwords 3.0</summary>
+  </entry>
+  <entry>
+    <title>Forensics API 0.8.0</title>
+    <link href='https://plugins.jenkins.io/forensics-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:forensics-api:0.8.0</id>
+    <published>2020-12-30T18:11:46.615+00:00</published>
+    <updated>2020-12-30T18:11:46.615+00:00</updated>
+    <summary>Forensics API 0.8.0</summary>
+  </entry>
+  <entry>
+    <title>Git Forensics 0.8.0</title>
+    <link href='https://plugins.jenkins.io/git-forensics' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:git-forensics:0.8.0</id>
+    <published>2020-12-30T19:08:03.858+00:00</published>
+    <updated>2020-12-30T19:08:03.858+00:00</updated>
+    <summary>Git Forensics 0.8.0</summary>
+  </entry>
+  <entry>
+    <title>Managed Scripts 1.5.1</title>
+    <link href='https://plugins.jenkins.io/managed-scripts' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:managed-scripts:1.5.1</id>
+    <published>2020-12-30T17:14:14.764+00:00</published>
+    <updated>2020-12-30T17:14:14.764+00:00</updated>
+    <summary>Managed Scripts 1.5.1</summary>
+  </entry>
+  <entry>
+    <title>Warnings Next Generation 8.5.0</title>
+    <link href='https://plugins.jenkins.io/warnings-ng' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:warnings-ng:8.5.0</id>
+    <published>2020-12-30T19:54:58.007+00:00</published>
+    <updated>2020-12-30T19:54:58.007+00:00</updated>
+    <summary>Warnings Next Generation 8.5.0</summary>
+  </entry>
+  <entry>
+    <title>Artifactory 3.10.1</title>
+    <link href='https://plugins.jenkins.io/artifactory' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:artifactory:3.10.1</id>
+    <published>2020-12-29T07:49:45.934+00:00</published>
+    <updated>2020-12-29T07:49:45.934+00:00</updated>
+    <summary>Artifactory 3.10.1</summary>
+  </entry>
+  <entry>
+    <title>GitHub Checks 1.0.8</title>
+    <link href='https://plugins.jenkins.io/github-checks' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:github-checks:1.0.8</id>
+    <published>2020-12-29T13:01:25.416+00:00</published>
+    <updated>2020-12-29T13:01:25.416+00:00</updated>
+    <summary>GitHub Checks 1.0.8</summary>
+  </entry>
+  <entry>
+    <title>TestFLO - Test Management for Jira 1.0.5</title>
+    <link href='https://plugins.jenkins.io/testflo-for-jira-test-management-automation' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:testflo-for-jira-test-management-automation:1.0.5</id>
+    <published>2020-12-29T13:19:16.326+00:00</published>
+    <updated>2020-12-29T13:19:16.326+00:00</updated>
+    <summary>TestFLO - Test Management for Jira 1.0.5</summary>
+  </entry>
+  <entry>
+    <title>Validating String Parameter 2.8</title>
+    <link href='https://plugins.jenkins.io/validating-string-parameter' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:validating-string-parameter:2.8</id>
+    <published>2020-12-29T04:59:30.877+00:00</published>
+    <updated>2020-12-29T04:59:30.877+00:00</updated>
+    <summary>Validating String Parameter 2.8</summary>
+  </entry>
+  <entry>
+    <title>AIO Tests 1.1 (new)</title>
+    <link href='https://plugins.jenkins.io/aio-tests' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:aio-tests:1.1</id>
+    <published>2020-12-28T10:50:26.284+00:00</published>
+    <updated>2020-12-28T10:50:26.284+00:00</updated>
+    <summary>AIO Tests 1.1</summary>
+  </entry>
+  <entry>
+    <title>BrowserStack 1.2.0</title>
+    <link href='https://plugins.jenkins.io/browserstack-integration' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:browserstack-integration:1.2.0</id>
+    <published>2020-12-28T12:35:44.321+00:00</published>
+    <updated>2020-12-28T12:35:44.321+00:00</updated>
+    <summary>BrowserStack 1.2.0</summary>
+  </entry>
+  <entry>
+    <title>Multijob 1.36</title>
+    <link href='https://plugins.jenkins.io/jenkins-multijob-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jenkins-multijob-plugin:1.36</id>
+    <published>2020-12-28T16:32:30.793+00:00</published>
+    <updated>2020-12-28T16:32:30.793+00:00</updated>
+    <summary>Multijob 1.36</summary>
+  </entry>
+  <entry>
+    <title>Parameterized Scheduler 0.9.2</title>
+    <link href='https://plugins.jenkins.io/parameterized-scheduler' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:parameterized-scheduler:0.9.2</id>
+    <published>2020-12-28T16:58:31.457+00:00</published>
+    <updated>2020-12-28T16:58:31.457+00:00</updated>
+    <summary>Parameterized Scheduler 0.9.2</summary>
+  </entry>
+  <entry>
+    <title>Validating String Parameter 2.7</title>
+    <link href='https://plugins.jenkins.io/validating-string-parameter' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:validating-string-parameter:2.7</id>
+    <published>2020-12-27T09:04:48.926+00:00</published>
+    <updated>2020-12-27T09:04:48.926+00:00</updated>
+    <summary>Validating String Parameter 2.7</summary>
+  </entry>
+  <entry>
+    <title>Environment Injector 2.4.0</title>
+    <link href='https://plugins.jenkins.io/envinject' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:envinject:2.4.0</id>
+    <published>2020-12-26T17:02:06.963+00:00</published>
+    <updated>2020-12-26T17:02:06.963+00:00</updated>
+    <summary>Environment Injector 2.4.0</summary>
+  </entry>
+  <entry>
+    <title>Git 4.5.1</title>
+    <link href='https://plugins.jenkins.io/git' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git:4.5.1</id>
+    <published>2020-12-26T18:01:49.539+00:00</published>
+    <updated>2020-12-26T18:01:49.539+00:00</updated>
+    <summary>Git 4.5.1</summary>
+  </entry>
+  <entry>
+    <title>Pipeline As YAML (Incubated) 0.15-rc</title>
+    <link href='https://plugins.jenkins.io/pipeline-as-yaml' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-as-yaml:0.15-rc</id>
+    <published>2020-12-26T14:12:47.559+00:00</published>
+    <updated>2020-12-26T14:12:47.559+00:00</updated>
+    <summary>Pipeline As YAML (Incubated) 0.15-rc</summary>
+  </entry>
+  <entry>
+    <title>GitLab Branch Source 1.5.3</title>
+    <link href='https://plugins.jenkins.io/gitlab-branch-source' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gitlab-branch-source:1.5.3</id>
+    <published>2020-12-25T06:26:44.414+00:00</published>
+    <updated>2020-12-25T06:26:44.414+00:00</updated>
+    <summary>GitLab Branch Source 1.5.3</summary>
+  </entry>
+  <entry>
+    <title>SQLPlus Script Runner 2.0.15</title>
+    <link href='https://plugins.jenkins.io/sqlplus-script-runner' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sqlplus-script-runner:2.0.15</id>
+    <published>2020-12-25T05:54:47.441+00:00</published>
+    <updated>2020-12-25T05:54:47.441+00:00</updated>
+    <summary>SQLPlus Script Runner 2.0.15</summary>
+  </entry>
+  <entry>
+    <title>xUnit 3.0.0</title>
+    <link href='https://plugins.jenkins.io/xunit' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:xunit:3.0.0</id>
+    <published>2020-12-25T04:28:50.586+00:00</published>
+    <updated>2020-12-25T04:28:50.586+00:00</updated>
+    <summary>xUnit 3.0.0</summary>
+  </entry>
+  <entry>
+    <title>Active Directory 2.23</title>
+    <link href='https://plugins.jenkins.io/active-directory' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:active-directory:2.23</id>
+    <published>2020-12-24T15:24:36.782+00:00</published>
+    <updated>2020-12-24T15:24:36.782+00:00</updated>
+    <summary>Active Directory 2.23</summary>
+  </entry>
+  <entry>
+    <title>Azure Container Agents 1.2.1</title>
+    <link href='https://plugins.jenkins.io/azure-container-agents' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-container-agents:1.2.1</id>
+    <published>2020-12-24T05:40:26.812+00:00</published>
+    <updated>2020-12-24T05:40:26.812+00:00</updated>
+    <summary>Azure Container Agents 1.2.1</summary>
+  </entry>
+  <entry>
+    <title>DTKit 2 API 3.0.0</title>
+    <link href='https://plugins.jenkins.io/dtkit-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:dtkit-api:3.0.0</id>
+    <published>2020-12-24T23:07:20.959+00:00</published>
+    <updated>2020-12-24T23:07:20.959+00:00</updated>
+    <summary>DTKit 2 API 3.0.0</summary>
+  </entry>
+  <entry>
+    <title>GitLab Branch Source 1.5.2</title>
+    <link href='https://plugins.jenkins.io/gitlab-branch-source' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:gitlab-branch-source:1.5.2</id>
+    <published>2020-12-24T06:40:56.264+00:00</published>
+    <updated>2020-12-24T06:40:56.264+00:00</updated>
+    <summary>GitLab Branch Source 1.5.2</summary>
+  </entry>
+  <entry>
+    <title>Octopus Deploy 3.1.1</title>
+    <link href='https://plugins.jenkins.io/octopusdeploy' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:hudson.plugins.octopusdeploy:octopusdeploy:3.1.1</id>
+    <published>2020-12-24T06:16:51.636+00:00</published>
+    <updated>2020-12-24T06:16:51.636+00:00</updated>
+    <summary>Octopus Deploy 3.1.1</summary>
+  </entry>
+  <entry>
+    <title>Parameterized Scheduler 0.9.1</title>
+    <link href='https://plugins.jenkins.io/parameterized-scheduler' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:parameterized-scheduler:0.9.1</id>
+    <published>2020-12-24T10:02:58.809+00:00</published>
+    <updated>2020-12-24T10:02:58.809+00:00</updated>
+    <summary>Parameterized Scheduler 0.9.1</summary>
+  </entry>
+  <entry>
+    <title>TestComplete support 2.6.1</title>
+    <link href='https://plugins.jenkins.io/TestComplete' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:TestComplete:2.6.1</id>
+    <published>2020-12-23T08:04:16.055+00:00</published>
+    <updated>2020-12-23T08:04:16.055+00:00</updated>
+    <summary>TestComplete support 2.6.1</summary>
+  </entry>
+  <entry>
+    <title>Azure AD 1.2.2</title>
+    <link href='https://plugins.jenkins.io/azure-ad' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-ad:1.2.2</id>
+    <published>2020-12-23T06:14:31.165+00:00</published>
+    <updated>2020-12-23T06:14:31.165+00:00</updated>
+    <summary>Azure AD 1.2.2</summary>
+  </entry>
+  <entry>
+    <title>Azure Commons 1.1.0</title>
+    <link href='https://plugins.jenkins.io/azure-commons' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:azure-commons:1.1.0</id>
+    <published>2020-12-23T03:34:53.244+00:00</published>
+    <updated>2020-12-23T03:34:53.244+00:00</updated>
+    <summary>Azure Commons 1.1.0</summary>
+  </entry>
+  <entry>
+    <title>Checks API 1.2.0</title>
+    <link href='https://plugins.jenkins.io/checks-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:checks-api:1.2.0</id>
+    <published>2020-12-23T03:42:26.896+00:00</published>
+    <updated>2020-12-23T03:42:26.896+00:00</updated>
+    <summary>Checks API 1.2.0</summary>
+  </entry>
+  <entry>
+    <title>MySQL Database 1.4</title>
+    <link href='https://plugins.jenkins.io/database-mysql' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:database-mysql:1.4</id>
+    <published>2020-12-23T10:40:37.624+00:00</published>
+    <updated>2020-12-23T10:40:37.624+00:00</updated>
+    <summary>MySQL Database 1.4</summary>
+  </entry>
+  <entry>
+    <title>Git client 3.6.0</title>
+    <link href='https://plugins.jenkins.io/git-client' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:3.6.0</id>
+    <published>2020-12-23T16:58:10.430+00:00</published>
+    <updated>2020-12-23T16:58:10.430+00:00</updated>
+    <summary>Git client 3.6.0</summary>
+  </entry>
+  <entry>
+    <title>GitHub Branch Source 2.9.3</title>
+    <link href='https://plugins.jenkins.io/github-branch-source' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-branch-source:2.9.3</id>
+    <published>2020-12-23T23:09:06.212+00:00</published>
+    <updated>2020-12-23T23:09:06.212+00:00</updated>
+    <summary>GitHub Branch Source 2.9.3</summary>
+  </entry>
+  <entry>
+    <title>JUnit 1.48</title>
+    <link href='https://plugins.jenkins.io/junit' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:junit:1.48</id>
+    <published>2020-12-23T08:29:21.967+00:00</published>
+    <updated>2020-12-23T08:29:21.967+00:00</updated>
+    <summary>JUnit 1.48</summary>
+  </entry>
+  <entry>
+    <title>mabl 0.0.36</title>
+    <link href='https://plugins.jenkins.io/mabl-integration' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.mabl.integration.jenkins:mabl-integration:0.0.36</id>
+    <published>2020-12-23T16:56:05.976+00:00</published>
+    <updated>2020-12-23T16:56:05.976+00:00</updated>
+    <summary>mabl 0.0.36</summary>
+  </entry>
+  <entry>
+    <title>Notification 1.14</title>
+    <link href='https://plugins.jenkins.io/notification' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.tikalk.hudson.plugins:notification:1.14</id>
+    <published>2020-12-23T14:18:48.182+00:00</published>
+    <updated>2020-12-23T14:18:48.182+00:00</updated>
+    <summary>Notification 1.14</summary>
+  </entry>
+  <entry>
+    <title>Notify.Events 1.3.0</title>
+    <link href='https://plugins.jenkins.io/notify-events' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:events.notify:notify-events:1.3.0</id>
+    <published>2020-12-23T18:46:38.633+00:00</published>
+    <updated>2020-12-23T18:46:38.633+00:00</updated>
+    <summary>Notify.Events 1.3.0</summary>
+  </entry>
+  <entry>
+    <title>Throttle Concurrent Builds 2.1</title>
+    <link href='https://plugins.jenkins.io/throttle-concurrents' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:throttle-concurrents:2.1</id>
+    <published>2020-12-23T18:13:22.130+00:00</published>
+    <updated>2020-12-23T18:13:22.130+00:00</updated>
+    <summary>Throttle Concurrent Builds 2.1</summary>
+  </entry>
+  <entry>
+    <title>Alibaba Cloud ECS 1.3</title>
+    <link href='https://plugins.jenkins.io/alibabacloud-ecs' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.alibabacloud.jenkins:alibabacloud-ecs:1.3</id>
+    <published>2020-12-22T12:52:12.874+00:00</published>
+    <updated>2020-12-22T12:52:12.874+00:00</updated>
+    <summary>Alibaba Cloud ECS 1.3</summary>
+  </entry>
+  <entry>
+    <title>Log CLI 67.68dc9517eee7</title>
+    <link href='https://plugins.jenkins.io/log-cli' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:log-cli:67.68dc9517eee7</id>
+    <published>2020-12-22T21:09:43.536+00:00</published>
+    <updated>2020-12-22T21:09:43.536+00:00</updated>
+    <summary>Log CLI 67.68dc9517eee7</summary>
+  </entry>
+  <entry>
+    <title>Parameterized Scheduler 0.9</title>
+    <link href='https://plugins.jenkins.io/parameterized-scheduler' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:parameterized-scheduler:0.9</id>
+    <published>2020-12-22T04:44:23.363+00:00</published>
+    <updated>2020-12-22T04:44:23.363+00:00</updated>
+    <summary>Parameterized Scheduler 0.9</summary>
+  </entry>
+  <entry>
+    <title>Plugin Utilities API 1.6.1</title>
+    <link href='https://plugins.jenkins.io/plugin-util-api' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:plugin-util-api:1.6.1</id>
+    <published>2020-12-22T22:14:38.002+00:00</published>
+    <updated>2020-12-22T22:14:38.002+00:00</updated>
+    <summary>Plugin Utilities API 1.6.1</summary>
+  </entry>
+  <entry>
+    <title>Run Condition 1.5</title>
+    <link href='https://plugins.jenkins.io/run-condition' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:run-condition:1.5</id>
+    <published>2020-12-22T18:45:46.113+00:00</published>
+    <updated>2020-12-22T18:45:46.113+00:00</updated>
+    <summary>Run Condition 1.5</summary>
+  </entry>
+  <entry>
+    <title>Sysdig Secure Container Image Scanner 2.1.0</title>
+    <link href='https://plugins.jenkins.io/sysdig-secure' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sysdig-secure:2.1.0</id>
+    <published>2020-12-22T16:38:54.128+00:00</published>
+    <updated>2020-12-22T16:38:54.128+00:00</updated>
+    <summary>Sysdig Secure Container Image Scanner 2.1.0</summary>
+  </entry>
+  <entry>
+    <title>Team Concert 2.2.0</title>
+    <link href='https://plugins.jenkins.io/teamconcert' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:teamconcert:2.2.0</id>
+    <published>2020-12-22T08:26:58.910+00:00</published>
+    <updated>2020-12-22T08:26:58.910+00:00</updated>
+    <summary>Team Concert 2.2.0</summary>
+  </entry>
+  <entry>
+    <title>Team Concert Git 2.0.2</title>
+    <link href='https://plugins.jenkins.io/teamconcert-git' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:teamconcert-git:2.0.2</id>
+    <published>2020-12-22T08:48:40.486+00:00</published>
+    <updated>2020-12-22T08:48:40.486+00:00</updated>
+    <summary>Team Concert Git 2.0.2</summary>
+  </entry>
+  <entry>
+    <title>Content Replace 1.6.0</title>
+    <link href='https://plugins.jenkins.io/content-replace' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:content-replace:1.6.0</id>
+    <published>2020-12-21T10:02:32.760+00:00</published>
+    <updated>2020-12-21T10:02:32.760+00:00</updated>
+    <summary>Content Replace 1.6.0</summary>
+  </entry>
+  <entry>
+    <title>FortiCWP CICD 0.9.1</title>
+    <link href='https://plugins.jenkins.io/forticwp-cicd' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:forticwp-cicd:0.9.1</id>
+    <published>2020-12-21T05:21:12.547+00:00</published>
+    <updated>2020-12-21T05:21:12.547+00:00</updated>
+    <summary>FortiCWP CICD 0.9.1</summary>
+  </entry>
+  <entry>
+    <title>Instana integration 1.0.8</title>
+    <link href='https://plugins.jenkins.io/instana' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.instana.jenkins.plugins:instana:1.0.8</id>
+    <published>2020-12-21T12:07:22.795+00:00</published>
+    <updated>2020-12-21T12:07:22.795+00:00</updated>
+    <summary>Instana integration 1.0.8</summary>
+  </entry>
+  <entry>
+    <title>Run Condition 1.4</title>
+    <link href='https://plugins.jenkins.io/run-condition' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:run-condition:1.4</id>
+    <published>2020-12-21T10:36:41.402+00:00</published>
+    <updated>2020-12-21T10:36:41.402+00:00</updated>
+    <summary>Run Condition 1.4</summary>
+  </entry>
+  <entry>
+    <title>Token Macro 2.13</title>
+    <link href='https://plugins.jenkins.io/token-macro' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:token-macro:2.13</id>
+    <published>2020-12-21T15:31:17.772+00:00</published>
+    <updated>2020-12-21T15:31:17.772+00:00</updated>
+    <summary>Token Macro 2.13</summary>
+  </entry>
+  <entry>
+    <title>Windows cloud 1.0.0 (new)</title>
+    <link href='https://plugins.jenkins.io/windows-cloud' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:fr.edf.jenkins.plugins:windows-cloud:1.0.0</id>
+    <published>2020-12-21T17:04:54.337+00:00</published>
+    <updated>2020-12-21T17:04:54.337+00:00</updated>
+    <summary>Windows cloud 1.0.0</summary>
+  </entry>
+  <entry>
+    <title>Go 1.3</title>
+    <link href='https://plugins.jenkins.io/golang' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:golang:1.3</id>
+    <published>2020-12-20T16:23:13.951+00:00</published>
+    <updated>2020-12-20T16:23:13.951+00:00</updated>
+    <summary>Go 1.3</summary>
+  </entry>
+  <entry>
+    <title>Log CLI 61.c28d6b682b12</title>
+    <link href='https://plugins.jenkins.io/log-cli' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:log-cli:61.c28d6b682b12</id>
+    <published>2020-12-20T21:10:50.822+00:00</published>
+    <updated>2020-12-20T21:10:50.822+00:00</updated>
+    <summary>Log CLI 61.c28d6b682b12</summary>
+  </entry>
+  <entry>
+    <title>NodeJS 1.3.10</title>
+    <link href='https://plugins.jenkins.io/nodejs' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:nodejs:1.3.10</id>
+    <published>2020-12-20T13:17:09.500+00:00</published>
+    <updated>2020-12-20T13:17:09.500+00:00</updated>
+    <summary>NodeJS 1.3.10</summary>
+  </entry>
+  <entry>
+    <title>Pipeline As YAML (Incubated) 0.14-rc</title>
+    <link href='https://plugins.jenkins.io/pipeline-as-yaml' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:pipeline-as-yaml:0.14-rc</id>
+    <published>2020-12-20T16:05:47.414+00:00</published>
+    <updated>2020-12-20T16:05:47.414+00:00</updated>
+    <summary>Pipeline As YAML (Incubated) 0.14-rc</summary>
+  </entry>
+  <entry>
+    <title>Bitbucket Push and Pull Request 2.6.4</title>
+    <link href='https://plugins.jenkins.io/bitbucket-push-and-pull-request' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:bitbucket-push-and-pull-request:2.6.4</id>
+    <published>2020-12-18T16:49:58.807+00:00</published>
+    <updated>2020-12-18T16:49:58.807+00:00</updated>
+    <summary>Bitbucket Push and Pull Request 2.6.4</summary>
+  </entry>
+  <entry>
+    <title>Health Advisor by CloudBees 3.2.3</title>
+    <link href='https://plugins.jenkins.io/cloudbees-jenkins-advisor' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloudbees-jenkins-advisor:3.2.3</id>
+    <published>2020-12-18T10:06:15.991+00:00</published>
+    <updated>2020-12-18T10:06:15.991+00:00</updated>
+    <summary>Health Advisor by CloudBees 3.2.3</summary>
+  </entry>
+  <entry>
+    <title>Dependency Graph Viewer 1.0.5</title>
+    <link href='https://plugins.jenkins.io/depgraph-view' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:depgraph-view:1.0.5</id>
+    <published>2020-12-18T20:35:33.138+00:00</published>
+    <updated>2020-12-18T20:35:33.138+00:00</updated>
+    <summary>Dependency Graph Viewer 1.0.5</summary>
+  </entry>
+  <entry>
+    <title>DingTalk 2.4.3</title>
+    <link href='https://plugins.jenkins.io/dingding-notifications' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:dingding-notifications:2.4.3</id>
+    <published>2020-12-18T09:49:11.369+00:00</published>
+    <updated>2020-12-18T09:49:11.369+00:00</updated>
+    <summary>DingTalk 2.4.3</summary>
+  </entry>
+  <entry>
+    <title>TraceTronic ECU-TEST 2.24</title>
+    <link href='https://plugins.jenkins.io/ecutest' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.tracetronic.jenkins.plugins:ecutest:2.24</id>
+    <published>2020-12-18T15:32:35.013+00:00</published>
+    <updated>2020-12-18T15:32:35.013+00:00</updated>
+    <summary>TraceTronic ECU-TEST 2.24</summary>
+  </entry>
+  <entry>
+    <title>Micro Focus Application Automation Tools 6.5</title>
+    <link href='https://plugins.jenkins.io/hp-application-automation-tools-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:hp-application-automation-tools-plugin:6.5</id>
+    <published>2020-12-18T09:30:39.812+00:00</published>
+    <updated>2020-12-18T09:30:39.812+00:00</updated>
+    <summary>Micro Focus Application Automation Tools 6.5</summary>
+  </entry>
+  <entry>
+    <title>PTC Windchill RV&amp;S CM 2.4</title>
+    <link href='https://plugins.jenkins.io/integrity-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:integrity-plugin:2.4</id>
+    <published>2020-12-18T11:08:59.390+00:00</published>
+    <updated>2020-12-18T11:08:59.390+00:00</updated>
+    <summary>PTC Windchill RV&amp;S CM 2.4</summary>
+  </entry>
+  <entry>
+    <title>Junit SQL Storage 0.5</title>
+    <link href='https://plugins.jenkins.io/junit-sql-storage' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.plugins:junit-sql-storage:0.5</id>
+    <published>2020-12-18T08:05:26.784+00:00</published>
+    <updated>2020-12-18T08:05:26.784+00:00</updated>
+    <summary>Junit SQL Storage 0.5</summary>
+  </entry>
+  <entry>
+    <title>Label Linked Jobs 6.0.1</title>
+    <link href='https://plugins.jenkins.io/label-linked-jobs' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:label-linked-jobs:6.0.1</id>
+    <published>2020-12-18T06:33:37.831+00:00</published>
+    <updated>2020-12-18T06:33:37.831+00:00</updated>
+    <summary>Label Linked Jobs 6.0.1</summary>
+  </entry>
+  <entry>
+    <title>Maven Artifact ChoiceListProvider (Nexus) 1.5.4</title>
+    <link href='https://plugins.jenkins.io/maven-artifact-choicelistprovider' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.5.4</id>
+    <published>2020-12-18T20:24:51.131+00:00</published>
+    <updated>2020-12-18T20:24:51.131+00:00</updated>
+    <summary>Maven Artifact ChoiceListProvider (Nexus) 1.5.4</summary>
+  </entry>
+  <entry>
+    <title>Release 2.11</title>
+    <link href='https://plugins.jenkins.io/release' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:release:2.11</id>
+    <published>2020-12-18T13:04:07.163+00:00</published>
+    <updated>2020-12-18T13:04:07.163+00:00</updated>
+    <summary>Release 2.11</summary>
+  </entry>
+  <entry>
+    <title>null 3.7.0</title>
+    <link href='https://plugins.jenkins.io/hashicorp-vault-plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.datapipe.jenkins.plugins:hashicorp-vault-plugin:3.7.0</id>
+    <published>2020-12-17T12:03:52.610+00:00</published>
+    <updated>2020-12-17T12:03:52.610+00:00</updated>
+    <summary>null 3.7.0</summary>
+  </entry>
+</feed>

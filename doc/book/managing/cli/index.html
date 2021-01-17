@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins CLI
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins 是一个开源自动化服务器" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins CLI" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins CLI" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<!-- Open Graph data -->
+<meta content="Jenkins CLI" property="og:title">
+<meta content="article" property="og:type">
+<meta content="/doc/book/managing/cli/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software." name="og:description">
+<meta content="Jenkins CLI" property="og:site_name">
+<link href="/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="/css/footer.css" media="screen" rel="stylesheet">
+<link href="/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/bower/jquery/jquery.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<style type="text/css">footer {display: none}</style>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row .col-lg-9 h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-lg-3">
+<div class="sidebar-nav tour">
+<p>
+<a href="/doc" class="">用户文档中心</a>
+</p>
+<h4>
+Jenkins入门
+</h4>
+<ul>
+<li>
+<a href="/doc/pipeline/tour/getting-started" class="">入门指南</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/hello-world" class="">创建 Hello World 流水线</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/running-multiple-steps" class="">执行多个步骤</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/agents" class="">定义执行环境</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/environment" class="">使用环境变量</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/tests-and-artifacts" class="">记录测试结果和构建包</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/post" class="">清理和通知</a>
+</li>
+<li>
+<a href="/doc/pipeline/tour/deployment" class="">部署</a>
+</li>
+</ul>
+<h4>
+教程
+</h4>
+<ul>
+<li>
+<a href="/doc/tutorials" class="">概览</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-java-app-with-maven" class="">用 Maven 构建 Java 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-node-js-and-react-app-with-npm" class="">用 npm 构建 Node.js 和 React 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-python-app-with-pyinstaller" class="">用 PyInstaller 构建 Python 应用</a>
+</li>
+<li>
+<a href="/doc/tutorials/create-a-pipeline-in-blue-ocean" class="">用 Blue Ocean 创建流水线</a>
+</li>
+<li>
+<a href="/doc/tutorials/build-a-multibranch-pipeline-project" class="">构建一个多分支的 Pipeline 项目</a>
+</li>
+</ul>
+<h4>
+用户手册
+<span style="font-size: 0.6rem; vertical-align: middle;">
+<a href="user-handbook.pdf">
+(PDF)
+</a>
+</span>
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started" class="">用户手册概述</a>
+</li>
+<li>
+<a href="/doc/book/installing" class="">安装Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/using" class="">使用 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/pipeline" class="">流水线</a>
+</li>
+<li>
+<a href="/doc/book/blueocean" class="">Blue Ocean</a>
+</li>
+<li>
+<a href="/doc/book/managing" class="active">管理Jenkins</a>
+<small>
+<ul style="padding-left: 1rem;">
+<li>
+<a href="/doc/book/managing/system-configuration" class="">配置系统</a>
+</li>
+<li>
+<a href="/doc/book/managing/security" class="">管理安全</a>
+</li>
+<li>
+<a href="/doc/book/managing/tools" class="">管理工具</a>
+</li>
+<li>
+<a href="/doc/book/managing/plugins" class="">管理插件</a>
+</li>
+<li>
+<a href="/doc/book/managing/cli" class="active">Jenkins CLI</a>
+</li>
+<li>
+<a href="/doc/book/managing/script-console" class="">脚本控制台</a>
+</li>
+<li>
+<a href="/doc/book/managing/nodes" class="">管理节点</a>
+</li>
+<li>
+<a href="/doc/book/managing/script-approval" class="">进程内的脚本批准</a>
+</li>
+<li>
+<a href="/doc/book/managing/users" class="">管理用户</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="/doc/book/system-administration" class="">系统管理</a>
+</li>
+<li>
+<a href="/doc/book/scaling" class="">规模 Jenkins</a>
+</li>
+<li>
+<a href="/doc/book/appendix" class="">附录</a>
+</li>
+<li>
+<a href="/doc/book/glossary" class="">术语表</a>
+</li>
+</ul>
+<h4>
+参考资料
+</h4>
+<ul>
+<li>
+<a href="/doc/book/pipeline/syntax" class="">流水线语法参考</a>
+</li>
+<li>
+<a href="/doc/pipeline/steps" class="">流水线步骤参考</a>
+</li>
+<li>
+<a href="/doc/upgrade-guide" class="">LTS 升级指导</a>
+</li>
+</ul>
+<h5>
+最新博客
+</h5>
+<ul>
+</ul>
+<div class="small">
+<a href="node/tags/tutorial">
+所有博客
+</a>
+</div>
+<p></p>
+</div>
+</div>
+<div class="col-lg-9">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../plugins">
+⇐ 管理插件
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 管理Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../script-console">
+脚本控制台 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row body">
+<div class="section">
+<h1>
+Jenkins CLI
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#ssh">通过SSH使用 CLI</a>
+<ul class="sectlevel2">
+<li><a href="#身份验证">身份验证</a></li>
+<li><a href="#常用命令">常用命令</a></li>
+</ul>
+</li>
+<li><a href="#使用-cli-客户端">使用 CLI 客户端</a>
+<ul class="sectlevel2">
+<li><a href="#下载客户端">下载客户端</a></li>
+<li><a href="#使用客户端">使用客户端</a></li>
+<li><a href="#客户端连接模式">客户端连接模式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins有一个内置的命令行界面，允许用户和管理员从脚本或shell环境中访问Jenkins。这可以方便的编写日常任务, 批量更新, 故障排除等等。</p>
+</div>
+<div class="paragraph">
+<p>可以通过SSH 或 Jenkins CLI客户端访问命令行界面, Jenkins分布式的的`.jar` 文件。</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>由于安全原因，<strong>not recommended</strong>使用 Jenkins 2.53 及以下和Jenkins LTS 2.46.1 及以下分布式的CLI 客户端:
+虽然目前没有已知的漏洞,但之前有几个漏洞被报告并修补过,
+ 而且它使用的Jenkins远程协议 很容易受到远程代码执行bug的影响，is inherently vulnerable to remote code execution bugs,
+甚至是 “预认证” 漏洞 (匿名用户能够物理访问Jenkins 网络)。</p>
+</div>
+<div class="paragraph">
+<p>Jenkins 2.5 及以上和Jenkins LTS 2.46.2 及以上分发的客户端被认为在它的默认 (<code>-http</code>) 或 <code>-ssh</code> 模式是安全的，如使用标准 <code>ssh</code> 命令。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ssh"><a class="anchor" href="#ssh"></a>通过SSH使用 CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在新的Jenkins安装中, SSH 服务默认禁用。
+管理员可以选择设置一个特定的端口，或让Jenkins在 <a href="#security#ssh-server">配置全局安全</a> 页面选择一个随机的端口。</p>
+</div>
+<div class="paragraph">
+<p>为了确定随机分配的SSH端口,请检查Jenkins URL返回的头，例如:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% curl -Lv https://JENKINS_URL/login 2&gt;&amp;1 | grep 'X-SSH-Endpoint'
+&lt; X-SSH-Endpoint: localhost:53801
+%</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>使用随机 SSH 端口 (本例中为`53801` ), 和配置的 <a href="#Authentication">[Authentication]</a>, 任何现代的 SSH 客户端都可以安全的执行 CLI 命令。</p>
+</div>
+<div class="sect2">
+<h3 id="身份验证"><a class="anchor" href="#身份验证"></a>身份验证</h3>
+<div class="paragraph">
+<p>无论哪个在Jenkins 主机身份验证的用户，为了_access_ CLI，都必须具有
+<code>Overall/Read</code> 权限。根据执行的命令，用户可能需要其他的权限。</p>
+</div>
+<div class="paragraph">
+<p>身份认证依赖于
+基于SSH公共/私有密钥对身份认证。要为合适的用户添加 SSH 公共密钥, 导航到
+<code>https://JENKINS_URL/user/USERNAME/configure</code> 并将 SSH 公共密钥粘贴到合适的文本域。</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="../../resources/managing/cli-adding-ssh-public-keys.png" alt="Adding public SSH keys for a user">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="常用命令"><a class="anchor" href="#常用命令"></a>常用命令</h3>
+<div class="paragraph">
+<p>Jenkins 有许多内置的 CLI 命令，这些命令可以在任何
+Jenkins 环境中找到, 比如 <code>build</code> 或 <code>list-jobs</code>。插件也提供
+CLI 命令; 为了确定给定Jenkins环境中可用命令的完整列表, 执行CLI <code>help</code> 命令:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>下面的命令列表并不全面, 但他是Jenkins CLI 使用的起点。</p>
+</div>
+<div class="sect3">
+<h4 id="build"><a class="anchor" href="#build"></a>build</h4>
+<div class="paragraph">
+<p>最常见和有用的 CLI命令之一是 <code>build</code>, 它允许用户触发拥有权限的任何作业或流水线。</p>
+</div>
+<div class="paragraph">
+<p>最基本的调用将简单的触发 作业或流水线并退出, 但是通过额外的选项，用户也可以传递参数, 轮询 SCM, 甚至可以跟踪触发的构建或流水线的运行的控制台输出。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help build
+
+java -jar jenkins-cli.jar build JOB [-c] [-f] [-p] [-r N] [-s] [-v] [-w]
+Starts a build, and optionally waits for a completion.  Aside from general
+scripting use, this command can be used to invoke another job from within a
+build of one job.  With the -s option, this command changes the exit code based
+on the outcome of the build (exit code 0 indicates a success) and interrupting
+the command will interrupt the job.  With the -f option, this command changes
+the exit code based on the outcome of the build (exit code 0 indicates a
+success) however, unlike -s, interrupting the command will not interrupt the
+job (exit code 125 indicates the command was interrupted).  With the -c option,
+a build will only run if there has been an SCM change.
+ JOB : Name of the job to build
+ -c  : Check for SCM changes before starting the build, and if there's no
+       change, exit without doing a build
+ -f  : Follow the build progress. Like -s only interrupts are not passed
+       through to the build.
+ -p  : Specify the build parameters in the key=value format.
+ -s  : Wait until the completion/abortion of the command. Interrupts are passed
+       through to the build.
+ -v  : Prints out the console output of the build. Use with -s
+ -w  : Wait until the start of the command
+% ssh -l kohsuke -p 53801 localhost build build-all-software -f -v
+Started build-all-software #1
+Started from command line by admin
+Building in workspace /tmp/jenkins/workspace/build-all-software
+[build-all-software] $ /bin/sh -xe /tmp/hudson1100603797526301795.sh
++ echo hello world
+hello world
+Finished: SUCCESS
+Completed build-all-software #1 : SUCCESS
+%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="console"><a class="anchor" href="#console"></a>console</h4>
+<div class="paragraph">
+<p>同样有用的是`console` 命令, 它检索指定的构建或流水线运行的控制台输出。当没有提供构建编号时,
+<code>console</code> 命令将会输出最后完成的构建的控制台输出。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help console
+
+java -jar jenkins-cli.jar console JOB [BUILD] [-f] [-n N]
+Produces the console output of a specific build to stdout, as if you are doing 'cat build.log'
+ JOB   : Name of the job
+ BUILD : Build number or permalink to point to the build. Defaults to the last
+         build
+ -f    : If the build is in progress, stay around and append console output as
+         it comes, like 'tail -f'
+ -n N  : Display the last N lines
+% ssh -l kohsuke -p 53801 localhost console build-all-software
+Started from command line by kohsuke
+Building in workspace /tmp/jenkins/workspace/build-all-software
+[build-all-software] $ /bin/sh -xe /tmp/hudson1100603797526301795.sh
++ echo hello world
+yes
+Finished: SUCCESS
+%</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="who-am-i"><a class="anchor" href="#who-am-i"></a>who-am-i</h4>
+<div class="paragraph">
+<p><code>who-am-i</code> 有助于列出当前用户的可用凭证和权限。这对调试时由于没有某些权限而缺少 CLI 命令的情况很有帮助。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% ssh -l kohsuke -p 53801 localhost help who-am-i
+
+java -jar jenkins-cli.jar who-am-i
+Reports your credential and permissions.
+% ssh -l kohsuke -p 53801 localhost who-am-i
+Authenticated as: kohsuke
+Authorities:
+  authenticated
+%</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="使用-cli-客户端"><a class="anchor" href="#使用-cli-客户端"></a>使用 CLI 客户端</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>尽管基于SSH的CLI快速且覆盖了大多数需求, 但是Jenkins分布式的CLI客户端是更好的选择。 例如,  CLI客户端的默认传输是
+HTTP，这意味着不需要在防火墙中打开其他端口以供其使用。</p>
+</div>
+<div class="sect2">
+<h3 id="下载客户端"><a class="anchor" href="#下载客户端"></a>下载客户端</h3>
+<div class="paragraph">
+<p>CLI 客户端可以直接在URL
+<code>/jnlpJars/jenkins-cli.jar`从Jenkins主机下载, 实际上  `https://JENKINS_URL/jnlpJars/jenkins-cli.jar</code></p>
+</div>
+<div class="paragraph">
+<p>当 <code>.jar</code> 用于 Jenkins的不同版本时, 在使用时出现兼容性问题, 请重新从Jenkins主机下载最新的 `.jar`文件。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="使用客户端"><a class="anchor" href="#使用客户端"></a>使用客户端</h3>
+<div class="paragraph">
+<p>调用客户端的一般语法如下:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar [-s JENKINS_URL] [global options...] command [command options...] [arguments...]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>JENKINS_URL</code> 可以通过环境变量 `$JENKINS_URL`来指定。
+其他通用选项的摘要可以通过运行客户端来显示，而不需要任何参数。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="客户端连接模式"><a class="anchor" href="#客户端连接模式"></a>客户端连接模式</h3>
+<div class="paragraph">
+<p>在2.54+ / 2.46.2+ 客户端，有三种基本模式可以使用 , 可通过全局变量选择:
+<code>-http</code>; <code>-ssh</code>; 和 <code>-remoting</code>。</p>
+</div>
+<div class="sect3">
+<h4 id="http-连接模式"><a class="anchor" href="#http-连接模式"></a>HTTP 连接模式</h4>
+<div class="paragraph">
+<p>这是2.54 和 2.46.2的默认模式, 不过你可以明确地传递 <code>-http</code> 选项。</p>
+</div>
+<div class="paragraph">
+<p>身份认证最好使用 <code>-auth</code> 选项, 它接受 <code>username:apitoken</code> 参数。
+从`/me/configure`获取你的API令牌:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar [-s JENKINS_URL] -auth kohsuke:abc1234ffe4a command ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(实际上也接受密码, 但这是不鼓励的)</p>
+</div>
+<div class="paragraph">
+<p>你还可以在带 `@`的参数之前从文件加载相关的内容:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar [-s JENKINS_URL] -auth @/home/kohsuke/.jenkins-cli command ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>一般来说，不需要特别的参数配置来启动基于 HTTP的CLI 连接。
+如果你在HTTP 反向代理后台运行Jenkins,
+e确保它不缓存请求或响应体。</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins 2.54及以上的CLI的HTTP连接模式不能在使用mod_proxy的Apache HTTP 反向代理服务器上正常工作。工作区包括使用不同的反向代理，如 Nginx 或 HAProxy, 或在可能的情况下使用 SSH 连接模式。参考
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-47279">JENKINS-47279</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ssh连接模式"><a class="anchor" href="#ssh连接模式"></a>SSH连接模式</h4>
+<div class="paragraph">
+<p>身份验证是通过 SSH 密钥对进行的。你还必须选择Jenkins用户ID:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java -jar jenkins-cli.jar [-s JENKINS_URL] -ssh -user kohsuke command ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>在这种模式下, 客户机基本上像一个本地 <code>ssh</code> 命令。</p>
+</div>
+<div class="paragraph">
+<p>默认情况下，客户端尝试连接在 `JENKINS_URL`使用的相同主机上的SSH端口。
+如果Jenkins在 HTTP 反向代理的后面, 这通常不会起作用,
+所以用系统属性 `-Dorg.jenkinsci.main.modules.sshd.SSHD.hostName=ACTUALHOST`运行Jenkins，
+为SSH端点定义一个主机名或IP地址</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="远程连接模式"><a class="anchor" href="#远程连接模式"></a>远程连接模式</h4>
+<div class="paragraph">
+<p>这是客户端支持从pre-2.54 / pre-2.46.2 Jenkins 服务器下载的唯一模式
+(引入 <code>-remoting</code> 选项之前)。
+由于安全和性能原因它被弃用了。
+也就是说, 某些命令或命令模式 <em>only</em> 能在远程模式下运行,
+通常是由于命令功能包括在客户端机器上运行的服务器提供的代码。</p>
+</div>
+<div class="paragraph">
+<p>该模式在服务器端被禁用，用于2.54+ 和 2.46.2的新的安装。
+如果你必须使用它, 并接受风险, 可在 <a href="#security">配置全局安全性</a>中启用。</p>
+</div>
+<div class="paragraph">
+<p>身份验证最好通过 SSH 密钥对进行。
+<code>login`命令和 `--username</code> / <code>--password</code> 命令(注意: <strong>not global</strong>) 选项也是可用的;
+由于无法使用非基于密码的安全域,这些命令是无效的。
+如果匿名用户缺乏整体或工作对权限，那么某些命令参数无法得到适当的解析，并且在脚本中保存人工选择的密码用于使用被认为是不安全的。</p>
+</div>
+<div class="paragraph">
+<p>注意，此模式有两种传输方式: 通过HTTP, 或通过 专用的TCP 套接。
+如果<a href="#security#jnlp-tcp-port">TCP 端口可用</a> 并且看起来有效, 客户端将使用此传输。
+如果TCP 端口被禁用, 或者这样一个端口被广告但不接受连接
+(例如，你使用带有防火墙的 HTTP 反向代理),
+客户端将会自动地退回到效率较低的HTTP传输。</p>
+</div>
+<div class="sect4">
+<h5 id="基于远程的客户端的常见问题"><a class="anchor" href="#基于远程的客户端的常见问题"></a>基于远程的客户端的常见问题</h5>
+<div class="paragraph">
+<p>在运行CLI客户端时可能会遇到很多常见问题。</p>
+</div>
+<div class="sect5">
+<h6 id="操作超时"><a class="anchor" href="#操作超时"></a>操作超时</h6>
+<div class="paragraph">
+<p>如果你在服务器上使用防火墙请检查 HTTP 或 TCP 端口是否打开。你可以在Jenkins配置中配置它的值。 默认情况下，它将设置一个随机的端口。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>% java -jar jenkins-cli.jar -s JENKINS_URL help
+Exception in thread "main" java.net.ConnectException: Operation timed out
+    at java.net.PlainSocketImpl.socketConnect(Native Method)
+    at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+    at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+    at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+    at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:432)
+    at java.net.Socket.connect(Socket.java:529)
+    at java.net.Socket.connect(Socket.java:478)
+    at java.net.Socket.&lt;init&gt;(Socket.java:375)
+    at java.net.Socket.&lt;init&gt;(Socket.java:189)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:97)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:82)
+    at hudson.cli.CLI._main(CLI.java:250)
+    at hudson.cli.CLI.main(CLI.java:199)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="no-x-jenkins-cli2-port"><a class="anchor" href="#no-x-jenkins-cli2-port"></a>No X-Jenkins-CLI2-Port</h6>
+<div class="paragraph">
+<p>进入 <strong>Manage Jenkins</strong> &gt; <strong>Configure Global Security</strong> 并选择*TCP port for JNLP agents*下面的 "Fixed" 或
+"Random"。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>java.io.IOException: No X-Jenkins-CLI2-Port among [X-Jenkins, null, Server, X-Content-Type-Options, Connection,
+        X-You-Are-In-Group, X-Hudson, X-Permission-Implied-By, Date, X-Jenkins-Session, X-You-Are-Authenticated-As,
+        X-Required-Permission, Set-Cookie, Expires, Content-Length, Content-Type]
+    at hudson.cli.CLI.getCliTcpPort(CLI.java:284)
+    at hudson.cli.CLI.&lt;init&gt;(CLI.java:128)
+    at hudson.cli.CLIConnectionFactory.connect(CLIConnectionFactory.java:72)
+    at hudson.cli.CLI._main(CLI.java:473)
+    at hudson.cli.CLI.main(CLI.java:384)
+    Suppressed: java.io.IOException: Server returned HTTP response code: 403 for URL: http://citest.gce.px/cli
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1840)
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1441)
+        at hudson.cli.FullDuplexHttpStream.&lt;init&gt;(FullDuplexHttpStream.java:78)
+        at hudson.cli.CLI.connectViaHttp(CLI.java:152)
+        at hudson.cli.CLI.&lt;init&gt;(CLI.java:132)
+        ... 3 more</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="服务器密钥未验证"><a class="anchor" href="#服务器密钥未验证"></a>服务器密钥未验证</h6>
+<div class="paragraph">
+<p>你可能会得到以下的错误并找到一个关于 `mismatched keys`的日志条目:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>org.apache.sshd.common.SshException: Server key did not validate
+    at org.apache.sshd.client.session.AbstractClientSession.checkKeys(AbstractClientSession.java:523)
+    at org.apache.sshd.common.session.helpers.AbstractSession.handleKexMessage(AbstractSession.java:616)
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这意味着你的SSH 配置不承认服务器提供的公钥。
+当你在开发模式下运行Jenkins，应用程序的多个实例会随着时间的推移运行在同一个SSH端口上。
+在开发环境中, 访问你的 <code>~/.ssh/known_hosts</code> (或 <code>C:/Users/&lt;your_name&gt;/.ssh/known_hosts</code> )并删除与你当前 SSH 端口对应的行 (比如 <code>[localhost]:3485</code>)。
+在生产环境中, 如果服务器的公钥在最近发生改变，请与Jenkins管理员联系。
+如果是这样, a请管理员执行上面描述的步骤。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="usernamenotfoundexception"><a class="anchor" href="#usernamenotfoundexception"></a>UsernameNotFoundException</h6>
+<div class="paragraph">
+<p>如果你的客户端显示如下的堆栈跟踪:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>org.acegisecurity.userdetails.UsernameNotFoundException: &lt;name_you_used&gt;
+    ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>这意味着SSH密钥被识别并对存储的用户进行了验证，但是用户名对当前应用程序正在使用的安全域无效 。
+这可能发生在最初使用Jenkins数据库时, 配置了你的用户, 然后切换到另一个安全域 (如 LDAP等) ，在该安全域中，你定义的用户还不存在。</p>
+</div>
+<div class="paragraph">
+<p>要解决这个问题, 就要确保你的用户在你配置的安全域中存在。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="故障诊断日志"><a class="anchor" href="#故障诊断日志"></a>故障诊断日志</h6>
+<div class="paragraph">
+<p>为了获取认证过程的更多信息:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>进入 <strong>Manage Jenkins</strong> &gt; <strong>System Log</strong> &gt; <strong>Add new log recorder</strong>。</p>
+</li>
+<li>
+<p>输入你想要的名称，点击 <strong>Ok</strong>。</p>
+</li>
+<li>
+<p>点击 <strong>Add</strong>。</p>
+</li>
+<li>
+<p>输入 <code>org.jenkinsci.main.modules.sshd.PublicKeyAuthenticatorImpl</code> (或者输入 <code>PublicKeyAuth</code> ，然后选择全名)</p>
+</li>
+<li>
+<p>设置等级为*ALL*。</p>
+</li>
+<li>
+<p>为 `hudson.model.User`重复之前的三个步骤。</p>
+</li>
+<li>
+<p>点击*Save*。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>当你尝试身份验证时, 你可以刷新页面并查看内部发生了什么。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="row">
+<a class="prev doc-page-link" href="../plugins">
+⇐ 管理插件
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="up doc-page-link" href="../">
+⇑ 管理Jenkins
+</a>
+</div>
+<div class="row">
+<a class="index doc-page-link" href="../../">
+索引
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<div class="row">
+<a class="next doc-page-link" href="../script-console">
+脚本控制台 ⇒
+</a>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container"></div>
+<!-- starting partial _feedback-footer.html -->
+<!-- HTML inclusion for chapter and section layouts (i.e. as footers) as well as
+     for use in AsciiDoc file inclusions. -->
+
+<!--
+This feedback form was prepared from a Google Form, based on the techniques in
+the following documentation sources:
+https://codepen.io/learningcode/post/customize-a-google-form-for-your-website,
+http://mrhaki.blogspot.com.au/2014/06/awesome-asciidoc-include-raw-html.html,
+http://www.freshtechtips.com/2013/05/custom-google-drive-contact-form.html,
+https://stackoverflow.com/questions/24436165/set-value-of-hidden-input-inside-form
+-->
+
+<!-- Feedback form functionality in JavaScript - refer to comments in this file
+     for details on the functionality. -->
+<script>
+var feedbackForm = {
+    formKey : 'e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w'
+};
+$(document).ready(function() {
+    window.onload = feedbackForm.start(window.location.href);
+});
+</script>
+<script src="/js/feedback-form-functionality.js"></script>
+
+<p><a href="#feedback" data-toggle="collapse">反馈修改意见?</a></p>
+
+<div id="feedback" class="collapse">
+
+<p>如果对此页的内容有修改意见，请通过下面的快速表格
+<a href="/doc/feedback-form/">快速表单</a>反馈.</p>
+
+<p>或者，你不想填表单，只需填写你要反馈的内容</p>
+
+<!-- Redirects to custom "thank you" page once form is submitted. -->
+<script type="text/javascript">
+var submitted=false;
+</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+onload="if(submitted) {window.location='/doc/thank-you-for-your-feedback/';}">
+</iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCEexH09x_-ytEyE7wetizqOvE_-06WkK89dpBLEJcYnOp8w/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="submitted=true;">
+
+<!-- Set the value of the current URL into the form. -->
+<input type="hidden" name="entry.1246830226" id="current-url" value=""/>
+
+<!-- The answer bit -->
+<p><input type="radio" name="entry.790002525" id="h1" value="是" required/>
+<label for="h1">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="entry.790002525" id="h2" value="否"/>
+<label for="h2">No</label></p>
+
+<!-- The CAPTCHA bit -->
+
+<p><label id="ssTestLabel" for="ssTestValue"></label><br/>
+<input type="text" name="ssTestValue" value="" id="ssTestValue"/></p>
+
+<!-- Submit button -->
+
+<p><input class="button" type="submit" value="提交"/></p>
+
+</form>
+
+<p>看已有的反馈 <a href="https://docs.google.com/spreadsheets/d/1IIdpVs39JDYKg0sLQIv-MNO928qcGApAIfdW5ohfD78" target="_blank">这里</a>.</p>
+
+</div>
+
+<!-- ending partial _feedback-footer.html -->
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="/assets/bower/tether/js/tether.min.js"></script>
+<script src="/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/edit/master/content//doc/book/managing/cli.adoc" title="在 GitHub 上编辑 /doc/book/managing/cli.adoc">
+改善此页
+</a>
+|
+<a href="https://github.com/jenkins-infra/cn.jenkins.io/commits/master/content//doc/book/managing/cli.adoc" title="在 GitHub 上查看 /doc/book/managing/cli.adoc 的修改记录">
+网页记录
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+本网站的内容基于 Creative Commons Attribution-ShareAlike 4.0 License 许可.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>资源</h5>
+<ul class="resources">
+<li>
+<a href="/events">
+活动
+</a>
+</li>
+<li>
+<a href="/doc">
+文档
+</a>
+</li>
+<li>
+<a href="/node">
+博客
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>解决方案</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>项目</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+问题跟踪
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins 构建 CI
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>社区</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+用户邮件列表
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+开发人员邮件列表
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="/merchandise">
+购物
+</a>
+</li>
+<li>
+<a href="/awards">
+荣誉
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+</body>
+</html>
