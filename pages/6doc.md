@@ -3,7 +3,7 @@ layout: page
 title: 文档
 permalink: /doc_old
 icon: octicon-book
-isNavItem: true
+isNavItem: false
 
 ---
 官方出品，成体系，够权威。
