@@ -1,7 +1,7 @@
 ---
 title: 作者_唐明
 name: 唐明
-url: https://www.shanyshanb.com
+url: https://www.tangming.org
 position: 高级软件工程师
 base: 珠海
 ---

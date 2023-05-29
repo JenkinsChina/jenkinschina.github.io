@@ -2,7 +2,7 @@
 title: 珠海Jenkins社区
 base: 珠海
 organizer: 唐明
-url: https://www.shanyshanb.com
+url: https://www.tangming.org
 position: 高级软件工程师
 ---
 

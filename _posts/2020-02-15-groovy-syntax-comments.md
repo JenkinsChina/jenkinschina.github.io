@@ -21,7 +21,7 @@ tags: [Groovy]
 
 ```groovy
 // 独立的单行注释
-println("我的博客：https://shanyshanb.com/") // 此处开始直至行尾的注释
+println("我的博客：https://tangming.org/") // 此处开始直至行尾的注释
 ```
 
 ## 1.2 多行注释
@@ -32,7 +32,7 @@ println("我的博客：https://shanyshanb.com/") // 此处开始直至行尾的
 ```groovy
 /* 独立的多行注释
    占用两行 */
-println "我的博客：https://shanyshanb.com/" /* 多行注释的开始
+println "我的博客：https://tangming.org/" /* 多行注释的开始
                    多行注释的结束 */
 println 1 /* 注释：一 */ + 2 /* 注释：二 */
 ```
@@ -81,7 +81,7 @@ Groovydoc遵循与Java的Javadoc相同的约定。因此，也可以使用与Jav
 
 ```bash
 #!/usr/bin/env groovy
-println "你好！我的博客：https://shanyshanb.com/"
+println "你好！我的博客：https://tangming.org/"
 ```
 
 `＃`字符必须是文件的第一个字符。任何缩进都会产生编译错误。

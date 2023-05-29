@@ -23,7 +23,7 @@ Groovy允许您实例化`java.lang.String`对象以及GString（`groovy.lang.GSt
 
 单引号字符串是一系列用单引号引起来的字符：
 ```groovy
-'我的博客：https://shanyshanb.com/'
+'我的博客：https://tangming.org/'
 ```
 
 单引号字符串是纯粹的`java.lang.String`，不支持插值。
@@ -146,10 +146,10 @@ Groovy表达式可以插入所有类型字符串中，除了单引号和三重�
 下面是一个带有占位符的字符串，该字符串引用一个局部变量：
 
 ```groovy
-def url = 'https://shanyshanb.com' // a plain string
+def url = 'https://tangming.org' // a plain string
 def greeting = "欢迎访问${url}"
 
-assert greeting.toString() == '欢迎访问https://shanyshanb.com'
+assert greeting.toString() == '欢迎访问https://tangming.org'
 ```
 
 任何Groovy表达式都是有效的，如使用算术表达式：
@@ -166,8 +166,8 @@ assert sum.toString() == '2加3等于5'
 除了`${}`占位符，我们还可以在点分表达式前加上一个单独的`$`符号：
 
 ```groovy
-def blog = [url: 'https://shanyshanb.com', author: hummerstudio]
-assert "Url of $blog.author's blog is $blog.url" == "Url of hummerstudio's blog is https://shanyshanb.com"
+def blog = [url: 'https://tangming.org', author: hummerstudio]
+assert "Url of $blog.author's blog is $blog.url" == "Url of hummerstudio's blog is https://tangming.org"
 ```
 
 但是只有`a.b`，`a.b.c`等形式的点分表达式有效。 
@@ -315,7 +315,7 @@ def template = """
 
     学习Groovy、Jenkins
     
-    欢迎访问https://shanyshanb.com
+    欢迎访问https://tangming.org
 """
 
 assert template.toString().contains('同学们')

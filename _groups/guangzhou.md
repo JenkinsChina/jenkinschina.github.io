@@ -2,7 +2,7 @@
 title: 广州Jenkins社区
 base: 广州
 organizer: 唐明
-url: https://www.shanyshanb.com
+url: https://www.tangming.org
 position: 高级软件工程师
 ---
 
