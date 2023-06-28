@@ -41,7 +41,7 @@ APP模式可以在独立窗口中操作Jenkins。体验就好像在操作APP一�
 
 视频演示：
 
-<video width="400" controls Autoplay=autoplay>
+<video width="400" controls>
   <source src="/assets/video/jenkinsclient_app模式.mov" type="video/mp4">
 </video>
 
