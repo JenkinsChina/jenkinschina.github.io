@@ -4,6 +4,8 @@ title: 关于
 permalink: /about/
 icon: octicon-heart
 isNavItem: true
+nav_order: 30
+en_url: /en/about/
 ---
 
 Jenkins作为领先的开源自动化服务器，提供了数千个插件来支持构建、部署和自动化任何项目。

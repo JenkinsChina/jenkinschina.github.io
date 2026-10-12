@@ -12,6 +12,30 @@ baseurl: ""
 defaults:
   - scope:
       path: ""
+    values:
+      lang: zh
+  - scope:
+      path: "_posts_en"
+      type: posts_en
+    values:
+      layout: post
+      lang: en
+      styles : [highlight.css,gitment.css,post.css]
+      scripts : [post.js]
+  - scope:
+      path: "_wiki_en"
+      type: wiki_en
+    values:
+      layout: wiki
+      lang: en
+  - scope:
+      path: "_authors_en"
+      type: authors_en
+    values:
+      layout: author
+      lang: en
+  - scope:
+      path: ""
       type: posts
     values:
       layout: post
@@ -34,9 +58,18 @@ collections:
     wiki:
         output: true
         permalink: /wiki/:path/
+    wiki_en:
+        output: true
+        permalink: /en/wiki/:path/
     authors:
       output: true
       permalink: /author/:path/
+    authors_en:
+      output: true
+      permalink: /en/author/:path/
+    posts_en:
+        output: true
+        permalink: /en/post/:path
     groups:
         output: true
         permalink: /group/:path/

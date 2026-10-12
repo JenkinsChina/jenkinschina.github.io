@@ -1,15 +1,17 @@
 ---
 layout: default
 ---
-<h1>作者姓名：{{ page.name }}</h1>
-<h2>职位：{{ page.position }}</h2>
-<h2>位置：{{ page.base }}</h2>
+{% include i18n.html %}
+{% if is_en %}{% assign posts_source = site.posts_en %}{% else %}{% assign posts_source = site.posts %}{% endif %}
+<h1>{{ t.author_name }}{{ page.name }}</h1>
+<h2>{{ t.author_position }}{{ page.position }}</h2>
+<h2>{{ t.author_base }}{{ page.base }}</h2>
 
 {{ content }}
 
-<h2>发表的文章</h2>
+<h2>{{ t.author_posts }}</h2>
 <ul>
-    {% assign filtered_posts = site.posts | where: 'author', page.name %}
+    {% assign filtered_posts = posts_source | where: 'author', page.name %}
     {% for post in filtered_posts %}
     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
