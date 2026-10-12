@@ -4,6 +4,8 @@ title: 文档
 permalink: /doc_old
 icon: octicon-book
 isNavItem: false
+nav_order: 50
+en_url: /en/docs/
 
 ---
 官方出品，成体系，够权威。

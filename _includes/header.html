@@ -7,30 +7,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ site.baseurl | prepend: site.url }}/">{{ site.title }}</a>
-                    <p class="navbar-text">{{ site.description }}</p>
+                    <a class="navbar-brand" href="{{ t.home_url | prepend: site.baseurl | prepend: site.url }}">{{ t.site_title }}</a>
+                    <p class="navbar-text">{{ t.site_description }}</p>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         {% if page.url == "/index.html" %}
                         <li class="active">{% else %}
                         <li>{% endif %}
-                        <a href="{{ site.baseurl | prepend: site.url }}/" class="word-keep"><span class="octicon octicon-file-text"></span></span>&nbsp;&nbsp;首页</a>
+                        <a href="{{ t.home_url | prepend: site.baseurl | prepend: site.url }}" class="word-keep"><span class="octicon octicon-file-text"></span></span>&nbsp;&nbsp;{{ t.nav_home }}</a>
                         </li>
                         <li>
-                            <a href="{{ '/doc' | prepend: site.baseurl }}/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;文档</a>
+                            <a href="{{ t.docs_url | prepend: site.baseurl }}" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;{{ t.nav_docs }}</a>
                         </li>
-                        {% for p in site.pages %}{% if p.isNavItem %}
+                        {% assign nav_pages = site.pages | where: "isNavItem", true | where: "lang", cur_lang | sort: "nav_order" %}
+                        {% for p in nav_pages %}
                         {% if p.url == page.url %}
                         <li class="active">{% else %}
                         <li>{% endif %}
                             <a href="{{ p.url | prepend: site.baseurl | prepend: site.url }}" class="word-keep"><span class="octicon {{ p.icon }}"></span>&nbsp;&nbsp;{{ p.title }}</a>
                         </li>
-                        {% endif %}
                         {% endfor %}
+                        <li>
+                            <a href="{{ switch_url | prepend: site.baseurl | prepend: site.url }}" hreflang="{{ switch_hreflang }}" class="word-keep lang-switch"><span class="octicon octicon-globe"></span>&nbsp;&nbsp;{{ switch_label }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-

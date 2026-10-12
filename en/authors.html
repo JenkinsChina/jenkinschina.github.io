@@ -1,0 +1,20 @@
+---
+layout: page
+title: Authors
+permalink: /en/authors/
+lang: en
+alt_url: /authors/
+icon: octicon-tag
+isNavItem: false
+nav_order: 40
+---
+{% include i18n.html %}
+<ul>
+    {% for author in site.authors_en %}
+    <li>
+        <h1><a href="{{ author.url | prepend: site.baseurl | prepend: site.url }}">{{ author.name }}</a></h1>
+        <h3>{{ author.position }}</h3>
+        <p>{{ author.content | markdownify }}</p>
+    </li>
+    {% endfor %}
+</ul>

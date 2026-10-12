@@ -5,34 +5,34 @@
                     class="octicon octicon-mail"></span></a>
             <a class="foot-item" href="https://weibo.com" target="_blank"><span class="fab fa-weibo"></span></a>
             <a class="foot-item" href="https://www.zhihu.com" target="_blank"><span class="fab fa-zhihu"></span></a>
-            <a href="https://www.jenkinschina.com"><span class="word-keep">&copy; Jenkins中国</span></a>
-            <p>Copyright © 2020 | <a href="/about" target="_blank">关于</a></p>
-            <p>本站使用「CC BY 4.0」创作共享协议，转载请在文章明显位置注明作者及出处。如您认为侵犯了你的权益，可联系我们。</p>
+            <a href="https://www.jenkinschina.com"><span class="word-keep">&copy; {{ t.site_title }}</span></a>
+            <p>{{ t.footer_copyright }} <a href="{{ t.about_url | prepend: site.baseurl }}" target="_blank">{{ t.footer_about }}</a></p>
+            <p>{{ t.footer_license }}</p>
         </div>
         <div class='links col-md-7'>
             <div class='row'>
                 <div class='area col-md-4'>
                     <div class='div-mar'>
-                        <h1>下载</h1>
+                        <h1>{{ t.footer_download }}</h1>
                         <ul class='resources'>
                             <li>
                                 <a href='https://www.jenkins.io/download' target="_blank">
-                                    Jenkins服务端
+                                    {{ t.footer_jenkins_server }}
                                 </a>
                             </li>
                             <li>
                                 <a href='https://pypi.org/project/jenkinsclient/' target="_blank">
-                                    Jenkins客户端
+                                    {{ t.footer_jenkins_client }}
                                 </a>
                             </li>
                             <li>
-                                <a href='/post/change-jenkins-plugin-center-source-to-cn' target="_blank">
-                                    插件中心国内镜像（高速下载）
+                                <a href='{{ t.plugin_mirror_url }}' target="_blank">
+                                    {{ t.footer_plugin_mirror }}
                                 </a>
                             </li>
                             <li>
                                 <a href='https://github.com/jenkinsci/jenkins' target="_blank">
-                                    源码
+                                    {{ t.footer_source }}
                                 </a>
                             </li>
                         </ul>
@@ -40,11 +40,11 @@
                 </div>
                 <div class='area col-md-4'>
                     <div class='div-mar'>
-                        <h1>项目</h1>
+                        <h1>{{ t.footer_projects }}</h1>
                         <ul class='project'>
                             <li>
                                 <a href='https://www.jenkins.io/doc/book/pipeline-as-code/' target="_blank">
-                                    流水线即代码
+                                    {{ t.footer_pipeline_as_code }}
                                 </a>
                             </li>
                             <li>
@@ -54,17 +54,17 @@
                             </li>
                             <li>
                                 <a href='https://www.jenkins.io/projects/jcasc/' target="_blank">
-                                    配置即代码
+                                    {{ t.footer_config_as_code }}
                                 </a>
                             </li>
                             <li>
                                 <a href='https://www.jenkins.io/blog/2019/10/21/plugin-docs-on-github/' target="_blank">
-                                    插件文档即代码
+                                    {{ t.footer_plugin_docs_as_code }}
                                 </a>
                             </li>
                             <li>
                                 <a href='http://www.codefaq.cn/' target="_blank">
-                                    编程开发常见问题
+                                    {{ t.footer_codefaq }}
                                 </a>
                             </li>
                         </ul>
@@ -72,31 +72,31 @@
                 </div>
                 <div class='area col-md-3'>
                     <div class='div-mar'>
-                        <h1>本地社区</h1>
+                        <h1>{{ t.footer_local_communities }}</h1>
                         <ul class='group'>
                             <li>
                                 <a href='/group/zhuhai' target="_blank">
-                                    珠海
+                                    {{ t.footer_community_zhuhai }}
                                 </a>
                             </li>
                             <li>
                                 <a href='/group/beijing' target="_blank">
-                                    北京
+                                    {{ t.footer_community_beijing }}
                                 </a>
                             </li>
                             <li>
                                 <a href='/group/shanghai' target="_blank">
-                                    上海
+                                    {{ t.footer_community_shanghai }}
                                 </a>
                             </li>
                             <li>
                                 <a href='/group/guangzhou' target="_blank">
-                                    广州
+                                    {{ t.footer_community_guangzhou }}
                                 </a>
                             </li>
                             <li>
                                 <a href='/group/hangzhou' target="_blank">
-                                    杭州
+                                    {{ t.footer_community_hangzhou }}
                                 </a>
                             </li>
                         </ul>

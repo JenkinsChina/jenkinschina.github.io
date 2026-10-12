@@ -4,9 +4,12 @@ title: 分类
 permalink: /category/
 icon: octicon-list-unordered
 isNavItem: true
+nav_order: 10
+en_url: /en/category/
 styles : [article-list.css,category.css]
 scripts: [category.js]
 ---
+{% include i18n.html %}
 
 <div class="row index">
 
@@ -15,13 +18,13 @@ scripts: [category.js]
 
         <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <span class="octicon octicon-list-unordered"></span>&nbsp;分类
+                <span class="octicon octicon-list-unordered"></span>&nbsp;{{ t.category_title }}
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li>
                     <a href="javascript:void(0);" class="categories-item" cate="All">
-                        全部&nbsp;<span class="categories-badge"> {{site.posts | size}}</span>
+                        {{ t.category_all }}&nbsp;<span class="categories-badge"> {{site.posts | size}}</span>
                     </a>
                 </li>
                 {% for category in site.categories %}
@@ -45,13 +48,13 @@ scripts: [category.js]
                             {{ post.title }}
                         </a>
                         <p>{% if post.excerpt.size > 32 %}{{ post.excerpt }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 160 }}{% endif %}</p>
-                        <a class="readmore" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">阅读全文</a>
+                        <a class="readmore" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ t.post_read_more }}</a>
                         <footer>
                             {% for tag in post.tags %}
                             <a class="word-keep" href="{{ site.baseurl | prepend: site.url }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                             {% endfor %}
                       <span class="word-keep pull-right">
-                          <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;评论</a>
+                          <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;{{ t.post_comments }}</a>
                       </span>
                         </footer>
                     </div>
@@ -71,13 +74,13 @@ scripts: [category.js]
                             {{ post.title }}
                         </a>
                         <p>{% if post.excerpt.size > 32 %}{{ post.excerpt }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 160 }}{% endif %}</p>
-                        <a class="readmore" href="{{ post.url | prepend: site.baseurl | prepend: site.url  }}">阅读全文</a>
+                        <a class="readmore" href="{{ post.url | prepend: site.baseurl | prepend: site.url  }}">{{ t.post_read_more }}</a>
                         <footer>
                             {% for tag in post.tags %}
                             <a class="word-keep" href="{{ site.baseurl | prepend: site.url }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                             {% endfor %}
                           <span class="word-keep pull-right">
-                              <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;评论</a>
+                              <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;{{ t.post_comments }}</a>
                           </span>
                         </footer>
                     </div>
@@ -91,7 +94,7 @@ scripts: [category.js]
     </div>
     <div class="content-navigation col-lg-3">
         <div class="content-navigation-header">
-            <span class="octicon octicon-list-unordered"></span>&nbsp;关注微信公众号
+            <span class="octicon octicon-list-unordered"></span>&nbsp;{{ t.home_sidebar_wechat }}
         </div>
         <div class="wechat-qrcode" style="text-align: center">
             <img alt="DevOps持续交付公众号ID:devopscd" src="/assets/img/qrcode_for_devopscd.jpg"/>

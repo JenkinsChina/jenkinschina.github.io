@@ -1,9 +1,11 @@
 ---
 layout: default
 ---
-<h1>{{ page.base }}Jenkins社区</h1>
+{% include i18n.html %}
+{% if is_en %}{% assign authors_source = site.authors_en %}{% else %}{% assign authors_source = site.authors %}{% endif %}
+<h1>{{ page.base }}{{ t.group_suffix }}</h1>
 
-{% assign author = site.authors | where: 'name', page.organizer | first %}
-<h2>组织者：{{ author.name }} <a href="{{ author.url }}">（点击这里查看组织者简介）</a></h2>
+{% assign author = authors_source | where: 'name', page.organizer | first %}
+<h2>{{ t.group_organizer }}{{ author.name }} <a href="{{ author.url }}">{{ t.group_organizer_profile }}</a></h2>
 
 {{ content }}

@@ -1,0 +1,40 @@
+{%- comment -%}
+  多语言公共变量（在模板顶部 include，变量会向父作用域泄漏，可直接使用）：
+    cur_lang     当前语言代码（zh / en），取 page.lang，默认 zh
+    t            当前语言的 UI 文案表（site.data.i18n[cur_lang]）
+    zh_url       当前页面的中文版地址（相对）
+    en_url       当前页面的英文版地址（相对）
+    switch_url   语言切换目标地址，switch_label 为切换链接文案
+    is_en        是否为英文版页面
+  对应关系来源：英文侧文件在 front matter 里写 alt_url（中文地址）；
+  中文侧页面可直接写 en_url 覆盖，未写时按 alt_url 反查英文集合。
+{%- endcomment -%}
+{%- assign cur_lang = page.lang | default: 'zh' -%}
+{%- assign t = site.data.i18n[cur_lang] -%}
+{%- assign is_en = false -%}
+{%- if cur_lang == 'en' -%}{%- assign is_en = true -%}{%- endif -%}
+{%- assign zh_url = page.alt_url | default: '' -%}
+{%- assign en_url = page.en_url | default: '' -%}
+{%- if is_en -%}
+  {%- assign en_url = page.url -%}
+  {%- if zh_url == '' -%}{%- assign zh_url = site.data.i18n.zh.home_url -%}{%- endif -%}
+{%- else -%}
+  {%- assign zh_url = page.url -%}
+  {%- if en_url == '' -%}
+    {%- for d in site.posts_en -%}{%- if d.alt_url == page.url -%}{%- assign en_url = d.url -%}{%- endif -%}{%- endfor -%}
+    {%- for d in site.wiki_en -%}{%- if d.alt_url == page.url -%}{%- assign en_url = d.url -%}{%- endif -%}{%- endfor -%}
+    {%- for d in site.authors_en -%}{%- if d.alt_url == page.url -%}{%- assign en_url = d.url -%}{%- endif -%}{%- endfor -%}
+    {%- for d in site.pages -%}{%- if d.alt_url == page.url -%}{%- assign en_url = d.url -%}{%- endif -%}{%- endfor -%}
+  {%- endif -%}
+  {%- if en_url == '' -%}{%- assign en_url = site.data.i18n.en.home_url -%}{%- endif -%}
+{%- endif -%}
+{%- if zh_url == '' -%}{%- assign zh_url = site.data.i18n.zh.home_url -%}{%- endif -%}
+{%- if is_en -%}
+  {%- assign switch_url = zh_url -%}
+  {%- assign switch_label = site.data.i18n.zh.nav_switch -%}
+  {%- assign switch_hreflang = 'zh-CN' -%}
+{%- else -%}
+  {%- assign switch_url = en_url -%}
+  {%- assign switch_label = site.data.i18n.en.nav_switch -%}
+  {%- assign switch_hreflang = 'en' -%}
+{%- endif -%}
